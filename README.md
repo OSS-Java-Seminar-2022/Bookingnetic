@@ -6,9 +6,9 @@ Bookingnetic is a web application that suits both hosts and travellers. List you
 ## Features
 
 ### User and property creation
-  - Register a new user
-  - User log-in 
-  - User can create a property to his account
+  - Register a new client
+  - Register a new property owner
+  - Log-in functionality for both roles
 
 ### Property managment
   - Add property images
