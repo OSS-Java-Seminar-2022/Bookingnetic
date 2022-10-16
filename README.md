@@ -3,14 +3,30 @@
 
 Bookingnetic is a web application that suits both hosts and travellers. List your apartment or find a cozy room to spend the night, or more!
 
-# Features
-  - Registration and Log-in functionality
-  - Listing a property to the market
-  - Search available properties by city
-  - Recommending users properties near the search location
-  - Booking an available property
+## Features
+
+### User and property creation
+  - Register a new user
+  - User log-in 
+  - User can create a property to his account
+
+### Property managment
+  - Add property images
+  - Add a property description
+  - Edit property price
+  - Open/close property availability
+
+### Search listed properties
+  - Search listed properties by city and date and capacity
+  - Recommed nearby properties 
+
+### Booking an available property    
+  - Making a reservation
   - Canceling a reservation
 
+### Notifications
+  - Property owner recieves a notification in the dashboard when a client makes/cancels a reservation
+  - Property owner recieves an e-mail when a client makes/cancels a reservation
 ## Tech Stack
 
 - Java
@@ -19,7 +35,15 @@ Bookingnetic is a web application that suits both hosts and travellers. List you
 - Bootstrap
 - Spring Boot
 - Thymeleaf
+- Docker
+- MongoDB
 
 
 ## Database model
 N/A
+## Authors
+
+- [Tea Basic](https://www.github.com/Tea27)
+- [Vera Marija Guja](https://www.github.com/VeraMarija)
+- [Josip Bogunovic](https://www.github.com/permetris) 
+
