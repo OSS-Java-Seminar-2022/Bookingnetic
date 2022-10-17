@@ -40,7 +40,7 @@ Bookingnetic is a web application that suits both hosts and travellers. List you
 
 
 ## Database model
-N/A
+![Database Model](/bookingetic_DBM.jpg)
 ## Authors
 
 - [Tea Basic](https://www.github.com/Tea27)
