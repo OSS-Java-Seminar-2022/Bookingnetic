@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  API:
+    container_name: api
+    image: bookingnetic
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgredb
+
+  postgredb:
+    container_name: postgredb
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=dockerus
+      - POSTGRES_DB=bookingdb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dockerus bookingdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
