@@ -36,7 +36,7 @@ Bookingnetic is a web application that suits both hosts and travellers. List you
 - Spring Boot
 - Thymeleaf
 - Docker
-- MongoDB
+- PostgreSQL
 
 
 ## Database model
