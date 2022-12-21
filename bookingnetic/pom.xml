@@ -26,6 +26,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
@@ -48,6 +52,7 @@
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
+<<<<<<< HEAD
 			<version>23.1.0 </version>
 			<scope>compile</scope>
 		</dependency>
@@ -63,6 +68,11 @@
 			<version>3.3.0</version>
 			<type>maven-plugin</type>
 		</dependency>
+=======
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+>>>>>>> 8cdfc07be6b534bc2d271c12e1a93f3950725111
 	</dependencies>
 
 	<build>
