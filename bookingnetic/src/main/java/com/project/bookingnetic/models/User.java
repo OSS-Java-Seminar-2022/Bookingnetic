@@ -7,30 +7,52 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Data
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "c_user")
+@Table(name = "users")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "c_user_id")
-    private long id;
-    @Column(name = "c_first_name")
-    private String FirstName;
-    @Column(name = "c_last_name")
-    private String LastName;
-    @Column(name = "c_email", unique = true)
+    @Column(name = "user_id")
+    private Long id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "email", unique = true)
     private String email;
-    @Column(name = "c_password")
+
+    @Column(name = "password")
     private String password;
-    @Column(name = "c_phone")
+
+    @Column(name = "phone")
     private String phone;
-    @Column(name = "c_about")
+
+    @Column(name = "about")
     private String about;
-//    @Column(name = "c_about", nullable = false)
-//    private String Role;
+
+    @Column(name = "registration_date" )
+    private Date registrationDate;
+
+    @Column(name = "enum_role")
+    private RoleType enumRole;
+
+
+    public User(String firstName, String lastName, String email, String password, String phone, String about, Date registrationDate, RoleType enumRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.about = about;
+        this.registrationDate = registrationDate;
+        this.enumRole = enumRole;
+    }
 }

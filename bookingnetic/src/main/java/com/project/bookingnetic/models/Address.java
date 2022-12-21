@@ -9,20 +9,30 @@ import lombok.ToString;
 @Entity
 @Data
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "c_address")
+@Table(name = "address")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "c_address_id")
+    @Column(name = "address_id")
     private long id;
-    @Column(name = "c_country")
+
+    @Column(name = "country")
     private String country;
-    @Column(name = "c_city")
+
+    @Column(name = "city")
     private String city;
-    @Column(name = "c_street")
+
+    @Column(name = "street")
     private String street;
-    @Column(name = "c_postal_code")
+
+    @Column(name = "postal_code")
     private String postalCode;
+
+    public Address(String country, String city, String street, String postalCode) {
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.postalCode = postalCode;
+    }
 }
