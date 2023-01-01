@@ -11,18 +11,18 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "c_address")
+@Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "c_address_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id")
     private long id;
-    @Column(name = "c_country")
+    @Column(name = "country")
     private String country;
-    @Column(name = "c_city")
+    @Column(name = "city")
     private String city;
-    @Column(name = "c_street")
+    @Column(name = "street")
     private String street;
-    @Column(name = "c_postal_code")
+    @Column(name = "postal_code")
     private String postalCode;
 }

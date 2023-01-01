@@ -11,10 +11,10 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "c_image")
+@Table(name = "image")
 public class Image {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "c_image_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "image_id")
     private long id;
 }

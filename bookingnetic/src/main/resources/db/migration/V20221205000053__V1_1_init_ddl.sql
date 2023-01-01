@@ -1,48 +1,54 @@
-CREATE TABLE IF NOT EXISTS c_user
+CREATE TABLE IF NOT EXISTS account
 (
-    c_user_id  serial not null,
-    c_first_name  varchar(255) not null,
-    c_last_name varchar(255) not null,
-    c_email varchar(255) not null,
-    c_password varchar(255) not null,
-    c_phone varchar(255) not null,
-    c_about varchar(255) not null,
+    account_id  serial NOT NULL,
+    first_name  varchar(255) NOT NULL,
+    last_name varchar(255) NOT NULL,
+    email varchar(255) NOT NULL UNIQUE,
+    password varchar(255) NOT NULL,
+    phone varchar(255) NOT NULL UNIQUE,
+    about varchar(255) NOT NULL,
+    role varchar(255) NOT NULL,
+    date_created date NOT NULL,
 
-    PRIMARY KEY (c_user_id)
+    PRIMARY KEY (account_id)
 );
 
-CREATE TABLE IF NOT EXISTS c_address
+CREATE TABLE IF NOT EXISTS address
 (
-    c_address_id  serial not null,
-    c_country  varchar(255) not null,
-    c_city varchar(255) not null,
-    c_street varchar(255) not null,
-    c_postal_code varchar(255) not null,
+    address_id  serial NOT NULL,
+    country  varchar(255) NOT NULL,
+    city varchar(255) NOT NULL,
+    street varchar(255) NOT NULL,
+    postal_code varchar(255) NOT NULL,
 
-    PRIMARY KEY (c_address_id)
+    PRIMARY KEY (address_id)
 );
-CREATE TABLE IF NOT EXISTS c_image
+CREATE TABLE IF NOT EXISTS image
 (
-    c_image_id serial not null,
+    image_id serial NOT NULL,
 
-    PRIMARY KEY (c_image_id)
+    PRIMARY KEY (image_id)
 
 );
-CREATE TABLE IF NOT EXISTS c_accommodation
+CREATE TABLE IF NOT EXISTS accommodation
 (
-    c_accommodation_id serial not null,
-    c_name varchar(255) not null,
-    c_description varchar(255),
-    c_address_fk serial references c_address(c_address_id),
-    c_user_fk serial references c_user(c_user_id),
-    c_price numeric,
+    accommodation_id serial NOT NULL,
+    accomodation_name varchar(255) NOT NULL,
+    description varchar(255),
+    address_fk serial REFERENCES address(address_id),
+    user_fk serial REFERENCES account(account_id),
+    price numeric NOT NULL,
 
-    PRIMARY KEY (c_accommodation_id)
+    PRIMARY KEY (accommodation_id)
 );
-CREATE TABLE IF NOT EXISTS c_reservation
+CREATE TABLE IF NOT EXISTS reservation
 (
-    c_reservation_id serial not null,
-    c_user_fk serial references c_user(c_user_id),
+    reservation_id serial NOT NULL,
+    account_fk serial REFERENCES account(account_id),
+    time_of_reservation date NOT NULL,
+    check_in_date date NOT NULL,
+    check_out_date date NOT NULL,
+    total_price numeric NOT NULL,
 
-    PRIMARY KEY (c_reservation_id)
+    PRIMARY KEY (reservation_id)
 );

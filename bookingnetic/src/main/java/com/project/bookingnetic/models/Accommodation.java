@@ -14,23 +14,23 @@ import java.math.BigDecimal;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "c_accommodation")
+@Table(name = "accommodation")
 public class Accommodation {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "c_accommodation_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
-    @Column(name = "c_name")
+    @Column(name = "accomodation_name")
     private String name;
-    @Column(name = "c_description")
+    @Column(name = "description")
     private String description;
     @OneToOne
-    @JoinColumn(name = "c_address_fk", referencedColumnName = "c_address_id", insertable=false, updatable=false)
+    @JoinColumn(name = "address_fk", referencedColumnName = "address_id", insertable=false, updatable=false)
     private Address address;
     @OneToOne
-    @JoinColumn(name = "c_user_fk", referencedColumnName = "c_user_id", insertable=false, updatable=false)
-    private User userID;
-    @Column(name = "c_price")
+    @JoinColumn(name = "account_fk", referencedColumnName = "account_id", insertable=false, updatable=false)
+    private Account accountID;
+    @Column(name = "price")
     private BigDecimal price;
 }
 

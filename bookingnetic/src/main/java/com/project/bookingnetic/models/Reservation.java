@@ -6,18 +6,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "c_reservation")
+@Table(name = "reservation")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "c_reservation_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "reservation_id")
     private long id;
-    @OneToOne
-    @JoinColumn(name = "c_user_fk", referencedColumnName = "c_user_id")
-    private User userId;
+    @ManyToOne
+    @JoinColumn(name = "account_fk",nullable = false)
+    private Account account_fk;
+    @Column(name = "time_of_reservation")
+    private LocalDate timeOfReservation;
+    @Column(name = "check_in_date")
+    private LocalDate checkInDate;
+    @Column(name = "check_out_date")
+    private LocalDate checkOutDate;
+    @Column(name = "total_price")
+    private Long totalPrice;
 }
