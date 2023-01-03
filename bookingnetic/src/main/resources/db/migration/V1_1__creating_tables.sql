@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS accommodation
 (
     id serial not null,
-    _name varchar(255) not null,
+    title varchar(255) not null,
     description varchar(255),
     price_for_night numeric ,
     creation_date date DEFAULT CURRENT_DATE,
@@ -67,9 +67,9 @@ CREATE TABLE IF NOT EXISTS reservation
 (
     id serial not null,
     reservation_date date not null DEFAULT CURRENT_DATE,
-    start_date date not null,
-    end_date date not null,
-    total_price numeric not null,
+    check_in date not null,
+    check_out date not null,
+    price numeric not null,
     user_fk serial,
     accommodation_fk serial,
 

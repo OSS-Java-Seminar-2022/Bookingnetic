@@ -11,9 +11,6 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @SpringBootApplication
 public class BookingneticApplication {
 
-
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(BookingneticApplication.class, args);
 	}

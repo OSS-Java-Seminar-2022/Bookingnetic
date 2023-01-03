@@ -21,13 +21,13 @@ public class AccommodationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Accommodation>> getAccommodation(){
-        return ResponseEntity.ok(service.getAccommodations());
+    public ResponseEntity<List<Accommodation>> get(){
+        return ResponseEntity.ok(service.get());
     }
 
     @PostMapping
-    public ResponseEntity<Accommodation> saveAccommodation(Accommodation address){
-        return ResponseEntity.ok(service.saveAccommodation(address));
+    public ResponseEntity<Accommodation> save(Accommodation accommodation){
+        return ResponseEntity.ok(service.save(accommodation));
     }
 
     @DeleteMapping(path = "/delete/{id}")

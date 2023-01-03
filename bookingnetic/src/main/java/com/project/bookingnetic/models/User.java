@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,6 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "users")
 public class User implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -40,17 +42,28 @@ public class User implements Serializable {
 
     @Column(name = "enum_role")
     private RoleType enumRole;
-    @OneToMany(mappedBy = "account_fk")
-    Set<Reservation> reservations;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Reservation> reservations = new HashSet<>();
 
 
-    public User(String firstName, String lastName, String email, String password, String phone, String about, Date registrationDate, RoleType enumRole) {
+    public User(String firstName,
+                String lastName,
+                String email,
+                String password,
+                String phone,
+                RoleType enumRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phone = phone;
-        this.registrationDate = registrationDate;
         this.enumRole = enumRole;
     }
+
+    public void addReservation(Reservation reservation){
+        this.reservations.add(reservation);
+    }
+
+
 }

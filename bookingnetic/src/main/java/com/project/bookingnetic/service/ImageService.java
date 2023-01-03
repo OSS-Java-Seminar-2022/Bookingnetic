@@ -14,19 +14,19 @@ import java.util.List;
 @Service
 public class ImageService {
     @Autowired
-    private ImageRepository imageRepository;
+    private ImageRepository repository;
 
-    public List<Image> getImages(){
-        return new ArrayList<>(imageRepository.findAll());
+    public List<Image> get(){
+        return new ArrayList<>(repository.findAll());
     }
 
-    public Image saveImage(Image image) {
-        return imageRepository.save(image);
+    public Image save(Image image) {
+        return repository.save(image);
     }
 
     public ResponseEntity<HttpStatus> deleteById(Long id) {
         try {
-            imageRepository.deleteById(id);
+            repository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

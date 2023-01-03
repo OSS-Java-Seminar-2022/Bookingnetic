@@ -21,13 +21,13 @@ public class ImageController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Image>> getAddress(){
-        return ResponseEntity.ok(service.getImages());
+    public ResponseEntity<List<Image>> get(){
+        return ResponseEntity.ok(service.get());
     }
 
     @PostMapping
-    public ResponseEntity<Image> saveAddress(Image address){
-        return ResponseEntity.ok(service.saveImage(address));
+    public ResponseEntity<Image> save(Image image){
+        return ResponseEntity.ok(service.save(image));
     }
 
     @DeleteMapping(path = "/delete/{id}")

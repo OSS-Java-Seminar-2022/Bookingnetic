@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -15,19 +17,41 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Table(name = "reservation")
 public class Reservation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "reservation_id")
+    @Column(name = "id")
     private long id;
+
+    @Column(name = "reservation_date")
+    private Date reservation_date;
+
+    @Column(name = "check_in")
+    private Date checkIn;
+
+    @Column(name="check_out")
+    private Date checkOut;
+
+    @Column(name = "price")
+    private BigDecimal price;
+
     @ManyToOne
     @JoinColumn(name = "user_fk",nullable = false)
-    private User user_fk;
-    @Column(name = "time_of_reservation")
-    private LocalDate timeOfReservation;
-    @Column(name = "check_in_date")
-    private LocalDate checkInDate;
-    @Column(name = "check_out_date")
-    private LocalDate checkOutDate;
-    @Column(name = "total_price")
-    private Long totalPrice;
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name="accommodation_fk", nullable = false)
+    private Accommodation accommodation;
+
+    public Reservation(Date checkIn,
+                       Date checkOut,
+                       BigDecimal price,
+                       User user,
+                       Accommodation accommodation) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.price = price;
+        this.user = user;
+        this.accommodation = accommodation;
+    }
 }

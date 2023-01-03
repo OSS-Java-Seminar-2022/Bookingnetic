@@ -21,13 +21,13 @@ public class ReservationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Reservation>> getReservation(){
-        return ResponseEntity.ok(service.getReservations());
+    public ResponseEntity<List<Reservation>> get(){
+        return ResponseEntity.ok(service.get());
     }
 
     @PostMapping
-    public ResponseEntity<Reservation> saveReservation(Reservation address){
-        return ResponseEntity.ok(service.saveReservation(address));
+    public ResponseEntity<Reservation> save(Reservation reservation){
+        return ResponseEntity.ok(service.save(reservation));
     }
 
     @DeleteMapping(path = "/delete/{id}")

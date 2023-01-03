@@ -21,13 +21,13 @@ public class AddressController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Address>> getUsers(){
-        return ResponseEntity.ok(service.getAddresses());
+    public ResponseEntity<List<Address>> get(){
+        return ResponseEntity.ok(service.get());
     }
 
     @PostMapping
-    public ResponseEntity<Address> saveUser(Address address){
-        return ResponseEntity.ok(service.saveAddress(address));
+    public ResponseEntity<Address> save(Address address){
+        return ResponseEntity.ok(service.save(address));
     }
 
     @DeleteMapping(path = "/delete/{id}")

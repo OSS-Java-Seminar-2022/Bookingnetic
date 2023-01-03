@@ -12,6 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Table(name = "image")
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -24,12 +25,12 @@ public class Image {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "accommodation_fk", referencedColumnName = "accommodation_id", insertable=false, updatable=false)
-    private Accommodation accommodationId;
+    @JoinColumn(name = "accommodation_fk", referencedColumnName = "id", insertable=false, updatable=false)
+    private Accommodation accommodation;
 
-    public Image(byte[] img, String description, Accommodation accommodationId) {
+    public Image(byte[] img, String description, Accommodation accommodation) {
         this.img = img;
         this.description = description;
-        this.accommodationId = accommodationId;
+        this.accommodation = accommodation;
     }
 }

@@ -13,20 +13,20 @@ import java.util.List;
 @Service
 public class ReservationService {
     @Autowired
-    private ReservationRepository reservationRepository;
+    private ReservationRepository repository;
 
 
-    public List<Reservation> getReservations(){
-        return new ArrayList<>(reservationRepository.findAll());
+    public List<Reservation> get(){
+        return new ArrayList<>(repository.findAll());
     }
 
-    public Reservation saveReservation(Reservation reservation) {
-        return reservationRepository.save(reservation);
+    public Reservation save(Reservation reservation) {
+        return repository.save(reservation);
     }
 
     public ResponseEntity<HttpStatus> deleteById(Long id) {
         try {
-            reservationRepository.deleteById(id);
+            repository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

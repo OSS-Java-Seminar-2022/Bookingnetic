@@ -13,19 +13,19 @@ import java.util.List;
 @Service
 public class AddressService {
     @Autowired
-    private AddressRepository addressRepository;
+    private AddressRepository repository;
 
-    public List<Address> getAddresses(){
-        return new ArrayList<>(addressRepository.findAll());
+    public List<Address> get(){
+        return new ArrayList<>(repository.findAll());
     }
 
-    public Address saveAddress(Address address) {
-        return addressRepository.save(address);
+    public Address save(Address address) {
+        return repository.save(address);
     }
 
     public ResponseEntity<HttpStatus> deleteById(Long id) {
         try {
-            addressRepository.deleteById(id);
+            repository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
