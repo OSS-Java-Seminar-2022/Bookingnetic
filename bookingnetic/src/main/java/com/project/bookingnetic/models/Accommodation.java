@@ -20,16 +20,16 @@ public class Accommodation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
-    @Column(name = "accomodation_name")
+    @Column(name = "_name")
     private String name;
     @Column(name = "description")
     private String description;
     @OneToOne
-    @JoinColumn(name = "address_fk", referencedColumnName = "address_id", insertable=false, updatable=false)
+    @JoinColumn(name = "address_fk", referencedColumnName = "id", insertable=false, updatable=false)
     private Address address;
     @OneToOne
-    @JoinColumn(name = "account_fk", referencedColumnName = "account_id", insertable=false, updatable=false)
-    private Account accountID;
+    @JoinColumn(name = "user_fk", referencedColumnName = "user_id", insertable=false, updatable=false)
+    private User accountID;
     @Column(name = "price")
     private BigDecimal price;
 }

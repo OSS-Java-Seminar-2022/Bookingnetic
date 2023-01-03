@@ -1,9 +1,9 @@
 package com.project.bookingnetic.repository;
 
-import com.project.bookingnetic.models.Account;
+import com.project.bookingnetic.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }

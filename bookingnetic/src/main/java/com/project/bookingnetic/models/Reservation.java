@@ -20,8 +20,8 @@ public class Reservation {
     @Column(name = "reservation_id")
     private long id;
     @ManyToOne
-    @JoinColumn(name = "account_fk",nullable = false)
-    private Account account_fk;
+    @JoinColumn(name = "user_fk",nullable = false)
+    private User user_fk;
     @Column(name = "time_of_reservation")
     private LocalDate timeOfReservation;
     @Column(name = "check_in_date")
