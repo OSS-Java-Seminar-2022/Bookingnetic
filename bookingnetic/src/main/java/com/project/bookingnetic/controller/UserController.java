@@ -41,11 +41,8 @@ public class UserController {
         return "register";
 }
     @PostMapping("/register")
-    public ResponseEntity<User> save(@ModelAttribute("user") User user){
-
-        user.setEnumRole(RoleType.USER);
-        user.setRegistrationDate(LocalDate.now());
-        return ResponseEntity.ok(service.save(user));
+    public ResponseEntity<User> register(@ModelAttribute("user") User user){
+        return ResponseEntity.ok(service.register(user));
     }
 
     @PostMapping("/account")
