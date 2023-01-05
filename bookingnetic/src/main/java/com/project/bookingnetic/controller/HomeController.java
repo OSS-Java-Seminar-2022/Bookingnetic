@@ -14,8 +14,8 @@ import java.util.List;
 public class HomeController {
 
     @GetMapping("/")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, @NotNull Model model) {
-        model.addAttribute("name");
+    public String greeting() {
+
         return "home";
     }
 

@@ -26,7 +26,7 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<Address> save(Address address){
+    public ResponseEntity<Address> save(@RequestBody Address address){
         return ResponseEntity.ok(service.save(address));
     }
 

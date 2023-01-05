@@ -26,7 +26,7 @@ public class AccommodationController {
     }
 
     @PostMapping
-    public ResponseEntity<Accommodation> save(Accommodation accommodation){
+    public ResponseEntity<Accommodation> save(@RequestBody Accommodation accommodation){
         return ResponseEntity.ok(service.save(accommodation));
     }
 

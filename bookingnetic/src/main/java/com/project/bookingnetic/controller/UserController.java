@@ -33,7 +33,7 @@ public class UserController {
 //        return "user/profile";
 //    }
 
-    @PostMapping("/create")
+    @PostMapping("/register")
     public ResponseEntity<User> save(@ModelAttribute("user") User user){
         return ResponseEntity.ok(service.save(user));
     }
