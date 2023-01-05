@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 @Service
 public class UserService {
@@ -30,6 +33,16 @@ public class UserService {
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public boolean findByEmail(String email){
+        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
+        if(user.isPresent())
+            return true;
+        return false;
+
+
+
     }
 
 
