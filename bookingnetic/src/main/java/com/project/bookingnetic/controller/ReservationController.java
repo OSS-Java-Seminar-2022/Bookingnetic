@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -24,11 +25,19 @@ public class ReservationController {
     public ResponseEntity<List<Reservation>> get(){
         return ResponseEntity.ok(service.get());
     }
+    @GetMapping("/find-available")
+    public ResponseEntity<String> findAvailable(
+            @RequestParam String cityName,
+            @RequestParam LocalDate dateFrom,
+            @RequestParam LocalDate dateTo){
+        return new ResponseEntity<>(cityName,HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<Reservation> save(Reservation reservation){
         return ResponseEntity.ok(service.save(reservation));
     }
+
 
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<HttpStatus> deleteById(@PathVariable("id") Long id  ){

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +19,7 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -38,8 +39,9 @@ public class User implements Serializable {
     private String phone;
 
     @Column(name = "registration_date" )
-    private Date registrationDate;
+    private LocalDate registrationDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "enum_role")
     private RoleType enumRole;
 

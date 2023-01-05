@@ -1,6 +1,7 @@
 package com.project.bookingnetic.controller;
 
 
+import com.project.bookingnetic.models.RoleType;
 import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -32,9 +34,15 @@ public class UserController {
 //    public ResponseEntity<List<User>> getUserById(){
 //        return "user/profile";
 //    }
-
+    @GetMapping("/register")
+    public String renderRegisterPage(){
+        return "register";
+}
     @PostMapping("/register")
     public ResponseEntity<User> save(@ModelAttribute("user") User user){
+
+        user.setEnumRole(RoleType.USER);
+        user.setRegistrationDate(LocalDate.now());
         return ResponseEntity.ok(service.save(user));
     }
 

@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS address
     PRIMARY KEY (id)
 );
 
-CREATE TYPE roles AS ENUM ('admin', 'user');
+CREATE TYPE roles AS ENUM ('ADMIN', 'USER');
+CREATE CAST (varchar AS roles) WITH INOUT AS IMPLICIT;
 
 
 CREATE TABLE IF NOT EXISTS users
