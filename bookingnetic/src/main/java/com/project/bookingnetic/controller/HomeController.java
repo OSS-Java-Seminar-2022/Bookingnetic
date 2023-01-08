@@ -15,6 +15,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String greeting() {
+        System.out.println("POSJET HOME PAGE STRANICI-------------------------");
 
         return "home";
     }

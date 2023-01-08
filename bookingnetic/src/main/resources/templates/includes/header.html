@@ -1,4 +1,5 @@
-<header th:fragment xmlns:th="header">
+<header th:fragment xmlns:th="header"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -9,10 +10,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/}"><i class="fa fa-home"></i>Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Account</a>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" th:href="@{~/user/account}">Account</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,9 +30,28 @@
                         <a class="nav-link disabled">Disabled</a>
                     </li>
                 </ul>
-                <div class="d-flex" role="search">
-                    <a th:href="@{/user/register}">Register</a>
-                </div>
+
+                    <div sec:authorize="isAnonymous()" class="d-flex " role="search">
+                        <a  th:href="@{~/login}">Login</a>
+                    </div>
+                    <div sec:authorize="isAnonymous()" class="d-flex mx-2" role="search">
+                        <a  th:href="@{~/user/register}">Register</a>
+                    </div>
+                <form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/logout}">
+                    <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button>
+
+                </form>
+
+
+
+                <!--
+
+
+
+                <div class="d-flex mx-2">
+                <form class="form-inline " method="post" th:action="@{/logout}">
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form></div> -->
             </div>
         </div>
     </nav>

@@ -7,9 +7,7 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
@@ -66,6 +64,18 @@ public class User implements Serializable {
     public void addReservation(Reservation reservation){
         this.reservations.add(reservation);
     }
+
+    public String getUsername() {
+        return this.email;
+    }
+
+    public List<String> getRoleList(){
+        if(this.enumRole.toString().length() > 0)
+            return Arrays.asList(this.enumRole.toString().split(","));
+
+        return new ArrayList<>();
+    }
+
 
 
 }
