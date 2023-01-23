@@ -43,6 +43,11 @@ public class User implements Serializable {
     @Column(name = "enum_role")
     private RoleType enumRole;
 
+    @OneToOne()
+    @JoinColumn(name = "accommodation_id", referencedColumnName = "id")
+    private Accommodation accommodation;
+
+
     @OneToMany(mappedBy = "user")
     private Set<Reservation> reservations = new HashSet<>();
 

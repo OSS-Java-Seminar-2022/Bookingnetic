@@ -1,6 +1,7 @@
 package com.project.bookingnetic.controller;
 
 import com.project.bookingnetic.models.Accommodation;
+import com.project.bookingnetic.models.Search;
 import com.project.bookingnetic.service.AccommodationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,14 +15,15 @@ import java.util.List;
 @RequestMapping("/accommodation")
 public class AccommodationController {
     @Autowired
-    private final AccommodationService service;
+    private AccommodationService service;
 
     public AccommodationController(AccommodationService service) {
         this.service = service;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Accommodation>> get(){
+    @GetMapping()
+    public ResponseEntity<List<Accommodation>> get(@ModelAttribute(name = "search") Search search){
+        Search searchN = search;
         return ResponseEntity.ok(service.get());
     }
 

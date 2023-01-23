@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.thymeleaf.expression.Maps;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -35,12 +36,16 @@ public class Accommodation {
     @Column(name = "creation_date" )
     private Date creation_date;
 
+    @MapsId
+    @JoinColumn(name = "id")
+    @OneToOne
+    private Accommodation accommodation;
+
     @OneToOne
     @JoinColumn(name = "address_fk", referencedColumnName = "id", insertable=false, updatable=false)
     private Address address;
 
-    @OneToOne
-    @JoinColumn(name = "user_fk", referencedColumnName = "id", insertable=false, updatable=false)
+    @OneToOne(mappedBy = "accommodation")
     private User user;
 
     @OneToMany(mappedBy = "accommodation")

@@ -12,9 +12,11 @@ import java.util.List;
 public class UserSecurity implements UserDetails {
 
     private User user;
+    private long id;
 
     public UserSecurity(User user) {
         this.user = user;
+        this.id = user.getId();
     }
 
     @Override
@@ -37,6 +39,10 @@ public class UserSecurity implements UserDetails {
     @Override
     public String getUsername() {
         return this.user.getEmail();
+    }
+
+    public Long getId() {
+        return this.user.getId();
     }
 
     @Override
