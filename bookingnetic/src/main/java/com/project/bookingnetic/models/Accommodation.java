@@ -36,22 +36,14 @@ public class Accommodation {
     @Column(name = "creation_date" )
     private Date creation_date;
 
-    @MapsId
-    @JoinColumn(name = "id")
-    @OneToOne
-    private Accommodation accommodation;
-
-    @OneToOne
-    @JoinColumn(name = "address_fk", referencedColumnName = "id", insertable=false, updatable=false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_fk", referencedColumnName = "id")
     private Address address;
 
-    @OneToOne(mappedBy = "accommodation")
-    private User user;
-
-    @OneToMany(mappedBy = "accommodation")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "accommodation")
     private Set<Image> images = new HashSet<>();
 
-    @OneToMany(mappedBy = "accommodation")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "accommodation")
     private Set<Reservation> reservations = new HashSet<>();
 
     public Accommodation(String title,
@@ -63,7 +55,6 @@ public class Accommodation {
         this.description = description;
         this.price_for_night = price_for_night;
         this.address = address;
-        this.user = user;
     }
 
     public void addImage(Image image){

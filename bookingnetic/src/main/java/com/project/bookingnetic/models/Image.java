@@ -5,6 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Types;
 
 @Entity
 @Data
@@ -14,23 +23,33 @@ import lombok.ToString;
 public class Image {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
+    @Lob
+    @JdbcTypeCode(Types.BINARY)
     @Column(name = "img")
     private byte[] img ;
 
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "accommodation_fk", referencedColumnName = "id", insertable=false, updatable=false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "accommodation_fk", referencedColumnName = "id")
     private Accommodation accommodation;
 
     public Image(byte[] img, String description, Accommodation accommodation) {
         this.img = img;
         this.description = description;
         this.accommodation = accommodation;
+    }
+
+    public static Image setImage(String filepath, String formatName, String description, Accommodation accommodation) throws IOException {
+        BufferedImage bufferimage = ImageIO.read(new File(filepath));
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        ImageIO.write(bufferimage, formatName, output );
+        byte [] data = output.toByteArray();
+        return new Image(data, "description", accommodation);
     }
 }

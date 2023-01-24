@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "firstName": "Tea",
+    "lastName": "Basic",
+    "email": "tbasic@gmail.com",
+    "password": "medable123",
+    "phone": "+1234",
+    "registrationDate": "2020-01-08",
+    "enumRole": "ROLE_ADMIN",
+    "accommodation": {
+      "id": 1
+    },
+    "reservations": []
+  },
+  {
+    "id": 2,
+    "firstName": "Ivana",
+    "lastName": "Mihanovic",
+    "email": "imihan@gmail.com",
+    "password": "medable123",
+    "phone": "+12345",
+    "registrationDate": "2022-03-07",
+    "enumRole": "ROLE_ADMIN",
+    "accommodation": {
+      "id": 2
+    },
+    "reservations": []
+  }
+]

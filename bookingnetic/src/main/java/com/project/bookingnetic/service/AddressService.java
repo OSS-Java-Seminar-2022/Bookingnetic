@@ -1,6 +1,7 @@
 package com.project.bookingnetic.service;
 
 import com.project.bookingnetic.models.Address;
+import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,4 +33,7 @@ public class AddressService {
         }
     }
 
+    public Address findById(Long id){
+        return repository.findById(id).get();
+    }
 }

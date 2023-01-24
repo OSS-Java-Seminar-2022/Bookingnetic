@@ -1,0 +1,26 @@
+[
+  {
+    "id":1,
+    "title":"Mountain cabin",
+    "description":"Enjoy in beautiful mountains in wonderful Alps",
+    "price_for_night":50,
+    "creation_date":1641034512000,
+    "address":
+    {
+      "id":1
+    },
+    "images":[]
+  },
+  {
+    "id":2,
+    "title":"top cabin",
+    "description":"Uzivajte u novom putovanju",
+    "price_for_night":100,
+    "creation_date":1655215357000,
+    "address":
+    {
+      "id":1
+    },
+    "images":[]
+  }
+]

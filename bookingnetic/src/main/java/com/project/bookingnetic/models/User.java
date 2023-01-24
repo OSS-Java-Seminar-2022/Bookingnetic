@@ -1,6 +1,7 @@
 package com.project.bookingnetic.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -13,8 +14,9 @@ import java.util.*;
 @Data
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
-public class User implements Serializable {
+public class User implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,14 +45,14 @@ public class User implements Serializable {
     @Column(name = "enum_role")
     private RoleType enumRole;
 
-    @OneToOne()
-    @JoinColumn(name = "accommodation_id", referencedColumnName = "id")
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "accommodation_id")
     private Accommodation accommodation;
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Reservation> reservations = new HashSet<>();
-
 
     public User(String firstName,
                 String lastName,

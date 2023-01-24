@@ -24,27 +24,27 @@ public class Reservation {
     private long id;
 
     @Column(name = "reservation_date")
-    private Date reservation_date;
+    private LocalDate reservation_date;
 
     @Column(name = "check_in")
-    private Date checkIn;
+    private LocalDate checkIn;
 
     @Column(name="check_out")
-    private Date checkOut;
+    private LocalDate checkOut;
 
     @Column(name = "price")
     private BigDecimal price;
 
-    @ManyToOne
-    @JoinColumn(name = "user_fk",nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_fk", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="accommodation_fk", nullable = false)
     private Accommodation accommodation;
 
-    public Reservation(Date checkIn,
-                       Date checkOut,
+    public Reservation(LocalDate checkIn,
+                       LocalDate checkOut,
                        BigDecimal price,
                        User user,
                        Accommodation accommodation) {

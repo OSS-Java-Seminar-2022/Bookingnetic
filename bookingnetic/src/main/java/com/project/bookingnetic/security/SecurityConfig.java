@@ -70,6 +70,7 @@ public class SecurityConfig {
                 .build();
     }
 
+<<<<<<< Updated upstream
 *///  @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //        return http
@@ -87,6 +88,28 @@ public class SecurityConfig {
 //                .and()
 //                    .build();
 //    }
+
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf()
+                .disable()
+                .authorizeHttpRequests()
+                .requestMatchers("/", "/user",
+                        "/user/register", "/address", "/image", "/image/new", "/image/upload").permitAll()
+                .requestMatchers("/user/account").authenticated().anyRequest().permitAll()
+                .and()
+                .formLogin()
+                .loginProcessingUrl("/")
+                .loginPage("/login").permitAll()
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+                .and()
+                .build();
+    }
 
 
 
