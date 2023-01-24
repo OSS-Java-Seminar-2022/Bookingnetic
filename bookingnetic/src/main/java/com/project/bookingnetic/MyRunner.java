@@ -34,39 +34,37 @@ public class MyRunner implements CommandLineRunner {
 
         AppConfig appConfig = new AppConfig();
         appConfig.deserializeAddress("jsonFiles/addresses.json");
-//
-//        appConfig.getAddress().forEach(address -> {
-//            addressService.save(address);
-//        });
+        appConfig.getAddress().forEach(address -> {
+            addressService.save(address);
+        });
 
         appConfig.deserializeAccomm("jsonFiles/accommodations.json");
 
         appConfig.getAccommodation().forEach(acc -> {
-            System.out.println(acc);
-//            long addrId = acc.getAddress().getId();
-//            Address address = addressService.findById(addrId);
-//            acc.setAddress(address);
-//            accommodationService.save(acc);
+            long addrId = acc.getAddress().getId();
+            Address address = addressService.findById(addrId);
+            acc.setAddress(address);
+            accommodationService.save(acc);
         });
 
-//        appConfig.deserializeUser("jsonFiles/users.json");
-//
-//        appConfig.getUsers().forEach(user -> {
-//            long accId = user.getAccommodation().getId();
-//            user.setAccommodation(accommodationService.findById(accId));
-//            System.out.println(user);
-//            userService.hashUser(user);
-//        });
-//
-//         appConfig.deserializeImage("jsonFiles/images.json");
-//
-//        appConfig.getImages().forEach(img -> {
-//            long accommodationId = img.getAccommodation().getId();
-//            Accommodation accommodation = accommodationService.findById(accommodationId);
-//            img.setAccommodation(accommodation);
-//            System.out.println(img);
-//            imageService.save(img);
-//        });
+        appConfig.deserializeUser("jsonFiles/users.json");
+
+        appConfig.getUsers().forEach(user -> {
+            long accId = user.getAccommodation().getId();
+            user.setAccommodation(accommodationService.findById(accId));
+            System.out.println(user);
+            userService.hashUser(user);
+        });
+
+         appConfig.deserializeImage("jsonFiles/images.json");
+
+        appConfig.getImages().forEach(img -> {
+            long accommodationId = img.getAccommodation().getId();
+            Accommodation accommodation = accommodationService.findById(accommodationId);
+            img.setAccommodation(accommodation);
+            System.out.println(img);
+            imageService.save(img);
+        });
 
     }
 }
