@@ -36,7 +36,7 @@ public class Accommodation {
     @Column(name = "creation_date" )
     private Date creation_date;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "address_fk", referencedColumnName = "id")
     private Address address;
 

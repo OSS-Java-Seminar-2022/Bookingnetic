@@ -52,7 +52,6 @@ public class MyRunner implements CommandLineRunner {
         appConfig.getUsers().forEach(user -> {
             long accId = user.getAccommodation().getId();
             user.setAccommodation(accommodationService.findById(accId));
-            System.out.println(user);
             userService.hashUser(user);
         });
 
@@ -62,7 +61,6 @@ public class MyRunner implements CommandLineRunner {
             long accommodationId = img.getAccommodation().getId();
             Accommodation accommodation = accommodationService.findById(accommodationId);
             img.setAccommodation(accommodation);
-            System.out.println(img);
             imageService.save(img);
         });
 
