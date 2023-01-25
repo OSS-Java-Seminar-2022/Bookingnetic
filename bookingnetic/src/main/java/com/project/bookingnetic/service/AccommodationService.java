@@ -1,6 +1,7 @@
 package com.project.bookingnetic.service;
 
 import com.project.bookingnetic.models.Accommodation;
+import com.project.bookingnetic.models.Address;
 import com.project.bookingnetic.repository.AccommodationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,10 @@ public class AccommodationService {
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public Accommodation findById(Long id){
+        return repository.findById(id).get();
     }
 
 }

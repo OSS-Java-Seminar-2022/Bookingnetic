@@ -1,24 +1,19 @@
 package com.project.bookingnetic.service;
 
-import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.RoleType;
 import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.repository.AccommodationRepository;
 import com.project.bookingnetic.repository.UserRepository;
 import com.project.bookingnetic.security.UserSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -42,7 +37,6 @@ public class UserService implements UserDetailsService {
     }
 
 
-
     public List<User> get(){
         return new ArrayList<>(repo.findAll());
     }
@@ -60,13 +54,16 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public boolean userExistsByEmail(String email){
-        Optional<User> user = Optional.ofNullable(repo.findByEmail(email));
-       return user.isPresent() ? true : false;
-
-
-
+    public User findById(Long id){
+       return repo.findById(id).get();
     }
+
+
+    public boolean userExistsByEmail(String email) {
+        Optional<User> user = Optional.ofNullable(repo.findByEmail(email));
+        return user.isPresent() ? true : false;
+    }
+
 
     public Optional<User> findByEmail(String email){
         Optional<User> user = Optional.ofNullable(repo.findByEmail(email));
@@ -110,6 +107,22 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    public User update(User user, long id){
+        if(repo.findById(id).isPresent()){
+            var update = repo.findById(id).get();
+            update.setEmail(user.getEmail());
+            update.setFirstName(user.getFirstName());
+            update.setLastName(user.getLastName());
+            update.setRegistrationDate(user.getRegistrationDate());
+            update.setPassword(user.getPassword());
+            update.setPhone(user.getPhone());
+            update.setReservations(user.getReservations());
+            update.setAccommodation(user.getAccommodation());
+            repo.save(update);
+        }
+        return null;
+    }
+
     /*
     public void hashPassword(User user){
         var encodedPassword = encoder.encode(user.getPassword());
@@ -120,7 +133,11 @@ public class UserService implements UserDetailsService {
         return encoder.matches(password, user.getPassword());
     }
 */
-
+    public User hashUser(User user){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return repo.save(user);
+    }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = this.repo.findByEmail(email);

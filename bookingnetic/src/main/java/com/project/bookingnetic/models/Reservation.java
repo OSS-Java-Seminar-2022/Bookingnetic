@@ -38,6 +38,7 @@ public class Reservation {
     @Column(name = "price")
     private BigDecimal price;
 
+<<<<<<< HEAD
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_fk", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -48,6 +49,14 @@ public class Reservation {
     @JoinColumn(name = "accommodation_fk", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
+=======
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_fk", nullable = false)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="accommodation_fk", nullable = false)
+>>>>>>> cee4d5658506c9be4e923a7fb489ee2f90fa3e33
     private Accommodation accommodation;
 
     public Reservation(LocalDate checkIn,
