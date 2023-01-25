@@ -33,33 +33,38 @@ public class MyRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         AppConfig appConfig = new AppConfig();
-        appConfig.deserializeAddress("jsonFiles/addresses.json");
+
+
+        appConfig.deserializeAddress("\\jsonFiles\\addresses.json");
         appConfig.getAddress().forEach(address -> {
             addressService.save(address);
         });
 
-        appConfig.deserializeAccomm("jsonFiles/accommodations.json");
 
+        appConfig.deserializeUser("\\jsonFiles\\users.json");
+        appConfig.getUsers().forEach(user -> {
+//            long accId = user.getAccommodation().getId();
+//            user.setAccommodation(accommodationService.findById(accId));
+            userService.hashAndSaveUser(user);
+        });
+
+
+        appConfig.deserializeAccomm("\\jsonFiles\\accommodations.json");
         appConfig.getAccommodation().forEach(acc -> {
             long addrId = acc.getAddress().getId();
             Address address = addressService.findById(addrId);
             acc.setAddress(address);
+            long usrID = acc.getUser().getId();
+            User user = userService.findById(usrID);
+            acc.setUser(user);
             accommodationService.save(acc);
         });
 
-        appConfig.deserializeUser("jsonFiles/users.json");
 
-        appConfig.getUsers().forEach(user -> {
-            long accId = user.getAccommodation().getId();
-            user.setAccommodation(accommodationService.findById(accId));
-            userService.hashUser(user);
-        });
-
-         appConfig.deserializeImage("jsonFiles/images.json");
-
+        appConfig.deserializeImage("\\jsonFiles\\images.json");
         appConfig.getImages().forEach(img -> {
-            long accommodationId = img.getAccommodation().getId();
-            Accommodation accommodation = accommodationService.findById(accommodationId);
+            long accId = img.getAccommodation().getId();
+            Accommodation accommodation = accommodationService.findById(accId);
             img.setAccommodation(accommodation);
             imageService.save(img);
         });

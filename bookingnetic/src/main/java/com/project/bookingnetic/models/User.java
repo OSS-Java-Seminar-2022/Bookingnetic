@@ -45,17 +45,6 @@ public class User implements Serializable{
     @Column(name = "enum_role")
     private RoleType enumRole;
 
-<<<<<<< HEAD
-=======
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "accommodation_id")
-    private Accommodation accommodation;
-
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Reservation> reservations = new HashSet<>();
->>>>>>> cee4d5658506c9be4e923a7fb489ee2f90fa3e33
 
     public User(String firstName,
                 String lastName,

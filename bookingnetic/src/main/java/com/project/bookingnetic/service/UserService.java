@@ -116,8 +116,8 @@ public class UserService implements UserDetailsService {
             update.setRegistrationDate(user.getRegistrationDate());
             update.setPassword(user.getPassword());
             update.setPhone(user.getPhone());
-            update.setReservations(user.getReservations());
-            update.setAccommodation(user.getAccommodation());
+            //update.setReservations(user.getReservations());
+            //update.setAccommodation(user.getAccommodation());
             repo.save(update);
         }
         return null;
@@ -133,7 +133,7 @@ public class UserService implements UserDetailsService {
         return encoder.matches(password, user.getPassword());
     }
 */
-    public User hashUser(User user){
+    public User hashAndSaveUser(User user){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repo.save(user);

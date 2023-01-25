@@ -37,28 +37,20 @@ public class Accommodation {
     @Column(name = "price_for_night")
     private BigDecimal price_for_night;
 
-    @Column(name = "creation_date" )
+    @Column(name = "creation_date")
     private LocalDate creation_date;
 
     @OneToOne()
     @JoinColumn(name = "address_fk", referencedColumnName = "id")
     private Address address;
 
-<<<<<<< HEAD
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_fk", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
 
-
-=======
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "accommodation")
-    private Set<Image> images = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "accommodation")
-    private Set<Reservation> reservations = new HashSet<>();
->>>>>>> cee4d5658506c9be4e923a7fb489ee2f90fa3e33
 
     public Accommodation(String title,
                          String description,
@@ -69,17 +61,9 @@ public class Accommodation {
         this.description = description;
         this.price_for_night = price_for_night;
         this.address = address;
-    }
-/*
-
-    public void addImage(Image image){
-        this.images.add(image);
+        this.user = user;
     }
 
-    public void addReservation(Reservation reservation){
-        this.reservations.add(reservation);
-    }
-*/
 
 }
 

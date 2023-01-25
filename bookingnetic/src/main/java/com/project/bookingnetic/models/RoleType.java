@@ -14,20 +14,12 @@ import java.util.Arrays;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum RoleType implements GrantedAuthority {
-<<<<<<< HEAD
 
-    /*
-    ADMIN(Code.ADMIN),
-    USER(Code.USER);*/
 
-    ROLE_ADMIN(Code.ROLE_ADMIN),
-    ROLE_USER(Code.ROLE_USER);
-=======
     @JsonProperty("ROLE_ADMIN")
-    ADMIN(Code.ADMIN),
+    ROLE_ADMIN(Code.ROLE_ADMIN),
     @JsonProperty("ROLE_USER")
-    USER(Code.USER);
->>>>>>> cee4d5658506c9be4e923a7fb489ee2f90fa3e33
+    ROLE_USER(Code.ROLE_USER);
 
     private final String authority;
 
@@ -43,15 +35,12 @@ public enum RoleType implements GrantedAuthority {
         return authority;
     }
     public class Code {
-<<<<<<< HEAD
+        // @JsonProperty("ROLE_ADMIN")
         public static final String ROLE_ADMIN = "ROLE_ADMIN";
-        public static final String ROLE_USER = "ROLE_USER";
-=======
-       // @JsonProperty("ROLE_ADMIN")
-        public static final String ADMIN = "ROLE_ADMIN";
+
         //@JsonProperty("ROLE_USER")
-        public static final String USER = "ROLE_USER";
->>>>>>> cee4d5658506c9be4e923a7fb489ee2f90fa3e33
+        public static final String ROLE_USER = "ROLE_USER";
+
     }
 
 //    @JsonCreator
