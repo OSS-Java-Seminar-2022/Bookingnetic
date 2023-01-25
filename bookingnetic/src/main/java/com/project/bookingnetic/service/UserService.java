@@ -81,7 +81,9 @@ public class UserService implements UserDetailsService {
 
         opt.ifPresent(user -> {
             mav.addObject("user", user);
-            mav.addObject("accommodation",user.getAccommodation());
+          //  mav.addObject("accommodation",user.getAccommodation());   //ovo sam samo zakomentirala da se ne crveni
+                                                                        //  jer su prominjene relacije pa nema vise
+                                                                        // accomodationa u useru, nego obrnuto...
 
         });
         mav.addObject("username",id );
@@ -95,7 +97,7 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         //hashPassword(user);
         //user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnumRole(RoleType.USER);
+        user.setEnumRole(RoleType.ROLE_USER);
         user.setRegistrationDate(LocalDate.now());
 
 

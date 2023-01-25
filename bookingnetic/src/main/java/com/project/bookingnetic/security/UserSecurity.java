@@ -24,7 +24,7 @@ public class UserSecurity implements UserDetails {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         this.user.getRoleList().forEach(r->{
-            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
+            GrantedAuthority authority = new SimpleGrantedAuthority(r);
             authorities.add(authority);
         });
         return authorities;

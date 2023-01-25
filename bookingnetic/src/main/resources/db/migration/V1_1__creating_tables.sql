@@ -9,23 +9,8 @@ CREATE TABLE IF NOT EXISTS address
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS accommodation
-(
-    id serial not null,
-    title varchar(255) not null unique,
-    description varchar(255),
-    price_for_night numeric ,
-    creation_date date DEFAULT CURRENT_DATE,
-    address_fk serial,
 
-    PRIMARY KEY (id),
-    CONSTRAINT fk_address
-        FOREIGN KEY(address_fk)
-            REFERENCES address(id)
-            ON DELETE CASCADE
-
-);
-CREATE TYPE roles AS ENUM ('ADMIN', 'USER');
+CREATE TYPE roles AS ENUM ('ROLE_ADMIN', 'ROLE_USER');
 CREATE CAST (varchar AS roles) WITH INOUT AS IMPLICIT;
 
 
@@ -36,17 +21,33 @@ CREATE TABLE IF NOT EXISTS users
     last_name varchar(255) not null,
     email varchar(255) not null unique,
     password varchar(255) not null,
-    phone varchar(255) unique,
-    accommodation_id int,
+    phone varchar(255) ,
     registration_date date DEFAULT CURRENT_DATE,
-    enum_role roles not null,
-    PRIMARY KEY (id),
+    enum_role roles,
+    PRIMARY KEY (id)
+);
 
+
+CREATE TABLE IF NOT EXISTS accommodation
+(
+    id serial not null,
+    title varchar(255) not null unique,
+    description varchar(255),
+    price_for_night numeric not null,
+    creation_date date DEFAULT CURRENT_DATE,
+    address_fk serial,
+    user_fk serial,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_address
+        FOREIGN KEY(address_fk)
+            REFERENCES address(id)
+            ON DELETE CASCADE,
     CONSTRAINT fk_user
-        FOREIGN KEY(accommodation_id)
-            REFERENCES accommodation(id)
+        FOREIGN KEY (user_fk)
+            REFERENCES users(id)
             ON DELETE CASCADE
-    );
+);
 
 
 CREATE TABLE IF NOT EXISTS image
@@ -75,7 +76,7 @@ CREATE TABLE IF NOT EXISTS reservation
     accommodation_fk serial,
 
     PRIMARY KEY (id),
-    CONSTRAINT fk_users
+    CONSTRAINT fk_user
         FOREIGN KEY (user_fk)
             REFERENCES users(id)
             ON DELETE CASCADE,

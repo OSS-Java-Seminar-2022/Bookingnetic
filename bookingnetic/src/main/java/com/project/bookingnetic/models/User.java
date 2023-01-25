@@ -43,13 +43,6 @@ public class User implements Serializable {
     @Column(name = "enum_role")
     private RoleType enumRole;
 
-    @OneToOne()
-    @JoinColumn(name = "accommodation_id", referencedColumnName = "id")
-    private Accommodation accommodation;
-
-
-    @OneToMany(mappedBy = "user")
-    private Set<Reservation> reservations = new HashSet<>();
 
 
     public User(String firstName,
@@ -66,14 +59,14 @@ public class User implements Serializable {
         this.enumRole = enumRole;
     }
 
-    public void addReservation(Reservation reservation){
-        this.reservations.add(reservation);
-    }
 
+    /* setting username for authentication to use email */
     public String getUsername() {
         return this.email;
     }
 
+
+    /*  finding all roles that user has */
     public List<String> getRoleList(){
         if(this.enumRole.toString().length() > 0)
             return Arrays.asList(this.enumRole.toString().split(","));

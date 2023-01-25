@@ -1,14 +1,18 @@
 
 package com.project.bookingnetic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.thymeleaf.expression.Maps;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +38,7 @@ public class Accommodation {
     private BigDecimal price_for_night;
 
     @Column(name = "creation_date" )
-    private Date creation_date;
+    private LocalDate creation_date;
 
     @MapsId
     @JoinColumn(name = "id")
@@ -45,14 +49,13 @@ public class Accommodation {
     @JoinColumn(name = "address_fk", referencedColumnName = "id", insertable=false, updatable=false)
     private Address address;
 
-    @OneToOne(mappedBy = "accommodation")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_fk", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private User user;
 
-    @OneToMany(mappedBy = "accommodation")
-    private Set<Image> images = new HashSet<>();
 
-    @OneToMany(mappedBy = "accommodation")
-    private Set<Reservation> reservations = new HashSet<>();
 
     public Accommodation(String title,
                          String description,
@@ -65,6 +68,7 @@ public class Accommodation {
         this.address = address;
         this.user = user;
     }
+/*
 
     public void addImage(Image image){
         this.images.add(image);
@@ -73,6 +77,7 @@ public class Accommodation {
     public void addReservation(Reservation reservation){
         this.reservations.add(reservation);
     }
+*/
 
 }
 

@@ -1,10 +1,13 @@
 package com.project.bookingnetic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -24,8 +27,10 @@ public class Image {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "accommodation_fk", referencedColumnName = "id", insertable=false, updatable=false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "accommodation_fk", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Accommodation accommodation;
 
     public Image(byte[] img, String description, Accommodation accommodation) {

@@ -1,10 +1,13 @@
 package com.project.bookingnetic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -24,27 +27,31 @@ public class Reservation {
     private long id;
 
     @Column(name = "reservation_date")
-    private Date reservation_date;
+    private LocalDate reservation_date;
 
     @Column(name = "check_in")
-    private Date checkIn;
+    private LocalDate checkIn;
 
     @Column(name="check_out")
-    private Date checkOut;
+    private LocalDate checkOut;
 
     @Column(name = "price")
     private BigDecimal price;
 
-    @ManyToOne
-    @JoinColumn(name = "user_fk",nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_fk", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name="accommodation_fk", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "accommodation_fk", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Accommodation accommodation;
 
-    public Reservation(Date checkIn,
-                       Date checkOut,
+    public Reservation(LocalDate checkIn,
+                       LocalDate checkOut,
                        BigDecimal price,
                        User user,
                        Accommodation accommodation) {

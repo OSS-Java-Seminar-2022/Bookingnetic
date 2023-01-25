@@ -68,25 +68,25 @@ public class SecurityConfig {
                 .passwordEncoder(passwordEncoder())
                 .and()
                 .build();
-    }
+    }*/
 
-*///  @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        return http
-//                .authorizeHttpRequests()
-//                    .requestMatchers("/user/register").permitAll()
-//                    .requestMatchers("./user/**").authenticated()
-//                .and()
-//                    .formLogin()
-//                    .loginProcessingUrl("/")
-//                    .loginPage("/login").permitAll()
-//                    .usernameParameter("email")
-//                    .passwordParameter("password")
-//                .and()
-//                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
-//                .and()
-//                    .build();
-//    }
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .authorizeHttpRequests()
+                    .requestMatchers("/user/register").permitAll()
+                    .requestMatchers("./user/**").authenticated()
+                .and()
+                    .formLogin()
+                    .loginProcessingUrl("/")
+                    .loginPage("/login").permitAll()
+                    .usernameParameter("email")
+                    .passwordParameter("password")
+                .and()
+                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+                .and()
+                    .build();
+    }
 
 
 
