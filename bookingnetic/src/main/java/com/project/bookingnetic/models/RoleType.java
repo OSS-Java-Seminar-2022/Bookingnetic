@@ -35,17 +35,10 @@ public enum RoleType implements GrantedAuthority {
         return authority;
     }
     public class Code {
-        // @JsonProperty("ROLE_ADMIN")
         public static final String ROLE_ADMIN = "ROLE_ADMIN";
 
-        //@JsonProperty("ROLE_USER")
         public static final String ROLE_USER = "ROLE_USER";
 
     }
-
-//    @JsonCreator
-//    static RoleType findValue(@JsonProperty("ROLE_ADMIN") String admin, @JsonProperty("ROLE_USER") String user) {
-//        return Arrays.stream(RoleType.values()).filter(pt -> pt.ADMIN.equals(admin) && pt.USER.equals(user)).findFirst().get();
-//    }
 
 }

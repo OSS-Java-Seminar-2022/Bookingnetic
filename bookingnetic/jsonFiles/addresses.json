@@ -2,13 +2,37 @@
   {
     "country": "Croatia",
     "city": "Split",
-    "street": "Ulica Slobode 43",
+    "street": "Šoltanska 26",
     "postalCode": "21000"
   },
   {
     "country": "Croatia",
+    "city": "Zagreb",
+    "street": "Radićevo šetalište",
+    "postalCode": "10000"
+  },
+  {
+    "country": "Croatia",
+    "city": "Zagreb",
+    "street": "Zorkovačka 1",
+    "postalCode": "10000"
+  },
+  {
+    "country": "Croatia",
+    "city": "Dubrovnik",
+    "street": "Andrije Hebranga 42",
+    "postalCode": "20000"
+  },
+  {
+    "country": "Croatia",
+    "city": "Dubrovnik",
+    "street": "dr. Ante Starčevića 24",
+    "postalCode": "20000"
+  },
+  {
+    "country": "Croatia",
     "city": "Split",
-    "street": "Domovinskog rata 33",
-    "postalCode": "21000"
+    "street": "Istarska 13",
+    "postalCode": "10000"
   }
 ]

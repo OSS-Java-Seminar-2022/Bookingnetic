@@ -39,7 +39,6 @@ public class Image {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "accommodation_fk", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Accommodation accommodation;
 
 

@@ -1,0 +1,50 @@
+[
+  {
+    "reservation_date": "2023-01-08",
+    "checkIn": "2023-07-19",
+    "checkOut": "2023-07-25",
+    "price": 20,
+    "user": {
+      "id": 4
+    },
+    "accommodation": {
+      "id": 1
+    }
+  },
+  {
+    "reservation_date": "2023-01-20",
+    "checkIn": "2023-03-17",
+    "checkOut": "2023-03-27",
+    "price": 18,
+    "user": {
+      "id": 5
+    },
+    "accommodation": {
+      "id": 2
+    }
+  },
+  {
+    "reservation_date": "2023-01-01",
+    "checkIn": "2023-04-11",
+    "checkOut": "2023-04-19",
+    "price": 20,
+    "user": {
+      "id": 6
+    },
+    "accommodation": {
+      "id": 4
+    }
+  },
+  {
+    "reservation_date": "2023-01-15",
+    "checkIn": "2023-05-24",
+    "checkOut": "2023-05-29",
+    "price": 18,
+    "user": {
+      "id": 6
+    },
+    "accommodation": {
+      "id": 3
+    }
+  }
+]

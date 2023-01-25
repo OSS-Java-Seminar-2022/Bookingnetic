@@ -1,16 +1,18 @@
 package com.project.bookingnetic.models;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,10 +25,13 @@ public class AppConfig {
     private List<Accommodation> accommodation = new ArrayList<>();
     private List<Image> images = new ArrayList<>();
 
+    private List<Reservation> reservations = new ArrayList<>();
+
     private ObjectMapper mapper;
 
     public AppConfig(){
         this.mapper = new ObjectMapper();
+        this.mapper.registerModule(new JavaTimeModule());
     }
     public AppConfig deserializeUser(String file){
 
@@ -61,7 +66,7 @@ public class AppConfig {
     }
 
     public AppConfig deserializeAccomm(String file){
-
+        //mapper.registerModule(new JavaTimeModule());
         try {
             InputStream accommFile = new FileInputStream(file);
             this.accommodation = mapper.readValue(accommFile, new TypeReference<List<Accommodation>>() {
@@ -82,9 +87,22 @@ public class AppConfig {
         }catch(IOException e){
             e.printStackTrace();
         }
+
         return this;
     }
 
+    public AppConfig deserializeReservation(String file){
+
+        try {
+            InputStream reservF = new FileInputStream(file);
+            this.reservations = mapper.readValue(reservF, new TypeReference<List<Reservation>>() {
+            });
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        return this;
+    }
 
 }
 

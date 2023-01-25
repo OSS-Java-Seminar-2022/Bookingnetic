@@ -1,31 +1,51 @@
 [
   {
-    "title":"Mountain cabin",
-    "description":"Enjoy in beautiful mountains in wonderful Alps",
-    "price_for_night":50,
+    "title": "Mountain cabin",
+    "description": "Featuring a balcony and pool views, the apartment includes 1 bedroom, a living room, cable flat-screen TV, an equipped kitchen.",
+    "price_for_night": 50,
     "creation_date": "2020-01-09",
-    "address":
-    {
-      "id":1
+    "address": {
+      "id": 1
     },
-    "user":
-    {
-      "id":1
+    "user": {
+      "id": 1
+    }
+  },
+  {
+    "title": "Luxury Condo",
+    "description": "Located on the beachfront, this property has a restaurant, a bar, a tennis court and free WiFi.",
+    "price_for_night": 100,
+    "creation_date": "2020-01-10",
+    "address": {
+      "id": 2
+    },
+    "user": {
+      "id": 2
+    }
+  },
+  {
+    "title": "Grand Villa 227",
+    "description": "The air-conditioned apartment consists of 1 bedroom, a living room, a fully equipped kitchen with a fridge, and 1 bathroom.",
+    "price_for_night": 50,
+    "creation_date": "2020-01-09",
+    "address": {
+      "id": 3
+    },
+    "user": {
+      "id": 3
     }
   },
 
   {
-    "title":"top cabin",
-    "description":"Uzivajte u novom putovanju",
-    "price_for_night":100,
+    "title": "Mr. Zhoovi",
+    "description": "Offering a terrace or balcony with views of the city and sea, the units feature air conditioning, a seating area, cable flat-screen TV and kitchenette.",
+    "price_for_night": 100,
     "creation_date": "2020-01-10",
-    "address":
-    {
-      "id":2
+    "address": {
+      "id": 4
     },
-    "user":
-    {
-      "id":2
+    "user": {
+      "id": 4
     }
   }
 ]

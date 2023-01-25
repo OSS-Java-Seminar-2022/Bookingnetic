@@ -1,23 +1,56 @@
 [
   {
-    "id": 1,
     "firstName": "Tea",
     "lastName": "Basic",
     "email": "tbasic@gmail.com",
     "password": "medable123",
-    "phone": "+1234",
-    "registrationDate": "2020-01-08",
+    "phone": "+385917823456",
+    "registrationDate": "2022-01-08",
     "enumRole": "ROLE_ADMIN"
   },
-
   {
-    "id": 2,
+    "firstName": "Josip",
+    "lastName": "Bogunovic",
+    "email": "jboguno@gmail.com",
+    "password": "medable123",
+    "phone": "+385919892331",
+    "registrationDate": "2022-03-07",
+    "enumRole": "ROLE_ADMIN"
+  },
+  {
+    "firstName": "Vera Marija",
+    "lastName": "Guja",
+    "email": "vmguja@gmail.com",
+    "password": "medable123",
+    "phone": "+385987912332",
+    "registrationDate": "2022-01-01",
+    "enumRole": "ROLE_ADMIN"
+  },
+  {
     "firstName": "Ivana",
     "lastName": "Mihanovic",
     "email": "imihan@gmail.com",
     "password": "medable123",
-    "phone": "+12345",
-    "registrationDate": "2022-03-07",
+    "phone": "+3859922345",
+    "registrationDate": "2022-09-22",
+    "enumRole": "ROLE_USER"
+  },
+  {
+    "firstName": "Petar",
+    "lastName": "Vidovic",
+    "email": "pvidovic@gmail.com",
+    "password": "medable123",
+    "phone": "+12345678",
+    "registrationDate": "2022-11-21",
+    "enumRole": "ROLE_USER"
+  },
+  {
+    "firstName": "Anamarija",
+    "lastName": "Papic",
+    "email": "apapic@gmail.com",
+    "password": "medable123",
+    "phone": "+385956678543",
+    "registrationDate": "2022-11-21",
     "enumRole": "ROLE_USER"
   }
 ]

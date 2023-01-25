@@ -53,7 +53,7 @@ public class UserController {
     @PostMapping("/register")
     public String register(@ModelAttribute("user") User user){
 
-        return service.register(user) ? "redirect: /login": "notSuccess" ;
+        return service.register(user) ? "redirect:/login": "notSuccess" ;
 
     }
     @GetMapping("/{id}/accommodation")

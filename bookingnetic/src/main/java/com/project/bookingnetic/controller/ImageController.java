@@ -3,6 +3,7 @@ package com.project.bookingnetic.controller;
 import com.project.bookingnetic.models.Image;
 import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.service.ImageService;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.compress.utils.IOUtils;
 import org.bouncycastle.math.raw.Mod;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/image")
@@ -72,4 +74,5 @@ public class ImageController {
         model.addAttribute("image", img);
         return "show_image";
     }
+
 }

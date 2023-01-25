@@ -35,40 +35,50 @@ public class MyRunner implements CommandLineRunner {
         AppConfig appConfig = new AppConfig();
 
 
-        appConfig.deserializeAddress("\\jsonFiles\\addresses.json");
+        appConfig.deserializeAddress("jsonFiles/addresses.json");
         appConfig.getAddress().forEach(address -> {
             addressService.save(address);
         });
 
-
-        appConfig.deserializeUser("\\jsonFiles\\users.json");
+        appConfig.deserializeUser("jsonFiles/users.json");
         appConfig.getUsers().forEach(user -> {
-//            long accId = user.getAccommodation().getId();
-//            user.setAccommodation(accommodationService.findById(accId));
             userService.hashAndSaveUser(user);
         });
 
 
-        appConfig.deserializeAccomm("\\jsonFiles\\accommodations.json");
+        appConfig.deserializeAccomm("jsonFiles/accommodations.json");
         appConfig.getAccommodation().forEach(acc -> {
-            long addrId = acc.getAddress().getId();
-            Address address = addressService.findById(addrId);
-            acc.setAddress(address);
-            long usrID = acc.getUser().getId();
-            User user = userService.findById(usrID);
-            acc.setUser(user);
+            acc.setAddress(getAddress(acc.getAddress().getId()));
+            acc.setUser(getUser(acc.getUser().getId()));
             accommodationService.save(acc);
         });
 
 
-        appConfig.deserializeImage("\\jsonFiles\\images.json");
+        appConfig.deserializeImage("jsonFiles//images.json");
         appConfig.getImages().forEach(img -> {
-            long accId = img.getAccommodation().getId();
-            Accommodation accommodation = accommodationService.findById(accId);
-            img.setAccommodation(accommodation);
+            img.setAccommodation(getAccommodation(img.getAccommodation().getId()));
             imageService.save(img);
         });
 
+
+        appConfig.deserializeReservation("jsonFiles/reservations.json");
+        System.out.println(appConfig.getReservations());
+        appConfig.getReservations().forEach(res -> {
+            res.setAccommodation(getAccommodation(res.getAccommodation().getId()));
+            res.setUser(getUser(res.getUser().getId()));
+            reservationService.save(res);
+        });
+    }
+
+    public Accommodation getAccommodation(long accID){
+        return accommodationService.findById(accID);
+    }
+    public User getUser(long usrID){
+        return userService.findById(usrID);
+    }
+
+    public Address getAddress(long addrID){
+        return addressService.findById(addrID);
     }
 }
 

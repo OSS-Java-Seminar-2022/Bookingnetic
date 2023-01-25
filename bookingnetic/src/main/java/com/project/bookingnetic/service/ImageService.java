@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static java.lang.Long.valueOf;
 
@@ -39,6 +40,8 @@ public class ImageService {
     public Image save(Image img){
         return repository.save(img);
     }
+
+    public Optional<Image> getImageById(Long id){return repository.findById(id);}
 
     public void upload(MultipartFile file) throws IOException {
         Image fileEntity = new Image();
