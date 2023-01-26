@@ -16,9 +16,9 @@
         <div>
             <p th:text="${session.name}"></p>
             <ul class="list-group">
-                <li th:text = "'Full Name:' + ${user.firstName} +' '+ ${user.lastName}"class="list-group-item"></li>
-                <li class="list-group-item" th:text="'Email: ' + ${user.email}"></li>
-                <li class="list-group-item" th:text="'Phone: ' + ${user.phone}"></li>
+                <li th:text = "'Full Name:' + ${session.firstName} +' '+ ${session.lastName}"class="list-group-item"></li>
+                <li class="list-group-item" th:text="'Email: ' + ${session.email}"></li>
+                <li class="list-group-item" th:text="'Phone: ' + ${session.phone}"></li>
                 <li class="list-group-item">
                     <div th:if="${user.reservations.size() == 0}">
                        <p>You have no reservations</p>
@@ -29,7 +29,7 @@
                 </li>
             </ul>
         </div>
-    <p th:if="${user.accommodation == null}"> postoji</p>
+    <a th:if="${user.accommodation == null}" th:href="@{/user/{id}/accommodation(id=${session.user_id})}"> Add your accommodation</a>
 </div>
 
 <div class="w-100" th:replace="~{./includes/footer.html :: footer}"></div>

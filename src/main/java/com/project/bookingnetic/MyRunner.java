@@ -54,7 +54,7 @@ public class MyRunner implements CommandLineRunner {
         });
 
 
-        appConfig.deserializeImage("jsonFiles//images.json");
+        appConfig.deserializeImage("jsonFiles/images.json");
         appConfig.getImages().forEach(img -> {
             img.setAccommodation(getAccommodation(img.getAccommodation().getId()));
             imageService.save(img);

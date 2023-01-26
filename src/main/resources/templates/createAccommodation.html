@@ -10,36 +10,35 @@
 </head>
   <body>
     <div th:replace="~{./includes/header.html :: header}"></div>
-      <form class="d-flex flex-cloumn w-50" th:action="@{/user/{id}/accommodation(id=${session.user_id})}"  method="post" >
+      <form class="d-flex flex-cloumn w-50" th:action="@{/user/{id}/accommodation(id=${session.user_id})}" th:object="${dtoAccommodation}" th:method="post" >
         <fieldset>
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" name="title"
-                   th:value="*{title}">
+            <input type="text" class="form-control" id="title" name="title">
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <input type="text" class="form-control" th:value="*{description}" id="description" name="description">
+            <input type="text" class="form-control"  id="description" name="description">
           </div>
           <div class="form-group">
-            <label for="price_for_night">Price per night:</label>
-            <input type="text" class="form-control" th:value="*{price_for_night}" id="price_for_night" name="price_for_night">
+            <label for="price">Price per night:</label>
+            <input type="text" class="form-control" id="price" name="price">
           </div>
           <div class="form-group">
             <label for="country">Country:</label>
-            <input type="text" class="form-control" th:value="*{country}" id="country" name="country">
+            <input type="text" class="form-control" id="country" name="country">
           </div>
           <div class="form-group">
             <label for="city">City:</label>
-            <input type="text" class="form-control" th:value="*{city}" id="city" name="city">
+            <input type="text" class="form-control" id="city" name="city">
           </div>
           <div class="form-group">
             <label for="city">Street:</label>
-            <input type="text" class="form-control" th:value="*{street}" id="street" name="street">
+            <input type="text" class="form-control" id="street" name="street">
           </div>
           <div class="form-group">
             <label for="postalCode">Postal Code:</label>
-            <input type="text" class="form-control" id="postalCode" th:value="*{postalCode}" name="postalCode">
+            <input type="text" class="form-control" id="postalCode" name="postalCode">
           </div>
           <div class="form-actions" style="margin-top: 12px;">
             <button type="submit" class="btn btn-success">Log In</button>

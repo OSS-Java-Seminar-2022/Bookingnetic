@@ -40,7 +40,16 @@ public class HomeController {
 
         user.ifPresent(data -> {
             final long user_id = data.getId();
+            final String firstName = data.getFirstName();
+            final String lastName = data.getLastName();
+            final String mail = data.getEmail();
+            final String phoneNumber = data.getPhone();
+
             session.setAttribute("user_id",user_id);
+            session.setAttribute("firstName",firstName);
+            session.setAttribute("lastName",lastName);
+            session.setAttribute("email",mail);
+            session.setAttribute("phone",phoneNumber);
         });
         return "home";
     }
