@@ -17,14 +17,25 @@ public class AccommodationController {
     @Autowired
     private AccommodationService service;
 
-    public AccommodationController(AccommodationService service) {
+
+    private ReservationService reservationService;
+
+    public AccommodationController(AccommodationService service,ReservationService reservationService) {
         this.service = service;
+        this.reservationService = reservationService;
     }
 
     @GetMapping()
-    public ResponseEntity<List<Accommodation>> get(@ModelAttribute(name = "search") Search search){
-        Search searchN = search;
+    public ResponseEntity<List<Accommodation>> get(){
         return ResponseEntity.ok(service.get());
+    }
+
+
+    @GetMapping("/findAvailableBySearch")
+    public ResponseEntity<List<Accommodation>> findAvailableBySearch(@ModelAttribute(name = "search") Search search){
+        Search userSearch = search;
+        List<Accommodation> accommodationList = service.findByCity(userSearch.getCity());
+        return ResponseEntity.ok(reservationService.findAvailable(userSearch, accommodationList));
     }
 
     @PostMapping
@@ -36,4 +47,6 @@ public class AccommodationController {
     public ResponseEntity<HttpStatus> deleteById(@PathVariable("id") Long id  ){
         return service.deleteById(id);
     }
+
+
 }

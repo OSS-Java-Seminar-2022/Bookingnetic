@@ -38,4 +38,11 @@ public class AccommodationService {
         return repository.findById(id).get();
     }
 
+    public List<Accommodation> findByCity(String city){
+        System.out.println("ulazim u bazu");
+        return repository.findAllByAddress_City(city);
+    }
+
+
+
 }

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class ReservationService {
     @Autowired
@@ -26,9 +27,6 @@ public class ReservationService {
         return repository.save(reservation);
     }
 
-    public ResponseEntity<String> findAvailable(@RequestParam String cityName, @RequestParam LocalDate dateFrom, @RequestParam LocalDate dateTo){
-        return new ResponseEntity<>(cityName,HttpStatus.OK);
-    }
 
     public ResponseEntity<HttpStatus> deleteById(Long id) {
         try {
@@ -38,4 +36,48 @@ public class ReservationService {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+    public List<Reservation> findReservationsByAccommodationId(Long id){
+        return repository.findAllByAccommodation_Id(id);
+    }
+
+    public List<Accommodation> findAvailable(Search search, List<Accommodation> accommodationList){
+        LocalDate userCheckIn = search.getDateFrom();
+        LocalDate userCheckOut = search.getDateTo();
+        Boolean accommodationAvailable = true;
+        List<Accommodation> finalList = new ArrayList<>();
+
+        for(int i = 0; i < accommodationList.size();++i) {
+            var a = accommodationList.get(i);
+            List<Reservation> reservations = findReservationsByAccommodationId(a.getId());
+
+            for(int j = 0; j < reservations.size();++j) {
+                var r = reservations.get(j);
+                LocalDate checkIn = r.getCheckIn();
+                LocalDate checkOut = r.getCheckOut();
+
+                if (userCheckIn.equals(checkIn) ||
+                        userCheckIn.equals(checkOut) ||
+                        userCheckOut.equals(checkIn) ||
+                        userCheckOut.equals(checkOut) ||
+                        userCheckIn.isBefore(checkIn) && userCheckOut.isAfter(checkOut) ||
+                        userCheckIn.isBefore(checkIn) && userCheckOut.isAfter(checkIn) ||
+                        userCheckIn.isBefore(checkOut) && userCheckOut.isAfter(checkOut) ||
+                        userCheckIn.isAfter(checkIn) && userCheckOut.isBefore(checkOut)) {
+                    accommodationAvailable = false;
+                }
+
+            }
+            if (accommodationAvailable) {
+                finalList.add(a);
+            }
+            else {
+                accommodationAvailable = true;
+            }
+        }
+        return finalList;
+    }
+
 }
+

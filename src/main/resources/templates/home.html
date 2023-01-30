@@ -8,30 +8,30 @@
 <body>
 <div th:replace="~{./includes/header.html :: header}"></div>
 
-    <h1 class="text-center text-primary">Welcome to Bookingnetic</h1>
+<h1 class="text-center text-primary">Welcome to Bookingnetic</h1>
 
-    <div class="d-flex justify-content-center align-items-center">
-        <p th:text="${session.name}"></p>
+<div class="d-flex justify-content-center align-items-center">
+    <p th:text="${session.name}"></p>
 
-        <form th:method="get" th:action="@{/accommodation}" th:object="${search}" class="w-50 d-flex flex-column m-a">
-            <h4 class="text-center text-secondary">Where do you want to go?</h4>
-            <div class="mb-3">
-                <label for="city" class="form-label">City:</label>
-                <input type="text"  class="form-control" id="city" name="city">
-            </div>
-            <div class="mb-3">
-                <label for="dateFrom" class="form-label">From:</label>
-                <input type="date" class="form-control" id="dateFrom" name="dateFrom">
-            </div>
-            <div class="mb-3">
-                <label for="dateTo" class="form-label">From:</label>
-                <input type="date" class="form-control" id="dateTo" name="dateTo">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    <form th:method="get" th:action="@{/accommodation/findAvailableBySearch}" th:object="${search}" class="w-50 d-flex flex-column m-a">
+        <h4 class="text-center text-secondary">Where do you want to go?</h4>
+        <div class="mb-3">
+            <label for="city" class="form-label">City:</label>
+            <input type="text"  class="form-control" id="city" name="city" >
+        </div>
+        <div class="mb-3">
+            <label for="dateFrom" class="form-label">From:</label>
+            <input type="date" class="form-control" id="dateFrom" name="dateFrom">
+        </div>
+        <div class="mb-3">
+            <label for="dateTo" class="form-label">From:</label>
+            <input type="date" class="form-control" id="dateTo" name="dateTo">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 
-    </div>
+</div>
 
 <div th:replace="~{./includes/footer.html :: footer}"></div>
 </body>
