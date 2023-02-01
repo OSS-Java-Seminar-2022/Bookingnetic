@@ -1,6 +1,8 @@
 package com.project.bookingnetic.service;
 
+import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.Reservation;
+import com.project.bookingnetic.models.Search;
 import com.project.bookingnetic.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
