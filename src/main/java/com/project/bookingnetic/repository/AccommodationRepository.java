@@ -15,5 +15,6 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 //    Accommodation getAccommodationByUserFk(@Param("user_fk") long user_fk);
 
     List<Accommodation> findAllByAddress_City(String city);
+    List<Accommodation> findAllByUserId(Long id);
 
 }

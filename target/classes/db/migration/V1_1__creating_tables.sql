@@ -3,11 +3,11 @@ CREATE TABLE IF NOT EXISTS address
     id serial not null,
     country varchar(255) not null,
     city varchar(255) not null,
-    street varchar(255) not null unique,
+    street varchar(255) not null ,
     postal_code varchar(255),
 
     PRIMARY KEY (id)
-);
+    );
 
 
 CREATE TYPE roles AS ENUM ('ROLE_ADMIN', 'ROLE_USER');
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS users
     registration_date date DEFAULT CURRENT_DATE,
     enum_role roles,
     PRIMARY KEY (id)
-);
+    );
 
 
 CREATE TABLE IF NOT EXISTS accommodation
@@ -40,14 +40,14 @@ CREATE TABLE IF NOT EXISTS accommodation
 
     PRIMARY KEY (id),
     CONSTRAINT fk_address
-        FOREIGN KEY(address_fk)
-            REFERENCES address(id)
-            ON DELETE CASCADE,
+    FOREIGN KEY(address_fk)
+    REFERENCES address(id)
+    ON DELETE CASCADE,
     CONSTRAINT fk_user
-        FOREIGN KEY (user_fk)
-            REFERENCES users(id)
-            ON DELETE CASCADE
-);
+    FOREIGN KEY (user_fk)
+    REFERENCES users(id)
+    ON DELETE CASCADE
+    );
 
 
 CREATE TABLE IF NOT EXISTS image
@@ -59,10 +59,10 @@ CREATE TABLE IF NOT EXISTS image
 
     PRIMARY KEY (id),
     CONSTRAINT fk_accommodation
-        FOREIGN KEY (accommodation_fk)
-            REFERENCES accommodation(id)
-            ON DELETE CASCADE
-);
+    FOREIGN KEY (accommodation_fk)
+    REFERENCES accommodation(id)
+    ON DELETE CASCADE
+    );
 
 
 CREATE TABLE IF NOT EXISTS reservation
@@ -77,11 +77,11 @@ CREATE TABLE IF NOT EXISTS reservation
 
     PRIMARY KEY (id),
     CONSTRAINT fk_user
-        FOREIGN KEY (user_fk)
-            REFERENCES users(id)
-            ON DELETE CASCADE,
+    FOREIGN KEY (user_fk)
+    REFERENCES users(id)
+    ON DELETE CASCADE,
     CONSTRAINT fk_accommodation
-        FOREIGN KEY (accommodation_fk)
-            REFERENCES accommodation(id)
-            ON DELETE CASCADE
-);
+    FOREIGN KEY (accommodation_fk)
+    REFERENCES accommodation(id)
+    ON DELETE CASCADE
+    );

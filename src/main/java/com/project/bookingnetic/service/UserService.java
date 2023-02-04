@@ -78,8 +78,11 @@ public class UserService implements UserDetailsService {
         opt.ifPresent(user -> {
             mav.addObject("user", user);
             System.out.println(user);
-            Accommodation accommodation = accommodationRepository.findByUserFk(user.getId());
-            mav.addObject("acc",accommodation);
+            System.out.println(user.getId());
+            List<Accommodation> accommodations = accommodationRepository.findAllByUserId(user.getId());
+            System.out.println(accommodations);
+
+            mav.addObject("acc",accommodations);
         });
         mav.setViewName("/account");
 
