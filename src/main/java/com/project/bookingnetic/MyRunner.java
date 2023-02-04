@@ -1,37 +1,37 @@
-//package com.project.bookingnetic;
-//
-//import com.project.bookingnetic.models.*;
-//import com.project.bookingnetic.service.*;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.stereotype.Component;
-//
-//@Component
-//public class MyRunner implements CommandLineRunner {
-//
-//    private static final Logger logger = LoggerFactory.getLogger(MyRunner.class);
-//
-//
-//    private final UserService userService;
-//    private final AddressService addressService;
-//    private final AccommodationService accommodationService;
-//
-//    private final ImageService imageService;
-//    private final ReservationService reservationService;
-//
-//    public MyRunner( UserService userService, AddressService addressService, AccommodationService accommodationService,
-//                     ImageService imageService, ReservationService reservationService) {
-//        this.userService = userService;
-//        this.addressService = addressService;
-//        this.accommodationService = accommodationService;
-//        this.imageService = imageService;
-//        this.reservationService = reservationService;
-//    }
-//
-//    @Override
-//    public void run(String... args) throws Exception {
-//
+package com.project.bookingnetic;
+
+import com.project.bookingnetic.models.*;
+import com.project.bookingnetic.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyRunner implements CommandLineRunner {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyRunner.class);
+
+
+    private final UserService userService;
+    private final AddressService addressService;
+    private final AccommodationService accommodationService;
+
+    private final ImageService imageService;
+    private final ReservationService reservationService;
+
+    public MyRunner( UserService userService, AddressService addressService, AccommodationService accommodationService,
+                     ImageService imageService, ReservationService reservationService) {
+        this.userService = userService;
+        this.addressService = addressService;
+        this.accommodationService = accommodationService;
+        this.imageService = imageService;
+        this.reservationService = reservationService;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
 //        AppConfig appConfig = new AppConfig();
 //
 //
@@ -68,17 +68,19 @@
 //            res.setUser(getUser(res.getUser().getId()));
 //            reservationService.save(res);
 //        });
-//    }
-//
-//    public Accommodation getAccommodation(long accID){
-//        return accommodationService.findById(accID);
-//    }
-//    public User getUser(long usrID){
-//        return userService.findById(usrID);
-//    }
-//
-//    public Address getAddress(long addrID){
-//        return addressService.findById(addrID);
-//    }
-//}
-//
+
+
+    }
+
+    public Accommodation getAccommodation(long accID){
+        return accommodationService.findById(accID);
+    }
+    public User getUser(long usrID){
+        return userService.findById(usrID);
+    }
+
+    public Address getAddress(long addrID){
+        return addressService.findById(addrID);
+    }
+}
+

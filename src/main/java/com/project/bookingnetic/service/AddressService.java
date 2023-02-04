@@ -33,6 +33,16 @@ public class AddressService {
         }
     }
 
+    public Address update(Address address, Long id) {
+        if(repository.findById(id).isPresent()){
+            var update = repository.findById(id).get();
+            update.setParameters(address.getCountry(), address.getCity(),
+                    address.getStreet(), address.getPostalCode());
+            return repository.save(update);
+        }
+        return null;
+    }
+
     public Address findById(Long id){
         return repository.findById(id).get();
     }

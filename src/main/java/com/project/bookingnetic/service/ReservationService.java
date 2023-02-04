@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,6 +28,15 @@ public class ReservationService {
         return repository.save(reservation);
     }
 
+    public Reservation update(Reservation reservation, Long id) {
+        if(repository.findById(id).isPresent()){
+            var update = repository.findById(id).get();
+            update.setParameters(reservation.getReservation_date(), reservation.getCheckIn(), reservation.getCheckOut(),
+                                    reservation.getPrice(), reservation.getUser(), reservation.getAccommodation());
+            return repository.save(update);
+        }
+        return null;
+    }
 
     public ResponseEntity<HttpStatus> deleteById(Long id) {
         try {

@@ -1,6 +1,5 @@
 package com.project.bookingnetic.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,11 +42,14 @@ public class Image {
 
 
     public Image(byte[] img, String description, Accommodation accommodation) {
+        setParameters(img, description, accommodation);
+    }
+
+    public void setParameters(byte[] img, String description, Accommodation accommodation){
         this.img = img;
         this.description = description;
         this.accommodation = accommodation;
     }
-
 
 
     public static Image setImage(String filepath, String formatName, String description, Accommodation accommodation) throws IOException {

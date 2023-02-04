@@ -1,22 +1,16 @@
 
 package com.project.bookingnetic.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.thymeleaf.expression.Maps;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Data
@@ -58,6 +52,11 @@ public class Accommodation {
                          BigDecimal price_for_night,
                          Address address,
                          User user) {
+        setParameters(title, description, price_for_night, address, user);
+    }
+
+    public void setParameters(String title, String description, BigDecimal price_for_night,
+                              Address address, User user){
         this.title = title;
         this.description = description;
         this.price_for_night = price_for_night;

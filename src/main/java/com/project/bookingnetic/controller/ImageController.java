@@ -1,12 +1,8 @@
 package com.project.bookingnetic.controller;
 
+import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.Image;
-import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.service.ImageService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletResponse;
-import org.apache.commons.compress.utils.IOUtils;
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.ByteArrayInputStream;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 @RequestMapping("/image")
@@ -57,6 +52,15 @@ public class ImageController {
         return ResponseEntity.ok(service.save(image));
     }
 
+    @PutMapping("/put/{id}")
+    public ResponseEntity<Image> update(@PathVariable Long id, @RequestBody Image image) throws MyException {
+        var update = service.update(image, id);
+        if(update != null) {
+            return ResponseEntity.ok(update);
+        }
+        throw new MyException("Image Not found");
+    }
+
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<HttpStatus> deleteById(@PathVariable("id") Long id  ){
         return service.deleteById(id);
@@ -68,6 +72,7 @@ public class ImageController {
         //model.addAttribute("img", img);
         return "show_image";
     }
+
     @GetMapping("/img/{id}")
     public String showProductImage(Model model, @PathVariable Long id) throws IOException {
         var img = Base64.getEncoder().encodeToString(service.showProductImage(id).getImg());

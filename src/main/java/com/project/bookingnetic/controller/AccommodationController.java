@@ -1,5 +1,6 @@
 package com.project.bookingnetic.controller;
 
+import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.Search;
 import com.project.bookingnetic.service.AccommodationService;
@@ -42,6 +43,15 @@ public class AccommodationController {
     @PostMapping
     public ResponseEntity<Accommodation> save(@RequestBody Accommodation accommodation){
         return ResponseEntity.ok(service.save(accommodation));
+    }
+
+    @PutMapping("/put/{id}")
+    public ResponseEntity<Accommodation> update(@PathVariable Long id, @RequestBody Accommodation accommodation) throws MyException {
+        var update = service.update(accommodation, id);
+        if(update != null) {
+            return ResponseEntity.ok(update);
+        }
+        throw new MyException("Accommodation Not found");
     }
 
     @DeleteMapping(path = "/delete/{id}")

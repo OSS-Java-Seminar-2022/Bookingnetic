@@ -1,6 +1,5 @@
 package com.project.bookingnetic.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +10,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Data
@@ -54,6 +52,16 @@ public class Reservation {
                        BigDecimal price,
                        User user,
                        Accommodation accommodation) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.price = price;
+        this.user = user;
+        this.accommodation = accommodation;
+    }
+
+    public void setParameters(LocalDate reservation_date, LocalDate checkIn, LocalDate checkOut,
+                         BigDecimal price, User user, Accommodation accommodation){
+        this.reservation_date = reservation_date;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.price = price;

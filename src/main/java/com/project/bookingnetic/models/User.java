@@ -54,6 +54,12 @@ public class User implements Serializable{
                 String password,
                 String phone,
                 RoleType enumRole) {
+
+        setParameters(firstName, lastName, email, password, phone, enumRole);
+    }
+
+    public void setParameters(String firstName, String lastName, String email,
+                         String password, String phone, RoleType enumRole){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

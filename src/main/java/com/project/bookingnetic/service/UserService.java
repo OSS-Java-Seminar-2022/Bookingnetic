@@ -104,16 +104,12 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public User update(User user, long id){
+    public User update(User user, Long id) {
         if(repo.findById(id).isPresent()){
             var update = repo.findById(id).get();
-            update.setEmail(user.getEmail());
-            update.setFirstName(user.getFirstName());
-            update.setLastName(user.getLastName());
-            update.setRegistrationDate(user.getRegistrationDate());
-            update.setPassword(user.getPassword());
-            update.setPhone(user.getPhone());
-            repo.save(update);
+            update.setParameters(user.getFirstName(), user.getLastName(), user.getEmail(),
+                                user.getPassword(), user.getPhone(), user.getEnumRole());
+            return repo.save(update);
         }
         return null;
     }
@@ -123,6 +119,8 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repo.save(user);
     }
+
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = this.repo.findByEmail(email);

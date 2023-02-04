@@ -30,6 +30,10 @@ public class Address {
     private String postalCode;
 
     public Address(String country, String city, String street, String postalCode) {
+        setParameters(country, city, street, postalCode);
+    }
+
+    public void setParameters(String country, String city, String street, String postalCode){
         this.country = country;
         this.city = city;
         this.street = street;

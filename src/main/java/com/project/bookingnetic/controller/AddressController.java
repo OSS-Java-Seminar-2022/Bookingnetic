@@ -1,5 +1,6 @@
 package com.project.bookingnetic.controller;
 
+import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.Address;
 import com.project.bookingnetic.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,15 @@ public class AddressController {
     @PostMapping
     public ResponseEntity<Address> save(@RequestBody Address address){
         return ResponseEntity.ok(service.save(address));
+    }
+
+    @PutMapping("/put/{id}")
+    public ResponseEntity<Address> update(@PathVariable Long id, @RequestBody Address address) throws MyException {
+        var update = service.update(address, id);
+        if(update != null) {
+            return ResponseEntity.ok(update);
+        }
+        throw new MyException("Address Not found");
     }
 
     @DeleteMapping(path = "/delete/{id}")

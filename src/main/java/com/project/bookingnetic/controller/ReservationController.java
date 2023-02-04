@@ -1,5 +1,6 @@
 package com.project.bookingnetic.controller;
 
+import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,14 @@ public class ReservationController {
         return ResponseEntity.ok(service.save(reservation));
     }
 
+    @PutMapping("/put/{id}")
+    public ResponseEntity<Reservation> update(@PathVariable Long id, @RequestBody Reservation reservation) throws MyException {
+        var update = service.update(reservation, id);
+        if(update != null) {
+            return ResponseEntity.ok(update);
+        }
+        throw new MyException("Reservation Not found");
+    }
 
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<HttpStatus> deleteById(@PathVariable("id") Long id  ){
