@@ -1,5 +1,6 @@
 package com.project.bookingnetic.service;
 
+import ch.qos.logback.core.model.Model;
 import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.RoleType;
 import com.project.bookingnetic.models.User;
@@ -7,6 +8,7 @@ import com.project.bookingnetic.repository.AccommodationRepository;
 import com.project.bookingnetic.repository.UserRepository;
 import com.project.bookingnetic.security.UserSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,11 +18,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 @Service
@@ -72,17 +76,12 @@ public class UserService implements UserDetailsService {
     public ModelAndView showAccount(long id){
 
         ModelAndView mav = new ModelAndView();
-
         Optional<User> opt = repo.findById(id);
 
         opt.ifPresent(user -> {
             mav.addObject("user", user);
-            System.out.println(user);
-            System.out.println(user.getId());
-            List<Accommodation> accommodations = accommodationRepository.findAllByUserId(user.getId());
-            System.out.println(accommodations);
-
-            mav.addObject("acc",accommodations);
+            List<Accommodation> accommodations = accommodationRepository.getAccommodationByUserFk(user.getId());
+            mav.addObject("accommodations",accommodations);
         });
         mav.setViewName("/account");
 
@@ -126,5 +125,19 @@ public class UserService implements UserDetailsService {
         User user = this.repo.findByEmail(email);
         UserSecurity userSecurity = new UserSecurity(user);
         return userSecurity;
+    }
+
+    public String addAccommodationToUser(Accommodation acc, long user_id) {
+        AtomicReference<String> view = new AtomicReference<>("notSuccess");
+
+        Optional<User> userOptional = repo.findById(user_id);
+        userOptional.ifPresent((user)-> {
+            acc.setUser(user);
+            acc.setCreation_date(LocalDate.now());
+            accommodationRepository.save(acc);
+            view.set("redirect:/user/"+user_id);
+        });
+
+        return view.toString();
     }
 }

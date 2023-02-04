@@ -23,14 +23,13 @@
             </div>
           <div class="p-3 w-25 h-75 align-items-start">
                 <h3>My accommodations</h3>
-                <p th:if="${acc == null}">You have no accommodations </p>
-                <div th:unless="${acc == null}">
-                    <ul th:each="accom : ${acc}">
-                        <li><a th:href="@{/user/{userId}/accommodation/{accomId}(userId=${session.user_id},accomId=${accom.id})}" th:text="${accom.title}"></a></li>
+                <p th:if="${accommodations == null}">You have no accommodations </p>
+                <div th:unless="${accommodations == null}">
+                    <ul th:each="accom : ${accommodations}">
+                        <li><a th:href="@{/accommodation/{accomId}(accomId=${accom.id})}" th:text="${accom.title}"></a></li>
                     </ul>
                 </div>
-
-                <a th:href="@{/user/{id}/accommodation(id=${session.user_id})}">Add new accommodation</a>
+                <a th:href="@{/user/{user_id}/accommodation(user_id=${session.user_id})}">Add new accommodation</a>
 
             </div>
             <div class="p-3 w-25 h-75 align-items-start">

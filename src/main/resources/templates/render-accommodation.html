@@ -8,8 +8,14 @@
   <meta charset="UTF-8">
   <title> Bookingnetic</title>
 </head>
-<body>
+<body >
   <div th:replace="~{./includes/header.html :: header}"></div>
+  <div class="d-flex flex-column vw-100 vh-100 align-items-center mt-3">
+    <div class="w-75 mt-3">
+      <h3 th:text="${accommodation.title}"></h3>
+    </div>
+
+  </div>
 
   <div th:replace="~{./includes/footer.html :: footer}"></div>
 </body>

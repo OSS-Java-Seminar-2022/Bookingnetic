@@ -13,7 +13,7 @@
                         <a class="nav-link active" aria-current="page" href="#" th:href="@{/}"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item">
-                        <a class="nav-link" th:href="@{/user/{id}(id=${session.user_id})}">Account</a>
+                        <a class="nav-link" th:href="@{/user/{user_id}(user_id=${session.user_id})}">Account</a>
                     </li>
                     <li sec:authorize="hasAuthority('ROLE_ADMIN')" class="nav-item">
                         <a class="nav-link" th:href="@{/user/adminPage}">Admin</a>

@@ -22,11 +22,11 @@
         </div>
         <div class="mb-3">
             <label for="dateFrom" class="form-label">From:</label>
-            <input type="date" class="form-control" id="dateFrom" name="dateFrom">
+            <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" type="date" class="form-control" id="dateFrom" name="dateFrom">
         </div>
         <div class="mb-3">
             <label for="dateTo" class="form-label">From:</label>
-            <input type="date" class="form-control" id="dateTo" name="dateTo">
+            <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" type="date" class="form-control" id="dateTo" name="dateTo">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

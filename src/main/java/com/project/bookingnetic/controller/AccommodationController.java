@@ -5,13 +5,17 @@ import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.Search;
 import com.project.bookingnetic.service.AccommodationService;
 import com.project.bookingnetic.service.ReservationService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
+import static java.util.concurrent.TimeUnit.DAYS;
 
 @Controller
 @RequestMapping("/accommodation")
@@ -27,17 +31,19 @@ public class AccommodationController {
         this.reservationService = reservationService;
     }
 
-    @GetMapping()
-    public ResponseEntity<List<Accommodation>> get(){
-        return ResponseEntity.ok(service.get());
+    @GetMapping("/{id}")
+    public ModelAndView getAccommodationById(@PathVariable(name = "id") long id){
+        return service.getAccommodationById(id);
     }
 
 
+
     @GetMapping("/findAvailableBySearch")
-    public ResponseEntity<List<Accommodation>> findAvailableBySearch(@ModelAttribute(name = "search") Search search){
-        Search userSearch = search;
-        List<Accommodation> accommodationList = service.findByCity(userSearch.getCity());
-        return ResponseEntity.ok(reservationService.findAvailable(userSearch, accommodationList));
+    public ModelAndView findAvailableBySearch(@ModelAttribute(name = "search") Search search, HttpSession session){
+        session.setAttribute("search",search);
+        session.setAttribute("total_days", DAYS.toChronoUnit().between(search.getDateFrom(), search.getDateTo()));
+        List<Accommodation> accommodationList = service.findByCity(search.getCity());
+        return reservationService.findAvailable(search, accommodationList);
     }
 
     @PostMapping

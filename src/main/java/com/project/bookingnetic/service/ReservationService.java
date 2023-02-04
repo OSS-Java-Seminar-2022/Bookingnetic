@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -52,7 +53,8 @@ public class ReservationService {
         return repository.findAllByAccommodation_Id(id);
     }
 
-    public List<Accommodation> findAvailable(Search search, List<Accommodation> accommodationList){
+    public ModelAndView findAvailable(Search search, List<Accommodation> accommodationList){
+        ModelAndView mav = new ModelAndView();
         LocalDate userCheckIn = search.getDateFrom();
         LocalDate userCheckOut = search.getDateTo();
         Boolean accommodationAvailable = true;

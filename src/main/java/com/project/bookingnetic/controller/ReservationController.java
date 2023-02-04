@@ -1,6 +1,5 @@
 package com.project.bookingnetic.controller;
 
-import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,10 @@ public class ReservationController {
     }
 
     @PostMapping
-    public ResponseEntity<Reservation> save(Reservation reservation){
-        return ResponseEntity.ok(service.save(reservation));
+    public ResponseEntity<Reservation> save(Model model){
+//        model.
+//        return ResponseEntity.ok(service.save(reservation));
+        return null;
     }
 
     @PutMapping("/put/{id}")

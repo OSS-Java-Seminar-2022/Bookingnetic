@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title> Bookingnetic</title>
+</head>
+<body >
+<div th:replace="~{./includes/header.html :: header}"></div>
+
+<div class="d-flex vh-100 vw-100 justify-content-start align-items-center flex-direction-column">
+
+    <h2 th:if="${accommodations.size() == 0}">No accommodations found </h2>
+    <div th:unless="${accommodations.size() == 0}">
+        <ul th:each="accom : ${accommodations}">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 th:text="${accom.title}" class="card-title"></h5>
+                    <p th:text="${accom.description}" class="card-text"></p>
+                    <p th:text="'Total price: '+ ${session.total_days}*${accom.price_for_night}"></p>
+                    <a th:href="@{/accommodation/{id}/reservation(id = ${accom.id})}" class="btn btn-primary">Book now!</a>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+
+<div th:replace="~{./includes/footer.html :: footer}"></div>
+</body>
+</html>
+
+</body>
+</html>
