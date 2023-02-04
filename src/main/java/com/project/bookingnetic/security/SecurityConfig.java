@@ -24,7 +24,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import java.io.IOException;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity //spring boot know that this is where we keep our security
 public class SecurityConfig {
 
     private UserService userService;
@@ -33,73 +33,16 @@ public class SecurityConfig {
         this.userService = userService;
     }
 
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
-
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(this.userService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return authProvider;
-    }
-
-    /*
-
-    @Bean
-    public AuthenticationManager authManager(HttpSecurity http, UserDetailsService userDetailService)
-            throws Exception {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(this.userService);
-
-
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(userDetailService)
-                .passwordEncoder(passwordEncoder())
-                .and()
-                .build();
-    }
-
-
-*///  @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        return http
-//                .authorizeHttpRequests()
-//                    .requestMatchers("/user/register").permitAll()
-//                    .requestMatchers("./user/**").authenticated()
-//                .and()
-//                    .formLogin()
-//                    .loginProcessingUrl("/")
-//                    .loginPage("/login").permitAll()
-//                    .usernameParameter("email")
-//                    .passwordParameter("password")
-//                .and()
-//                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
-//                .and()
-//                    .build();
-//    }
-
-
-
+    /*Note that the order of the antMatchers() elements is significant; the more specific rules need to come first,
+     followed by the more general ones. */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf()
-                .disable()
+                .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/user",
-                        "/user/register", "/address", "/image", "/image/new", "/image/upload").permitAll()
-                .requestMatchers("/user/account").authenticated().anyRequest().permitAll()
+                .requestMatchers("/user/account").authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/")
@@ -109,31 +52,28 @@ public class SecurityConfig {
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
                 .and()
+                .rememberMe().tokenValiditySeconds(2592000).key("mySecret!").rememberMeParameter("checkRememberMe")
+                .and()
                 .build();
     }
 
-
-
-    /*
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authenticationProvider());
-    }
-
-
-
     @Bean
-    DaoAuthenticationProvider authenticationProvider(){
-
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(this.userService);
-        return daoAuthenticationProvider;
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
+    }
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
-
-*/
-
-
-
+    /* moramo imat DaoAuthenticationProvider kako bi moga dobiveni username i password priko requesta provjerit
+    koristi password encoder da validira password, ako autentikacija prođe možemo vadit principal
+     */
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(this.userService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
 }

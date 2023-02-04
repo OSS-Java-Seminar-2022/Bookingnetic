@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a42b659-4421-40f9-b2f0-4791af8758fc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Bookingnetic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Bookingnetic.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonFiles/reservations.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonFiles/reservations.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/repository/AccommodationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/repository/AccommodationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/BookingneticApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/BookingneticApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/includes/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/includes/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,7 @@
       <workItem from="1675286425846" duration="5732000" />
       <workItem from="1675453920198" duration="2255000" />
       <workItem from="1675506430618" duration="5134000" />
-      <workItem from="1675512572906" duration="5162000" />
+      <workItem from="1675512572906" duration="13054000" />
     </task>
     <servers />
   </component>
