@@ -1,5 +1,6 @@
 package com.project.bookingnetic.service;
 
+import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.RoleType;
 import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.repository.AccommodationRepository;
@@ -25,7 +26,6 @@ import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
 
-
     @Autowired
     private UserRepository repo;
     private final AccommodationRepository accommodationRepository;
@@ -35,7 +35,6 @@ public class UserService implements UserDetailsService {
         this.repo = repo;
         this.accommodationRepository = accommodationRepository;
     }
-
 
     public List<User> get(){
         return new ArrayList<>(repo.findAll());
@@ -78,12 +77,10 @@ public class UserService implements UserDetailsService {
 
         opt.ifPresent(user -> {
             mav.addObject("user", user);
-          //  mav.addObject("accommodation",user.getAccommodation());   //ovo sam samo zakomentirala da se ne crveni
-                                                                        //  jer su prominjene relacije pa nema vise
-                                                                        // accomodationa u useru, nego obrnuto...
-
+            System.out.println(user);
+            Accommodation accommodation = accommodationRepository.findByUserFk(user.getId());
+            mav.addObject("acc",accommodation);
         });
-        mav.addObject("username",id );
         mav.setViewName("/account");
 
         return mav;
@@ -92,11 +89,8 @@ public class UserService implements UserDetailsService {
     public boolean register(User user){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        //hashPassword(user);
-        //user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnumRole(RoleType.ROLE_USER);
         user.setRegistrationDate(LocalDate.now());
-
 
         try{
             repo.save(user);
@@ -116,23 +110,11 @@ public class UserService implements UserDetailsService {
             update.setRegistrationDate(user.getRegistrationDate());
             update.setPassword(user.getPassword());
             update.setPhone(user.getPhone());
-            //update.setReservations(user.getReservations());
-            //update.setAccommodation(user.getAccommodation());
             repo.save(update);
         }
         return null;
     }
 
-    /*
-    public void hashPassword(User user){
-        var encodedPassword = encoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-    }
-
-    public boolean checkPassword(User user, String password){
-        return encoder.matches(password, user.getPassword());
-    }
-*/
     public User hashAndSaveUser(User user){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));

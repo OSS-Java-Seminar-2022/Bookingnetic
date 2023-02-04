@@ -68,12 +68,12 @@ public class UserController {
         return mav;
     }
     @PostMapping("/{id}/accommodation")
-    public String postUserAccommodation(@ModelAttribute Model model, Accommodation accommodation, HttpSession session){
+    public String postUserAccommodation(@ModelAttribute Accommodation accommodation){
 
         return "account";
     }
     @PostMapping("/login")
-    public String loginPage(@ModelAttribute("user") User user, HttpSession session){
+    public String loginPage(@ModelAttribute("user") User user){
 
         if (service.userExistsByEmail(user.getEmail()))
         {
