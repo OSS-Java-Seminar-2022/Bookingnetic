@@ -20,7 +20,8 @@ public class AddressService {
         return new ArrayList<>(repository.findAll());
     }
 
-    public Address save(Address address) {
+    public Address save(Address address){
+        address.setCity(address.getCity().toUpperCase());
         return repository.save(address);
     }
 

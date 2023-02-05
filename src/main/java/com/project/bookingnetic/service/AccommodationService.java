@@ -57,7 +57,7 @@ public class AccommodationService {
     }
 
     public List<Accommodation> findByCity(String city){
-        return repository.findAllByAddress_City(city);
+        return repository.findAllByAddress_City(city.toUpperCase());
     }
 
 
@@ -89,6 +89,8 @@ public class AccommodationService {
 
         });
         return "redirect:/accommodation/"+accom_id;
-
     }
+
 }
+
+

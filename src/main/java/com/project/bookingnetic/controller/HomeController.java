@@ -30,6 +30,8 @@ public class HomeController {
         } else {
             email = principal.toString();
         }
+        System.out.println("---------PRINCIPAL-----------" + principal);
+        System.out.println("------------EMAIL------" + email);
 
         Optional<User> user = userService.findByEmail(email);
 
@@ -46,6 +48,7 @@ public class HomeController {
             session.setAttribute("email",mail);
             session.setAttribute("phone",phoneNumber);
         });
+        System.out.println("--------SESSION-----------" + session);
         return "home";
     }
 

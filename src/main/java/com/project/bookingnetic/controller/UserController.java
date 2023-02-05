@@ -64,7 +64,7 @@ public class UserController {
         Accommodation acc = accommodation;
         return  service.addAccommodationToUser(acc,id);
     }
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public String loginPage(@ModelAttribute("user") User user){
 
         if (service.userExistsByEmail(user.getEmail()))
@@ -72,7 +72,8 @@ public class UserController {
             return "redirect:/";
         }
         return "404";
-    }
+    }*/
+
 
     @GetMapping("/{user_id}")
     public ModelAndView showAccount(Model model,HttpSession session, @PathVariable(name = "user_id") long id){

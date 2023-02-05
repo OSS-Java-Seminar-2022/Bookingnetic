@@ -12,4 +12,6 @@ import java.util.List;
 public interface ImageRepository extends JpaRepository<Image, Long> {
     @Query(value = "SELECT * FROM image where accommodation_fk = :accomm_fk",nativeQuery = true)
     List<Image> findByAccommodationFk(@Param("accomm_fk")long accommodation_fk);
+
+    Image findFirstByAccommodation_Id(Long id);
 }

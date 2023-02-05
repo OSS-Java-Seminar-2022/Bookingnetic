@@ -25,7 +25,7 @@
             <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" type="date" class="form-control" id="dateFrom" name="dateFrom">
         </div>
         <div class="mb-3">
-            <label for="dateTo" class="form-label">From:</label>
+            <label for="dateTo" class="form-label">To:</label>
             <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" type="date" class="form-control" id="dateTo" name="dateTo">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

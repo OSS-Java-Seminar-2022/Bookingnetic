@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
@@ -69,7 +71,7 @@ public class User implements Serializable{
     }
 
 
-    /* setting username for authentication to use email */
+    /* setting username for authentication to use email, by default it is username, but we want email */
     public String getUsername() {
         return this.email;
     }
