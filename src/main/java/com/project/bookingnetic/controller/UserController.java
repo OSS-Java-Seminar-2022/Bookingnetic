@@ -67,6 +67,7 @@ public class UserController {
     /*@PostMapping("/login")
     public String loginPage(@ModelAttribute("user") User user){
 
+<<<<<<< HEAD
         if (service.userExistsByEmail(user.getEmail()))
         {
             return "redirect:/";
@@ -75,12 +76,16 @@ public class UserController {
     }*/
 
 
+=======
+        return service.userExistsByEmail(user.getEmail())?
+             "redirect:/": "404";
+    }
+>>>>>>> e8abf0bd1566fb13eb483fa902de0002a6edf8d2
     @GetMapping("/{user_id}")
     public ModelAndView showAccount(Model model,HttpSession session, @PathVariable(name = "user_id") long id){
 
         return service.showAccount(id);
     }
-
     @PutMapping("/put/{id}")
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) throws MyException {
         var update = service.update(user, id);

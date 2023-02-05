@@ -56,7 +56,6 @@ public class ReservationService {
         }
     }
 
-
     public List<Reservation> findReservationsByAccommodationId(Long id){
         return repository.findAllByAccommodation_Id(id);
     }

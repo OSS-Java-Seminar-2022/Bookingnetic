@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a42b659-4421-40f9-b2f0-4791af8758fc" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingnetic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bookingnetic.iml" afterDir="false" />
@@ -28,6 +29,19 @@
       <change beforePath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/register.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/render-accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/render-accommodation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/render-accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/render-accommodation.html" afterDir="false" />
+>>>>>>> e8abf0bd1566fb13eb483fa902de0002a6edf8d2
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +176,14 @@
           <line>82</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+<<<<<<< HEAD
+=======
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+>>>>>>> e8abf0bd1566fb13eb483fa902de0002a6edf8d2
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
