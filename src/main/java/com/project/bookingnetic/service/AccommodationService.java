@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,9 +69,15 @@ public class AccommodationService {
         Optional<Accommodation> accOpt =  repository.findById(id);
         accOpt.ifPresent(accommodation -> {
             List<Image> images = imageRepository.findByAccommodationFk(accommodation.getId());
+            List<String> encodedImages = new ArrayList<>();
+
+            images.forEach(image -> {
+                var img = Base64.getEncoder().encodeToString(image.getImg());
+                encodedImages.add(img);
+            });
 
             mav.setViewName("render-accommodation");
-            mav.addObject(images);
+            mav.addObject("images",encodedImages);
             mav.addObject(accommodation);
         });
 

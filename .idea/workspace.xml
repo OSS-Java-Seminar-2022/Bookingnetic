@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a42b659-4421-40f9-b2f0-4791af8758fc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/500.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/repository/ImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/create-accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/create-accommodation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/render-accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/render-accommodation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/upload_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/upload_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/create-accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/create-accommodation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/render-accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/render-accommodation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/upload_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/upload_form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +143,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java</url>
-          <line>73</line>
+          <line>80</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

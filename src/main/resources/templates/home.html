@@ -18,15 +18,15 @@
         <h4 class="text-center text-secondary">Where do you want to go?</h4>
         <div class="mb-3">
             <label for="city" class="form-label">City:</label>
-            <input type="text"  class="form-control" id="city" name="city" >
+            <input type="text"  class="form-control" id="city" name="city"  required>
         </div>
         <div class="mb-3">
             <label for="dateFrom" class="form-label">From:</label>
-            <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" type="date" class="form-control" id="dateFrom" name="dateFrom">
+            <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"type="date" class="form-control" id="dateFrom" name="dateFrom"  required >
         </div>
         <div class="mb-3">
-            <label for="dateTo" class="form-label">From:</label>
-            <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" type="date" class="form-control" id="dateTo" name="dateTo">
+            <label for="dateTo" class="form-label">To:</label>
+            <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"  type="date" class="form-control" id="dateTo" name="dateTo"  required >
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

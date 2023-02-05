@@ -47,7 +47,6 @@ public class User implements Serializable{
     @Column(name = "enum_role")
     private RoleType enumRole;
 
-
     public User(String firstName,
                 String lastName,
                 String email,

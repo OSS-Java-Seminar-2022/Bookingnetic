@@ -25,7 +25,6 @@ public class AccommodationController {
     @Autowired
     private AccommodationService service;
 
-
     private ReservationService reservationService;
 
     public AccommodationController(AccommodationService service,ReservationService reservationService) {
@@ -38,12 +37,11 @@ public class AccommodationController {
         return service.getAccommodationById(id);
     }
 
-
-
     @GetMapping("/findAvailableBySearch")
     public ModelAndView findAvailableBySearch(@ModelAttribute(name = "search") Search search, HttpSession session){
         session.setAttribute("search",search);
         session.setAttribute("total_days", DAYS.toChronoUnit().between(search.getDateFrom(), search.getDateTo()));
+
         List<Accommodation> accommodationList = service.findByCity(search.getCity());
         return reservationService.findAvailable(search, accommodationList);
     }
@@ -52,7 +50,10 @@ public class AccommodationController {
     public ResponseEntity<Accommodation> save(@RequestBody Accommodation accommodation){
         return ResponseEntity.ok(service.save(accommodation));
     }
-
+    @PostMapping("/{accom_id}/create-reservation")
+    public ResponseEntity<Accommodation> createReservationByAccommodationId(@RequestBody Accommodation accommodation){
+        return ResponseEntity.ok(service.save(accommodation));
+    }
     @PutMapping("/put/{id}")
     public ResponseEntity<Accommodation> update(@PathVariable Long id, @RequestBody Accommodation accommodation) throws MyException {
         var update = service.update(accommodation, id);
@@ -65,8 +66,6 @@ public class AccommodationController {
     public String uploadImage(Model model, @RequestParam("file") MultipartFile file, @PathVariable(name = "accom_id") long accom_id) {
         try {
              return service.addImageToAccommodation(file,accom_id);
-
-
         } catch (Exception e) {
             return "500";
         }
