@@ -26,11 +26,9 @@
         </div>
         <div class="mb-3">
             <label for="dateTo" class="form-label">To:</label>
-<<<<<<< HEAD
-            <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" type="date" class="form-control" id="dateTo" name="dateTo">
-=======
+
             <input th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"  type="date" class="form-control" id="dateTo" name="dateTo"  required >
->>>>>>> e8abf0bd1566fb13eb483fa902de0002a6edf8d2
+
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
