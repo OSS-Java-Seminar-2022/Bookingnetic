@@ -15,6 +15,7 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
     @Query(value = "SELECT * FROM accommodation a WHERE a.user_fk = :user_fk ",nativeQuery = true)
     List<Accommodation> getAccommodationByUserFk(@Param("user_fk") long user_fk);
 
+
     List<Accommodation> findAllByAddress_City(String city);
 //    List<Accommodation> findAllByUserId(Long id);
 
