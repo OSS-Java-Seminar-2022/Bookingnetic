@@ -135,7 +135,7 @@ public class UserService implements UserDetailsService {
             acc.setUser(user);
             acc.setCreation_date(LocalDate.now());
             accommodationRepository.save(acc);
-            view.set("redirect:/user/"+user_id);
+            view.set("redirect:/accommodation/"+acc.getId());
         });
 
         return view.toString();

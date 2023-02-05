@@ -13,22 +13,28 @@
 <body >
 <div th:replace="~{./includes/header.html :: header}"></div>
 
-<div class="d-flex vh-100 vw-100 justify-content-start align-items-center flex-direction-column">
+<div class="d-flex vh-100 vw-100 justify-content-center align-items-start flex-direction-column">
 
-    <h2 th:if="${accommodations.size() == 0}">No accommodations found </h2>
-    <div th:unless="${accommodations.size() == 0}">
-        <ul th:each="accom : ${accommodations}">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 th:text="${accom.title}" class="card-title"></h5>
-                    <p th:text="${accom.description}" class="card-text"></p>
-                    <p th:text="'Total price: '+ ${session.total_days}*${accom.price_for_night}"></p>
-                    <a th:href="@{/accommodation/{id}/reservation(id = ${accom.id})}" class="btn btn-primary">Book now!</a>
+    <div class="mt-4 w-75">
+        <h2 th:if="${accommodations.size() == 0}">No accommodations found </h2>
+        <div d-flex th:unless="${accommodations.size() == 0}">
+            <h4>We found these accommodations for you</h4>
+            <ul th:each="accom : ${accommodations}">
+
+
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 th:text="${accom.title}" class="card-title"></h5>
+                        <p th:text="${accom.description}" class="card-text"></p>
+                        <p th:text="'Total price: '+ ${session.total_days}*${accom.price_for_night}"></p>
+                        <a th:href="@{/accommodation/{id}/reservation(id = ${accom.id})}" class="btn btn-primary">Book now!</a>
+                    </div>
                 </div>
-            </div>
-        </ul>
+            </ul>
+        </div>
     </div>
+
 </div>
 
 

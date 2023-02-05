@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -58,6 +60,16 @@ public class AccommodationController {
             return ResponseEntity.ok(update);
         }
         throw new MyException("Accommodation Not found");
+    }
+    @PostMapping("/{accom_id}/image")
+    public String uploadImage(Model model, @RequestParam("file") MultipartFile file, @PathVariable(name = "accom_id") long accom_id) {
+        try {
+             return service.addImageToAccommodation(file,accom_id);
+
+
+        } catch (Exception e) {
+            return "500";
+        }
     }
 
     @DeleteMapping(path = "/delete/{id}")
