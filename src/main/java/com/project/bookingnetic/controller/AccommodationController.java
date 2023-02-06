@@ -6,6 +6,7 @@ import com.project.bookingnetic.models.Search;
 import com.project.bookingnetic.service.AccommodationService;
 import com.project.bookingnetic.service.ReservationService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,19 @@ public class AccommodationController {
     public ResponseEntity<Accommodation> save(@RequestBody Accommodation accommodation){
         return ResponseEntity.ok(service.save(accommodation));
     }
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model){
+        model.addAttribute("accommodation", service.findById(id));
+        return "edit-accommodation";
+    }
+
+    @PostMapping("/update/{acc_id}/{user_id}")
+    public String editUpdate(@PathVariable Long acc_id, @ModelAttribute("accommodation") Accommodation accommodation){
+        accommodation.setUser(service.findById(acc_id).getUser());
+        service.update(accommodation, acc_id);
+        return "redirect:/accommodation/"+ acc_id;
+    }
+
 
     @GetMapping("/{accom_id}/review-reservation")
     public String createReservationByAccommodationId(@PathVariable(name = "accom_id") long accom_id, HttpSession session){

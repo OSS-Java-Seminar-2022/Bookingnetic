@@ -40,31 +40,31 @@ public class MyRunner implements CommandLineRunner {
 //        appConfig.deserializeUser("jsonFiles/users.json");
 //        appConfig.getUsers().forEach(userService::hashAndSaveUser);
 
-        appConfig.deserializeAccomm("jsonFiles/accommodations1.json");
-        appConfig.getAccommodation().forEach(acc -> {
-            Address address = getNewAddress(acc.getAddress());
-            User usr = getNewUser(acc.getUser());
-            usr.hashPassword();
-            Accommodation accommodation = new Accommodation(acc.getTitle(), acc.getDescription(),
-                    acc.getPrice_for_night(), address,usr);
-            accommodationService.save(accommodation);
-        });
-
-        appConfig.deserializeImage("jsonFiles/images.json");
-        appConfig.getImages().forEach(img -> {
-            img.setAccommodation(getAccommodation(img.getAccommodation().getId()));
-            imageService.save(img);
-        });
-
-
-        appConfig.deserializeReservation("jsonFiles/reservations.json");
-        System.out.println(appConfig.getReservations());
-        appConfig.getReservations().forEach(res -> {
-
-             res.setAccommodation(getAccommodation(res.getAccommodation().getId()));
-             res.setUser(getUser(res.getUser().getId()));
-             reservationService.save(res);
-        });
+//        appConfig.deserializeAccomm("jsonFiles/accommodations1.json");
+//        appConfig.getAccommodation().forEach(acc -> {
+//            Address address = getNewAddress(acc.getAddress());
+//            User usr = getNewUser(acc.getUser());
+//            usr.hashPassword();
+//            Accommodation accommodation = new Accommodation(acc.getTitle(), acc.getDescription(),
+//                    acc.getPrice_for_night(), address,usr);
+//            accommodationService.save(accommodation);
+//        });
+//
+//        appConfig.deserializeImage("jsonFiles/images.json");
+//        appConfig.getImages().forEach(img -> {
+//            img.setAccommodation(getAccommodation(img.getAccommodation().getId()));
+//            imageService.save(img);
+//        });
+//
+//
+//        appConfig.deserializeReservation("jsonFiles/reservations.json");
+//        System.out.println(appConfig.getReservations());
+//        appConfig.getReservations().forEach(res -> {
+//
+//             res.setAccommodation(getAccommodation(res.getAccommodation().getId()));
+//             res.setUser(getUser(res.getUser().getId()));
+//             reservationService.save(res);
+//        });
 //
 
     }
