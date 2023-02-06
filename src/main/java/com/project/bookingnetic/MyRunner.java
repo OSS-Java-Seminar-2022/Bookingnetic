@@ -1,3 +1,4 @@
+/*
 package com.project.bookingnetic;
 
 import com.project.bookingnetic.models.*;
@@ -84,4 +85,5 @@ public class MyRunner implements CommandLineRunner {
         return new Address(address.getCountry(), address.getCity(), address.getStreet(), address.getPostalCode());
     }
 }
+*/
 

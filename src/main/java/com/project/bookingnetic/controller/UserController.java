@@ -8,6 +8,7 @@ import com.project.bookingnetic.models.Address;
 import com.project.bookingnetic.models.RoleType;
 import com.project.bookingnetic.models.User;
 //import com.project.bookingnetic.security.UserSecurity;
+import com.project.bookingnetic.service.AccommodationService;
 import com.project.bookingnetic.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,6 +36,9 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserService service;
+
+    @Autowired
+    private AccommodationService accommodationService;
 
     public UserController(UserService service) {
         this.service = service;
@@ -84,6 +88,16 @@ public class UserController {
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<HttpStatus> deleteById(@PathVariable("id") Long id  ){
         return service.deleteById(id);
+    }
+
+
+    @GetMapping("/adminPage")
+    public String showAdminPage(Model model){
+        List<User> allUsers = service.get();
+        List<Accommodation>  allAccommodations = accommodationService.get();
+        model.addAttribute("allUsers", allUsers);
+        model.addAttribute("allAccommodations", allAccommodations);
+        return "admin-page";
     }
 
 }
