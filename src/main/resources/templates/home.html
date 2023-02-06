@@ -9,7 +9,7 @@
 <div  th:style="'background: url(https://images.pexels.com/photos/629167/pexels-photo-629167.jpeg); height:100vh;  width: 100vw; background-size:cover'" class="image"  >
 <div th:replace="~{./includes/header.html :: header}"></div>
 
-<h1 class="text-center text-primary">Welcome to Bookingnetic</h1>
+<h1 class="text-center text-primary mt-5">Welcome to Bookingnetic</h1>
 
 <div class="d-flex justify-content-center align-items-center">
     <p th:text="${session.name}"></p>
@@ -32,8 +32,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-
 </div>
 
 <div th:replace="~{./includes/footer.html :: footer}"></div>

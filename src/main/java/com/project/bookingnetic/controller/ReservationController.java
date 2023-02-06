@@ -1,9 +1,9 @@
 package com.project.bookingnetic.controller;
 
-import ch.qos.logback.core.model.Model;
 import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.service.ReservationService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +35,13 @@ public class ReservationController {
         return new ResponseEntity<>(cityName,HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Reservation> save(Model model){
-//        model.
-//        return ResponseEntity.ok(service.save(reservation));
+    @PostMapping("/create")
+    public String create(HttpSession session){
+
+        Object accomodation = session.getAttribute("selectedAccommodation");
+        Object search = session.getAttribute("search");
+
+//
         return null;
     }
 

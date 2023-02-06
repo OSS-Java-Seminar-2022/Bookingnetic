@@ -62,7 +62,7 @@ public class AccommodationService {
     }
 
 
-    public ModelAndView getAccommodationById(long id) {
+    public ModelAndView renderAccommodationById(long id) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("404");
 
@@ -96,8 +96,6 @@ public class AccommodationService {
 
         });
         return "redirect:/accommodation/"+accom_id;
+
     }
-
 }
-
-

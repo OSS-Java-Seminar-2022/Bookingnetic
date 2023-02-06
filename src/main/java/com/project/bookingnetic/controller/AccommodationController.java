@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 
@@ -35,7 +36,7 @@ public class AccommodationController {
 
     @GetMapping("/{id}")
     public ModelAndView getAccommodationById(@PathVariable(name = "id") long id){
-        return service.getAccommodationById(id);
+        return service.renderAccommodationById(id);
     }
 
     @GetMapping("/findAvailableBySearch")
@@ -51,18 +52,26 @@ public class AccommodationController {
     public ResponseEntity<Accommodation> save(@RequestBody Accommodation accommodation){
         return ResponseEntity.ok(service.save(accommodation));
     }
-    @PostMapping("/{accom_id}/create-reservation")
-    public ResponseEntity<Accommodation> createReservationByAccommodationId(@RequestBody Accommodation accommodation){
-        return ResponseEntity.ok(service.save(accommodation));
+
+    @GetMapping("/{accom_id}/review-reservation")
+    public String createReservationByAccommodationId(@PathVariable(name = "accom_id") long accom_id, HttpSession session){
+        Optional<Accommodation> acc = service.getAccommodationById(accom_id);
+        acc.ifPresent(accommodation -> {
+            session.setAttribute("selectedAccommodation", accommodation);
+            session.setAttribute("accom_id",accom_id);
+        });
+        return "review-reservation";
     }
+
     @PutMapping("/put/{id}")
     public ResponseEntity<Accommodation> update(@PathVariable Long id, @RequestBody Accommodation accommodation) throws MyException {
         var update = service.update(accommodation, id);
         if(update != null) {
             return ResponseEntity.ok(update);
         }
-        throw new MyException("Accommodation Not found");
+        throw new MyException("Accommodation not found");
     }
+
     @PostMapping("/{accom_id}/image")
     public String uploadImage(Model model, @RequestParam("file") MultipartFile file, @PathVariable(name = "accom_id") long accom_id) {
         try {
