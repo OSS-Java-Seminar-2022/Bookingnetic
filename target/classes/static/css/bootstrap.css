@@ -1,0 +1,18 @@
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+fieldset {
+    position:relative;
+}
+
+.help .btn{
+    text-align: right;
+}

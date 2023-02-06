@@ -7,7 +7,12 @@
     <list default="true" id="9a42b659-4421-40f9-b2f0-4791af8758fc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" afterDir="false" />
+>>>>>>> 364807423a79b0f922cabc49a56cd2ff790bc2cc
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/teabasic/Documents/javaSeminar/Bookingnetic/jsonFiles",
+    "last_opened_file_path": "/Users/teabasic/Documents/javaSeminar/Bookingnetic/src/main/resources/templates",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.13351136",
@@ -63,8 +68,13 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/includes" />
       <recent name="$PROJECT_DIR$/jsonFiles" />
       <recent name="$PROJECT_DIR$/src/main/java/com/project/bookingnetic" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BookingneticApplication">
