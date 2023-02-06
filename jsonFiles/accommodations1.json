@@ -1,0 +1,140 @@
+[
+  {
+    "title": "Mountain cabin",
+    "description": "Featuring a balcony and pool views, the apartment includes 1 bedroom, a living room, cable flat-screen TV, an equipped kitchen.",
+    "price_for_night": 50,
+    "creation_date": "2020-01-09",
+    "address": {
+      "id": 1,
+      "country": "Croatia",
+      "city": "Split",
+      "street": "Šoltanska 26",
+      "postalCode": "21000"
+    },
+    "user": {
+      "id": 1,
+      "firstName": "Tea",
+      "lastName": "Basic",
+      "email": "tbasic@gmail.com",
+      "password": "medable123",
+      "phone": "+385917823456",
+      "registrationDate": "2022-01-08",
+      "enumRole": "ROLE_ADMIN"
+    }
+  },
+  {
+    "title": "Luxury Condo",
+    "description": "Located on the beachfront, this property has a restaurant, a bar, a tennis court and free WiFi.",
+    "price_for_night": 100,
+    "creation_date": "2020-01-10",
+    "address": {
+      "id": 2,
+      "country": "Croatia",
+      "city": "Zagreb",
+      "street": "Radićevo šetalište",
+      "postalCode": "10000"
+    },
+    "user": {
+      "id": 2,
+      "firstName": "Josip",
+      "lastName": "Bogunovic",
+      "email": "jboguno@gmail.com",
+      "password": "medable123",
+      "phone": "+385919892331",
+      "registrationDate": "2022-03-07",
+      "enumRole": "ROLE_ADMIN"
+    }
+  },
+  {
+    "title": "Grand Villa 227",
+    "description": "The air-conditioned apartment consists of 1 bedroom, a living room, a fully equipped kitchen with a fridge, and 1 bathroom.",
+    "price_for_night": 50,
+    "creation_date": "2020-01-09",
+    "address": {
+      "id": 3,
+      "country": "Croatia",
+      "city": "Zagreb",
+      "street": "Zorkovačka 1",
+      "postalCode": "10000"
+    },
+    "user": {
+      "id": 3,
+      "firstName": "Vera Marija",
+      "lastName": "Guja",
+      "email": "vmguja@gmail.com",
+      "password": "medable123",
+      "phone": "+385987912332",
+      "registrationDate": "2022-01-01",
+      "enumRole": "ROLE_ADMIN"
+    }
+  },
+  {
+    "title": "Mr. Zhoovi",
+    "description": "Offering a terrace or balcony with views of the city and sea, the units feature air conditioning, a seating area, cable flat-screen TV and kitchenette.",
+    "price_for_night": 100,
+    "creation_date": "2020-01-10",
+    "address": {
+      "id": 4,
+      "country": "Croatia",
+      "city": "Dubrovnik",
+      "street": "Andrije Hebranga 42",
+      "postalCode": "20000"
+    },
+    "user": {
+      "id": 4,
+      "firstName": "Ivana",
+      "lastName": "Mihanovic",
+      "email": "imihan@gmail.com",
+      "password": "medable123",
+      "phone": "+3859922345",
+      "registrationDate": "2022-09-22",
+      "enumRole": "ROLE_USER"
+    }
+  },
+  {
+    "title": "Apartment Grand",
+    "description": "Located in Split within 984 feet of Diocletian's Palace and People's Square - Pjaca, Apartment Grand features accommodations with free WiFi",
+    "price_for_night": 100,
+    "creation_date": "2021-02-11",
+    "address": {
+      "id": 5,
+      "country": "Croatia",
+      "city": "Split",
+      "street": "Split Old Town",
+      "postalCode": "20000"
+    },
+    "user": {
+      "id": 5,
+      "firstName": "Petar",
+      "lastName": "Vidovic",
+      "email": "pvidovic@gmail.com",
+      "password": "medable123",
+      "phone": "+12345678",
+      "registrationDate": "2022-11-21",
+      "enumRole": "ROLE_USER"
+    }
+  },
+  {
+    "title": "Luxury apartment Lioness",
+    "description": "Located in Split, a 12-minute walk from Ovcice Beach and 0.7 miles from Firule, Apartment Carmela provides air-conditioned accommodations with a balcony",
+    "price_for_night": 100,
+    "creation_date": "2021-07-13",
+    "address": {
+      "id": 6,
+      "country": "Croatia",
+      "city": "Split",
+      "street": "Split City Center",
+      "postalCode": "20000"
+    },
+    "user": {
+      "id": 6,
+      "firstName": "Anamarija",
+      "lastName": "Papic",
+      "email": "apapic@gmail.com",
+      "password": "medable123",
+      "phone": "+385956678543",
+      "registrationDate": "2022-11-21",
+      "enumRole": "ROLE_USER"
+    }
+  }
+]

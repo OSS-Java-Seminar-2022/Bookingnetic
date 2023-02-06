@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a42b659-4421-40f9-b2f0-4791af8758fc" name="Changes" comment="">
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/main/resources/templates/review-reservation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/AccommodationController.java" afterDir="false" />
@@ -15,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" afterDir="false" />
-=======
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -27,7 +25,6 @@
       <change beforePath="$PROJECT_DIR$/target/bookingnetic-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/bookingnetic-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
->>>>>>> 582fd98 (removed merge conflicts)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +148,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-<<<<<<< HEAD
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
@@ -166,8 +162,6 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-=======
->>>>>>> 582fd98 (removed merge conflicts)
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.project.bookingnetic.models.Accommodation" memberName="price_for_night" />

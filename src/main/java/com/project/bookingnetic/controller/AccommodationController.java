@@ -39,6 +39,13 @@ public class AccommodationController {
         return service.renderAccommodationById(id);
     }
 
+
+    @GetMapping
+    public ResponseEntity<List<Accommodation>> get(){
+        return ResponseEntity.ok(service.get());
+    }
+
+
     @GetMapping("/findAvailableBySearch")
     public ModelAndView findAvailableBySearch(@ModelAttribute(name = "search") Search search, HttpSession session){
         session.setAttribute("search",search);
@@ -55,7 +62,7 @@ public class AccommodationController {
 
     @GetMapping("/{accom_id}/review-reservation")
     public String createReservationByAccommodationId(@PathVariable(name = "accom_id") long accom_id, HttpSession session){
-        Optional<Accommodation> acc = service.getAccommodationById(accom_id);
+        Optional<Accommodation> acc = service.getById(accom_id);
         acc.ifPresent(accommodation -> {
             session.setAttribute("selectedAccommodation", accommodation);
             session.setAttribute("accom_id",accom_id);

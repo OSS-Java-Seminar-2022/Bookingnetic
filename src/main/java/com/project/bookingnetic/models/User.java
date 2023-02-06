@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -81,6 +83,11 @@ public class User implements Serializable{
         if(this.enumRole.toString().length() > 0)
             return Arrays.asList(this.enumRole.toString().split(","));
         return new ArrayList<>();
+    }
+
+    public void hashPassword(){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        passwordEncoder.encode(this.password);
     }
 
 

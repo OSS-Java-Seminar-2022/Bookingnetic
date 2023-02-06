@@ -57,6 +57,11 @@ public class AccommodationService {
         return repository.findById(id).get();
     }
 
+    public Optional<Accommodation> getById(Long id){
+        return repository.findById(id);
+    }
+
+
     public List<Accommodation> findByCity(String city){
         return repository.findAllByAddress_City(city.toUpperCase());
     }
