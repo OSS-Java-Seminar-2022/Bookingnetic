@@ -2,9 +2,11 @@ package com.project.bookingnetic.service;
 
 import ch.qos.logback.core.model.Model;
 import com.project.bookingnetic.models.Accommodation;
+import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.models.RoleType;
 import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.repository.AccommodationRepository;
+import com.project.bookingnetic.repository.ReservationRepository;
 import com.project.bookingnetic.repository.UserRepository;
 import com.project.bookingnetic.security.UserSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository repo;
     private final AccommodationRepository accommodationRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
 
     public UserService(UserRepository repo,
                        AccommodationRepository accommodationRepository) {
@@ -80,8 +84,10 @@ public class UserService implements UserDetailsService {
 
         opt.ifPresent(user -> {
             mav.addObject("user", user);
-            List<Accommodation> accommodations = accommodationRepository.getAccommodationByUserFk(user.getId());
+            List<Accommodation> accommodations = accommodationRepository.getAccommodationsByUserFk(user.getId());
+            List<Reservation> reservations = reservationRepository.getReservationsByUserFk(user.getId());
             mav.addObject("accommodations",accommodations);
+            mav.addObject("reservations",reservations);
         });
         mav.setViewName("/account");
 

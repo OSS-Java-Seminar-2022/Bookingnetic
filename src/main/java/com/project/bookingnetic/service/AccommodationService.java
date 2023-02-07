@@ -64,11 +64,15 @@ public class AccommodationService {
 
 
     public List<Accommodation> findByCity(String city){
+<<<<<<< HEAD
         return repository.findAllByAddress_City(StringUtils.capitalize(city.toLowerCase()));
     }
 
     public  List<Accommodation> findByUser(Long id){
         return repository.getAccommodationByUserFk(id);
+=======
+        return repository.findAllByAddress_City(city);
+>>>>>>> 01200d751da4796cefa8954c1dfd3f27f639a457
     }
 
 

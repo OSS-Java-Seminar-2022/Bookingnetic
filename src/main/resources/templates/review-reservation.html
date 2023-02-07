@@ -11,22 +11,24 @@
 <body>
   <div th:replace="~{./includes/header.html :: header}"></div>
 
-    <div>
-      Are you sure you want to submit your reservation?
-      <p th:text="${session.selectedAccommodation.title}"></p>
-      <p th:text="${session.search.dateFrom}"></p>
-      <p th:text="${session.search.dateTo}"></p>
-      <p th:text="'Total price: '+${session.total_days}*${session.selectedAccommodation.price_for_night} + '$'"></p>
+    <div th:unless="${session.user_id == null}">
 
+      <form th:action="@{/reservation/create}" th:object="${createReservation}" th:method="post">
+      Are you sure you want to submit your reservation?<br>
+      <input type="text" name="title" th:value="${session.selectedAccommodation.title}">
+      <input type="date" name="dateFrom" th:value="${session.search.dateFrom}">
+      <input type="date" name="dateTo" th:value="${session.search.dateTo}">
+      <input name="totalPrice" th:value="${session.total_days}*${session.selectedAccommodation.price_for_night}">
 
-      <a th:href="@{/reservation/create}">
-        <button class="btn btn-primary">Confirm</button>
-      </a>
-      <a th:href="@{/reservation/cancel}">
-        <button class="btn btn-warning">Cancel</button>
-      </a>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+      </form>
+      <form th:action="@{/reservation/cancel}" th:method="post">
+        <button type="submit" class="btn btn-primary">Cancel</button>
+      </form>
+
 
     </div>
+  <h2 th:if="${session.user_id==null}"> Log in please</h2>
 
   <div th:replace="~{./includes/footer.html :: footer}"></div>
 </body>
