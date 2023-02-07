@@ -1,5 +1,7 @@
 package com.project.bookingnetic.models;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -60,6 +62,17 @@ public class AppConfig {
         }
 
         return this;
+    }
+
+    public void serializeImage(String filepath){
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        File file = new File(filepath);
+        try {
+            mapper.writeValue(file, this.images);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public AppConfig deserializeAccomm(String file){

@@ -7,7 +7,7 @@
     "address": {
       "id": 1,
       "country": "Croatia",
-      "city": "Split",
+      "city": "SPLIT",
       "street": "Šoltanska 26",
       "postalCode": "21000"
     },
@@ -30,7 +30,7 @@
     "address": {
       "id": 2,
       "country": "Croatia",
-      "city": "Zagreb",
+      "city": "ZAGREB",
       "street": "Radićevo šetalište",
       "postalCode": "10000"
     },
@@ -53,7 +53,7 @@
     "address": {
       "id": 3,
       "country": "Croatia",
-      "city": "Zagreb",
+      "city": "ZAGREB",
       "street": "Zorkovačka 1",
       "postalCode": "10000"
     },
@@ -76,7 +76,7 @@
     "address": {
       "id": 4,
       "country": "Croatia",
-      "city": "Dubrovnik",
+      "city": "DUBROVNIK",
       "street": "Andrije Hebranga 42",
       "postalCode": "20000"
     },
@@ -99,7 +99,7 @@
     "address": {
       "id": 5,
       "country": "Croatia",
-      "city": "Split",
+      "city": "SPLIT",
       "street": "Split Old Town",
       "postalCode": "20000"
     },
@@ -122,7 +122,7 @@
     "address": {
       "id": 6,
       "country": "Croatia",
-      "city": "Split",
+      "city": "SPLIT",
       "street": "Split City Center",
       "postalCode": "20000"
     },

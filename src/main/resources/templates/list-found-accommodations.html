@@ -19,29 +19,31 @@
         <h2 th:if="${pairList.size() == 0}">No accommodations found </h2>
         <div d-flex th:unless="${pairList.size() == 0}">
             <h4>We found these accommodations for you</h4>
-            <ul th:each="item : ${pairList}">
-                <!--<div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p th:text="${accom.description}" class="card-text"></p>
-                        <h5 th:text="${accom.title}" class="card-title"></h5>
-                        <p th:text="${accom.description}" class="card-text"></p>
-                        <p th:text="'Total price: '+ ${session.total_days}*${accom.price_for_night}"></p>
-                        <a th:href="@{/accommodation/{id}/reservation(id = ${accom.id})}" class="btn btn-primary">Book now!</a>
-                    </div>
-                </div>-->
 
-                <div class="card" style="width: 18rem;">
-                    <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + item.image }" alt="" th:width="200px" th:height="200px"></td>
-                    <div class="card-body">
-                        <h5 th:text="${item.accommodation.title}" class="card-title"></h5>
-                        <p th:text="${item.accommodation.description}" class="card-text"></p>
-                        <p th:text="'Total price: '+ ${session.total_days}*${item.accommodation.price_for_night}"></p>
-                        <a th:href="@{/accommodation/{id}/reservation(id = ${item.accommodation.id})}" class="btn btn-primary">Book now!</a>
-                    </div>
-                </div>
+                    <div th:each="item : ${pairList}" class="d-inline-flex p-2">
 
-            </ul>
+                        <!--<div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p th:text="${accom.description}" class="card-text"></p>
+                                <h5 th:text="${accom.title}" class="card-title"></h5>
+                                <p th:text="${accom.description}" class="card-text"></p>
+                                <p th:text="'Total price: '+ ${session.total_days}*${accom.price_for_night}"></p>
+                                <a th:href="@{/accommodation/{id}/reservation(id = ${accom.id})}" class="btn btn-primary">Book now!</a>
+                            </div>
+                        </div>-->
+
+                        <div class="card" style="width: 18rem;">
+                            <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + item.image }" class="card-img-top"  alt="" th:width="200px" th:height="200px"></td>
+                            <div class="card-body">
+                                <h5 th:text="${item.accommodation.title}" class="card-title"></h5>
+                                <p th:text="${item.accommodation.description}" class="card-text"></p>
+                                <p th:text="'Total price: '+ ${session.total_days}*${item.accommodation.price_for_night}"></p>
+                                <a th:href="@{/accommodation/{id}/reservation(id = ${item.accommodation.id})}" class="btn btn-primary">Book now!</a>
+                            </div>
+                        </div>
+
+                    </div>
         </div>
     </div>
 

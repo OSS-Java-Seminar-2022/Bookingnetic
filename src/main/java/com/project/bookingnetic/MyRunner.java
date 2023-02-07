@@ -1,4 +1,4 @@
-/*
+
 package com.project.bookingnetic;
 
 import com.project.bookingnetic.models.*;
@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class MyRunner implements CommandLineRunner {
@@ -33,14 +36,14 @@ public class MyRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        AppConfig appConfig = new AppConfig();
+       // AppConfig appConfig = new AppConfig();
 
 //        appConfig.deserializeAddress("jsonFiles/addresses.json");
 //        appConfig.getAddress().forEach(addressService::save);
 //
 //        appConfig.deserializeUser("jsonFiles/users.json");
 //        appConfig.getUsers().forEach(userService::hashAndSaveUser);
-
+//
 //        appConfig.deserializeAccomm("jsonFiles/accommodations1.json");
 //        appConfig.getAccommodation().forEach(acc -> {
 //            Address address = getNewAddress(acc.getAddress());
@@ -66,7 +69,7 @@ public class MyRunner implements CommandLineRunner {
 //             res.setUser(getUser(res.getUser().getId()));
 //             reservationService.save(res);
 //        });
-//
+
 
     }
 
@@ -85,5 +88,5 @@ public class MyRunner implements CommandLineRunner {
         return new Address(address.getCountry(), address.getCity(), address.getStreet(), address.getPostalCode());
     }
 }
-*/
+
 

@@ -13,6 +13,4 @@ public class Search {
     private String city;
     private LocalDate dateFrom;
     private LocalDate dateTo;
-
-
 }
