@@ -11,34 +11,30 @@
 <body >
 <div th:replace="~{./includes/header.html :: header}"></div>
 
-<div class="d-flex vh-100 vw-100 justify-content-center align-items-start flex-direction-column">
+<div class="d-flex justify-content-center vh-75 border border-1 rounded box-shadow">
+        <h2 th:if="${pairList.size() == 0}">No users found </h2>
+        <div d-flex th:unless="${pairList.size() == 0}">
+                <h5>All users and their accommodations</h5>
+                <div th:each="item : ${pairList}" class="d-flex justify-content-left vh-75 border border-1 rounded box-shadow">
+                    <div class="p-3 w-40 h-75 align-items-start">
+                        <ul class="list-group">
+                            <li th:text = "'Full Name:' + ${item.user.firstName} +' '+ ${item.user.lastName}" class="list-group-item"></li>
+                            <li class="list-group-item" th:text="'Email: ' + ${item.user.email}"></li>
+                            <li class="list-group-item" th:text="'Phone: ' + ${item.user.phone}"></li>
+                        </ul>
+                    </div>
+                    <div class="p-3 w-35 h-75 start" th:each="acc : ${item.accommodations}">
+                        <ul class="list-group">
+                            <li th:text = "'Title:' + ${acc.title}" class="list-group-item">
+                            </li>
+                            <li th:text = "'Price_For_Night:' + ${acc.price_for_night}" class="list-group-item"></li>
+                            <li th:text = "'City:' + ${acc.address.getCity()}" class="list-group-item"></li>
+                        </ul>
+                    </div>
+                    </div>
+                    </div>
 
-    <div class="mt-4 w-75">
-        <h2 th:if="${allUsers.size() == 0}">No users found </h2>
-        <div d-flex th:unless="${allUsers.size() == 0}">
-            <div>
-                <h4>USERS</h4>
-                <table>
-                    <tr>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                    </tr>
-                    <ul th:each="user : ${allUsers}">
-                    <tr>
-                        <td th:text= "${user.firstName}"></td>
-                        <td th:text= "${user.lastName}"></td>
-                        <td th:text= "${user.email}"></td>
-                        <td th:text= "${user.enumRole}"></td>
-                    </tr>
-            </ul>
-                </table>
-        </div>
-    </div>
-
-</div>
-
+            </div>
 
 
 <div th:replace="~{./includes/footer.html :: footer}"></div>

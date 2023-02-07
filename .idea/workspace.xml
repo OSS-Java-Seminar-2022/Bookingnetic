@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a42b659-4421-40f9-b2f0-4791af8758fc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/AccommUserPair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonFiles/accommodations1.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonFiles/accommodations1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonFiles/images.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonFiles/images.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AccommodationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin-page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -58,11 +60,11 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/teabasic/Documents/javaSeminar/Bookingnetic/src/main/resources/templates",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.13351136",
     "project.structure.side.proportion": "0.15432101",
     "settings.editor.selected.configurable": "preferences.lookFeel",
-    "spring.configuration.checksum": "b98815a8d14424aa1dafeefe5b0f35f5"
+    "spring.configuration.checksum": "532f39cd16dd5b9adfa17cc7e9d99e98"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -93,9 +95,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="generated-requests | #78" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="78" requestIdentifier="#78" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="BookingneticApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
-      <module name="Bookingnetic" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="bookingnetic" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.bookingnetic.BookingneticApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -104,8 +111,14 @@
     <list>
       <item itemvalue="Application.Unnamed" />
       <item itemvalue="Application.BookingneticApplication" />
+      <item itemvalue="HTTP Request.generated-requests | #78" />
       <item itemvalue="Spring Boot.BookingneticApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests | #78" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -122,6 +135,7 @@
       <workItem from="1675684488161" duration="598000" />
       <workItem from="1675721705408" duration="4164000" />
       <workItem from="1675788249810" duration="4871000" />
+      <workItem from="1675795144040" duration="14348000" />
     </task>
     <servers />
   </component>

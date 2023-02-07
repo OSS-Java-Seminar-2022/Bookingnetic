@@ -3,10 +3,7 @@ package com.project.bookingnetic.controller;
 
 
 import com.project.bookingnetic.exception.MyException;
-import com.project.bookingnetic.models.Accommodation;
-import com.project.bookingnetic.models.Address;
-import com.project.bookingnetic.models.RoleType;
-import com.project.bookingnetic.models.User;
+import com.project.bookingnetic.models.*;
 //import com.project.bookingnetic.security.UserSecurity;
 import com.project.bookingnetic.service.AccommodationService;
 import com.project.bookingnetic.service.UserService;
@@ -27,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -73,7 +71,6 @@ public class UserController {
 
     @GetMapping("/{user_id}")
     public ModelAndView showAccount(Model model,HttpSession session, @PathVariable(name = "user_id") long id){
-
         return service.showAccount(id);
     }
     @PutMapping("/put/{id}")
@@ -91,13 +88,23 @@ public class UserController {
     }
 
 
+
     @GetMapping("/adminPage")
     public String showAdminPage(Model model){
         List<User> allUsers = service.get();
-        List<Accommodation>  allAccommodations = accommodationService.get();
-        model.addAttribute("allUsers", allUsers);
-        model.addAttribute("allAccommodations", allAccommodations);
+        List<AccommUserPair> pairList = new ArrayList<>();
+        allUsers.forEach(user -> {
+            List<Accommodation> accommodations = accommodationService.findByUser(user.getId());
+            pairList.add(new AccommUserPair(accommodations, user));
+        });
+        model.addAttribute("pairList", pairList);
         return "admin-page";
+
+
+
+        //List<Accommodation>  allAccommodations = accommodationService.get();
+        //model.addAttribute("allUsers", allUsers);
+        //model.addAttribute("allAccommodations", allAccommodations);*/
     }
 
     @GetMapping(path = "/delete/{acc_id}/{user_id}")

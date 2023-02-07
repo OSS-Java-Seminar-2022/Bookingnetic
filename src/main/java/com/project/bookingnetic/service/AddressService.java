@@ -3,6 +3,7 @@ package com.project.bookingnetic.service;
 import com.project.bookingnetic.models.Address;
 import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.repository.AddressRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,8 @@ public class AddressService {
     }
 
     public Address save(Address address){
-        address.setCity(address.getCity().toUpperCase());
+        var city = address.getCity();
+        address.setCity(StringUtils.capitalize(city));
         return repository.save(address);
     }
 
