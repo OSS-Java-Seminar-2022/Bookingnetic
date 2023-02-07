@@ -1,8 +1,10 @@
 package com.project.bookingnetic.service;
 
 import com.project.bookingnetic.models.*;
+import com.project.bookingnetic.repository.AccommodationRepository;
 import com.project.bookingnetic.repository.ImageRepository;
 import com.project.bookingnetic.repository.ReservationRepository;
+import com.project.bookingnetic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,12 @@ public class ReservationService {
     private ReservationRepository repository;
     @Autowired
     private ImageRepository imageRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private AccommodationRepository accommodationRepository;
 
     public ReservationService(ReservationRepository repository, ImageRepository imageRepository) {
         this.repository = repository;
@@ -153,5 +161,37 @@ public class ReservationService {
         return mav;
     }
 
+    public String createReservation(long userId, long accommodationId, CreateReservation createReservation) {
+        Reservation reservation = new Reservation(LocalDate.now(),createReservation.getDateFrom(),createReservation.getDateTo(),createReservation.getTotalPrice());
+
+        Optional<User> userOpt = userRepository.findById(userId);
+        Optional<Accommodation> accomOpt = accommodationRepository.findById(accommodationId);
+
+        userOpt.ifPresent(user -> reservation.setUser(user));
+        accomOpt.ifPresent(accommodation -> reservation.setAccommodation(accommodation));
+
+        try{
+            repository.save(reservation);
+            return "redirect:/reservation/"+reservation.getId();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return "500";
+        }
+
+    }
+
+    public ModelAndView renderReservation(long id) {
+        ModelAndView mav = new ModelAndView("404");
+
+        Optional<Reservation> reservationOpt = repository.findById(id);
+
+        reservationOpt.ifPresent(reservation -> {
+            mav.addObject("reservation",reservation);
+            mav.setViewName("render-reservation");
+        });
+
+        return mav;
+    }
 }
 

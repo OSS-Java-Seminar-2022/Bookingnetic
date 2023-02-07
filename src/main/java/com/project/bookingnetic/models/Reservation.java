@@ -59,6 +59,13 @@ public class Reservation {
         this.accommodation = accommodation;
     }
 
+    public Reservation(LocalDate now, LocalDate dateFrom, LocalDate dateTo, BigDecimal totalPrice) {
+        this.checkIn = dateFrom;
+        this.checkOut = dateTo;
+        this.reservation_date = now;
+        this.price = totalPrice;
+    }
+
     public void setParameters(LocalDate reservation_date, LocalDate checkIn, LocalDate checkOut,
                          BigDecimal price, User user, Accommodation accommodation){
         this.reservation_date = reservation_date;

@@ -1,6 +1,8 @@
 package com.project.bookingnetic.controller;
 
+import ch.qos.logback.core.model.Model;
 import com.project.bookingnetic.exception.MyException;
+import com.project.bookingnetic.models.CreateReservation;
 import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.service.ReservationService;
 import jakarta.servlet.http.HttpSession;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -36,13 +39,21 @@ public class ReservationController {
     }
 
     @PostMapping("/create")
-    public String create(HttpSession session){
+    public String create(@ModelAttribute CreateReservation createReservation, HttpSession session){
+        Object accomId = session.getAttribute("accom_id");
+        Object userId = session.getAttribute("user_id");
 
-        Object accomodation = session.getAttribute("selectedAccommodation");
-        Object search = session.getAttribute("search");
+        long accom = Long.valueOf(accomId.toString());
+        long user = Long.valueOf(userId.toString());
 
-//
-        return null;
+
+        return  service.createReservation(user,accom,createReservation);
+
+    }
+    @GetMapping("/{id}")
+    public ModelAndView create(@PathVariable long id){
+
+        return service.renderReservation(id);
     }
 
     @PutMapping("/put/{id}")

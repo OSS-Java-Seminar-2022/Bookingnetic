@@ -33,18 +33,20 @@
 
             </div>
             <div class="p-3 w-25 h-75 align-items-start">
-                <h3>my reservations</h3>-->
-<!--                <div th:if="${acc.reservations.size() == 0}">-->
-<!--                    <p>You have no reservations</p>-->
-<!--                </div>-->
-<!--                <div th:unless="${acc.reservations.size() == 0}">-->
-<!--                    <p>You have reservations</p>-->
-<!--                </div>-->
+                <h3>my reservations</h3>
+                <div th:if="${reservations.size() == 0}">
+                    <p>You have no reservations</p>
+                </div>
+                <div th:unless="${reservations.size() == 0}">
+                    <div th:each="reservation : ${reservations}">
+                        <a th:href="@{/reservation/{id}(id = ${reservation.id})}" th:text="${reservation.accommodation.title}"></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div th:unless="${session.firstName != null}">
             <h3>You dont have authorization for this site!</h3>
-            <a  th:href="@{~/login}">Plese log in...</a>
+            <a  th:href="@{~/login}">Please log in...</a>
         </div>
 
 
