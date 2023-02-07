@@ -100,4 +100,10 @@ public class UserController {
         return "admin-page";
     }
 
+    @GetMapping(path = "/delete/{acc_id}/{user_id}")
+    public String Accommodation(@PathVariable("acc_id") Long acc_id, @PathVariable("user_id") Long user_id){
+        accommodationService.deleteById(acc_id);
+        return "redirect:/user/" + user_id;
+    }
+
 }

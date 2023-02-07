@@ -60,6 +60,7 @@ public class AccommodationController {
     public ResponseEntity<Accommodation> save(@RequestBody Accommodation accommodation){
         return ResponseEntity.ok(service.save(accommodation));
     }
+
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable Long id, Model model){
         model.addAttribute("accommodation", service.findById(id));

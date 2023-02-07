@@ -32,7 +32,6 @@ com/project/bookingnetic/repository/AddressRepository.class
 com/project/bookingnetic/models/RoleType.class
 com/project/bookingnetic/models/RoleType$Code.class
 com/project/bookingnetic/controller/AddressController.class
-com/project/bookingnetic/MyRunner.class
 com/project/bookingnetic/models/Search.class
 com/project/bookingnetic/BookingneticApplication.class
 com/project/bookingnetic/security/UserSecurity.class

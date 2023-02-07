@@ -36,12 +36,12 @@ public class Accommodation {
     @Column(name = "creation_date")
     private LocalDate creation_date;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_fk", referencedColumnName = "id")
     private Address address;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "user_fk", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
