@@ -40,7 +40,7 @@
                                 <h5 th:text="${item.accommodation.title}" class="card-title "></h5>
                                 <p th:text="${item.accommodation.description}" class="card-text word-wrap"></p>
                                 <p th:text="'Total price: '+ ${session.total_days}*${item.accommodation.price_for_night}"></p>
-                                    <a th:href="@{/accommodation/{id}/reservation(id = ${item.accommodation.id})}" class="btn mt-auto w-50 btn-primary pull-right">Book now!</a>
+                                    <a th:href="@{/accommodation/{id}/review-reservation(id = ${item.accommodation.id})}" class="btn mt-auto w-50 btn-primary pull-right">Book now!</a>
                             </div>
                         </div>
 
