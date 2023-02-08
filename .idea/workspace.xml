@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9a42b659-4421-40f9-b2f0-4791af8758fc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonFiles/accommodations1.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonFiles/accommodations1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/MyRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/list-found-accommodations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/list-found-accommodations.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +96,7 @@
       <option name="ACTIVE_PROFILES" />
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <module name="Bookingnetic" />
+      <module name="bookingnetic" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.bookingnetic.BookingneticApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -137,6 +131,7 @@
       <workItem from="1675788249810" duration="4871000" />
       <workItem from="1675795144040" duration="14348000" />
       <workItem from="1675811005733" duration="117000" />
+      <workItem from="1675894721083" duration="3183000" />
     </task>
     <servers />
   </component>
