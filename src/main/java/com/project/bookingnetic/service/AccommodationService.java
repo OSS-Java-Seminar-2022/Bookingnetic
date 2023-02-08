@@ -14,10 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AccommodationService {
@@ -81,14 +78,16 @@ public class AccommodationService {
         accOpt.ifPresent(accommodation -> {
             List<Image> images = imageRepository.findByAccommodationFk(accommodation.getId());
             List<String> encodedImages = new ArrayList<>();
+            HashMap<Integer,String> map = new HashMap<Integer,String>();
 
             images.forEach(image -> {
                 var img = Base64.getEncoder().encodeToString(image.getImg());
+                map.put((int)image.getId(), img);
                 encodedImages.add(img);
             });
 
             mav.setViewName("render-accommodation");
-            mav.addObject("images",encodedImages);
+            mav.addObject("images",map);
             mav.addObject(accommodation);
         });
 

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -79,4 +80,21 @@ public class ImageController {
         return "show_image";
     }
 
+    @GetMapping("/show/{img_id}/{acc_id}")
+    public String deleteFromAcc(Model model, @PathVariable("img_id") long imgID, @PathVariable("acc_id") long accID)
+    {
+        var img = Base64.getEncoder().encodeToString(service.showProductImage(imgID).getImg());
+        model.addAttribute("image", img);
+        model.addAttribute("id", imgID);
+        model.addAttribute("accID", accID);
+
+        //service.deleteById(imgID);
+        return "show_image";
+    }
+
+    @GetMapping(path = "/delete/{img_id}/{acc_id}")
+    public String Accommodation(@PathVariable("img_id") Long imgId, @PathVariable("acc_id") Long accId){
+        service.deleteById(imgId);
+        return "redirect:/accommodation/" + accId;
+    }
 }
