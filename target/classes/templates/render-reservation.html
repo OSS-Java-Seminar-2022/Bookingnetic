@@ -11,14 +11,18 @@
 <body>
   <div th:replace="~{./includes/header.html :: header}"></div>
 
-    <div th:if="${session.user_id == reservation.user.id}">
-      <p th:text="${reservation.user.firstName} + ' ' + ${reservation.user.lastName}"></p>
-      <p th:text="'Accommodation: '+ ${reservation.accommodation.title}"></p>
-      <p th:text="'Dates: ' + ${reservation.checkIn} + ' ' + ${reservation.checkOut}"></p>
-      <p th:text="'Total Price: ' + ${reservation.price} "></p>
+    <div class="d-flex align-item-center justity-content-center">
+      <ul class="list-group list-group-flush" th:if="${session.user_id == reservation.user.id}">
+        <li class="list-group-item" th:text="${reservation.user.firstName} + ' ' + ${reservation.user.lastName}"></li>
+        <li class="list-group-item" th:text="'Accommodation: '+ ${reservation.accommodation.title}"></li>
+        <li class="list-group-item" th:text="'Dates: ' + ${reservation.checkIn} + ' ' + ${reservation.checkOut}"></li>
+        <li class="list-group-item" th:text="'Total Price: ' + ${reservation.price} "></li>
+      </ul>
+      <form action=""></form>
     </div>
+
     <div th:unless="${session.user_id == reservation.user.id}">
-      You dont have the permission to do that, please log in to see your reservations!
+      You don't have the permission to do that, please log in to see your reservations!
     </div>
   <div th:replace="~{./includes/footer.html :: footer}"></div>
 </body>
