@@ -118,18 +118,19 @@ public class ReservationService {
         ModelAndView mav = new ModelAndView();
         LocalDate userCheckIn = search.getDateFrom();
         LocalDate userCheckOut = search.getDateTo();
+        if(search.getDateTo().isBefore(search.getDateFrom())) {
+            mav.setViewName("error-wrong-dates");
+            return mav;
+        }
         Boolean accommodationAvailable = true;
         List<AccommImagePair> pairList = new ArrayList<>();
-
         for(int i = 0; i < accommodationList.size();++i) {
             var a = accommodationList.get(i);
             List<Reservation> reservations = findReservationsByAccommodationId(a.getId());
-
             for(int j = 0; j < reservations.size();++j) {
                 var r = reservations.get(j);
                 LocalDate checkIn = r.getCheckIn();
                 LocalDate checkOut = r.getCheckOut();
-
                 if (userCheckIn.equals(checkIn) ||
                         userCheckIn.equals(checkOut) ||
                         userCheckOut.equals(checkIn) ||
@@ -140,7 +141,6 @@ public class ReservationService {
                         userCheckIn.isAfter(checkIn) && userCheckOut.isBefore(checkOut)) {
                     accommodationAvailable = false;
                 }
-
             }
             if (accommodationAvailable) {
                 Optional<Image> image = returnAccommImage(a);

@@ -52,7 +52,6 @@ public class AccommodationController {
     public ModelAndView findAvailableBySearch(@ModelAttribute(name = "search") Search search, HttpSession session){
         session.setAttribute("search",search);
         session.setAttribute("total_days", DAYS.toChronoUnit().between(search.getDateFrom(), search.getDateTo()));
-
         List<Accommodation> accommodationList = service.findByCity(search.getCity());
         return reservationService.findAvailable(search, accommodationList);
     }

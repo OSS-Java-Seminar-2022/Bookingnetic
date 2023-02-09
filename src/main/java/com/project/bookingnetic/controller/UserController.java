@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/user")
@@ -101,6 +103,12 @@ public class UserController {
         return "admin-page";
     }
 
+    public boolean checkEmailTaken(User user) {
+        List<User> allUsers = service.get();
+        List<String> emailList = allUsers.stream().map(u -> u.getEmail()).toList();
+        return emailList.contains(user.getEmail());
+    }
+
     @GetMapping("/addNewUser")
     public String adminAddUser(Model model){
         User user = new User();
@@ -110,9 +118,11 @@ public class UserController {
 
     @PostMapping("/addNewUser")
     public String adminAddUser(@ModelAttribute("user") User user){
-        // save device to database
+        if(checkEmailTaken(user)){
+            return "bad-credentials";
+        }
         service.hashAndSaveUser(user);
-        return "home";
+        return "redirect:/user/adminPage";
     }
 
 
