@@ -11,19 +11,49 @@
 <body>
   <div th:replace="~{./includes/header.html :: header}"></div>
 
-    <div class="d-flex align-item-center justity-content-center">
-      <ul class="list-group list-group-flush" th:if="${session.user_id == reservation.user.id}">
-        <li class="list-group-item" th:text="${reservation.user.firstName} + ' ' + ${reservation.user.lastName}"></li>
-        <li class="list-group-item" th:text="'Accommodation: '+ ${reservation.accommodation.title}"></li>
-        <li class="list-group-item" th:text="'Dates: ' + ${reservation.checkIn} + ' ' + ${reservation.checkOut}"></li>
-        <li class="list-group-item" th:text="'Total Price: ' + ${reservation.price} "></li>
-      </ul>
-      <form action=""></form>
+    <div class="d-flex align-items-center justify-content-center flex-column vw-100 vh-100">
+      <div class="w-50">
+        <ul class="list-group list-group-flush" th:if="${session.user_id == reservation.user.id}">
+          <li class="list-group-item" th:text="${reservation.user.firstName} + ' ' + ${reservation.user.lastName}"></li>
+          <li class="list-group-item" th:text="'Accommodation: '+ ${reservation.accommodation.title}"></li>
+          <li class="list-group-item" th:text="'Dates: ' + ${reservation.checkIn} + ' - ' + ${reservation.checkOut}"></li>
+          <li class="list-group-item" th:text="'Total Price: ' + ${reservation.price} "></li>
+        </ul>
+        <button data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-outline-danger btn-sm rounded-pill" data-target="#myModal">
+          Cancel Reservation
+        </button>
+      </div>
     </div>
+
 
     <div th:unless="${session.user_id == reservation.user.id}">
       You don't have the permission to do that, please log in to see your reservations!
     </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Delete accommodation:</h5>
+          <a th:href="@{/reservation/{id}(id=${reservation.id})}" class="close btn btn-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to cancel this reservation?
+          <form th:action="@{/reservation/delete/{id}(id = ${reservation.id})  }" th:method="post">
+            <button type="submit" class="btn btn-outline-danger">Yes</button>
+          </form>
+          <button type="button" th:href="@{/reservation/{id}(id=${reservation.id})}" class="btn btn-primary">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <div th:replace="~{./includes/footer.html :: footer}"></div>
 </body>
 </html>

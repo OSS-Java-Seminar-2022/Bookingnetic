@@ -55,12 +55,12 @@ public class ReservationService {
         return null;
     }
 
-    public ResponseEntity<HttpStatus> deleteById(Long id) {
+    public String deleteById(Long id) {
         try {
             repository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return "redirect:/";
         } catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return "404";
         }
     }
 

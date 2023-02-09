@@ -65,8 +65,8 @@ public class ReservationController {
         throw new MyException("Reservation Not found");
     }
 
-    @DeleteMapping(path = "/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteById(@PathVariable("id") Long id  ){
+    @PostMapping(path = "/delete/{id}")
+    public String deleteById(@PathVariable("id") Long id  ){
         return service.deleteById(id);
     }
 }
