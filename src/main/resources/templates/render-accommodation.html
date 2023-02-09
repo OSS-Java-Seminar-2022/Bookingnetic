@@ -29,7 +29,12 @@
     <p class="mt-3 " th:text="${accommodation.price_for_night}+'$/night' "></p>
     <p th:text="${accommodation.address.street} + ', ' + ${accommodation.address.city}"></p>
 
+<<<<<<< HEAD
     <form th:if="${session.user_id == accommodation.user.id}" name="f" th:action="@{{accom_id}/image(accom_id=${accommodation.id})}" th:method="post" enctype="multipart/form-data" class="mt-2 mb-2">
+=======
+    
+    <form name="f" th:action="@{{accom_id}/image(accom_id=${accommodation.id})}" th:method="post" enctype="multipart/form-data" class="mt-2 mb-2">
+>>>>>>> d5ee72b (update)
       <div class="d-flex align-content-end flex-wrap mb-2 mt-4">
         <label for="input-file" class="custom-file-upload">
           Upload Image
@@ -81,28 +86,6 @@
         </div>
       </div>
     </div>
-
-<!--    <div  class="modal fade" th:id="picModal+${entry.key }" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
-<!--      <div class="modal-dialog modal-dialog-centered" role="document">-->
-<!--        <div class="modal-content">-->
-<!--          <div class="modal-header">-->
-<!--            <h5 class="modal-title" id="picModalLongTitle">Are u sure you want to delete image?:</h5>-->
-<!--            <a th:href="@{/accommodation/{accomId}(accomId=${accommodation.id})}" class="close btn btn-light" data-dismiss="modal" aria-label="Close">-->
-<!--              <span aria-hidden="true">&times;</span>-->
-<!--            </a>-->
-<!--          </div>-->
-<!--          <div class="modal-body">-->
-<!--            Are you sure you want to delete accomodation from your account?-->
-<!--          </div>-->
-<!--          <div class="modal-footer">-->
-<!--            <a th:href="@{/accommodation/{accomId}(accomId=${accommodation.id})}" class="btn btn-primary">-->
-<!--              Cancel-->
-<!--            </a>-->
-<!--            <a th:href="@{/image/delete/{acc_id}/{user_id} (acc_id=${accommodation.id}, user_id=${session.user_id})}" class="btn btn-outline-danger">Delete</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
 
   </div>
 </div>

@@ -24,3 +24,16 @@ fieldset {
 .divstl{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
 
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+li.borderless { border-top: 0 none; }
+.list-group li:nth-child(1){
+    border-top: 0 none;
+}
+

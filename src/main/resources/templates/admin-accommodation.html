@@ -16,36 +16,17 @@
 <div th:replace="~{./includes/header.html :: header}"></div>
 <div class="d-flex flex-column vw-100 vh-100 align-items-center mt-3" th:object="${images}">
   <div class="w-75 mt-3">
-    <div th:if="${session.user_id == accommodation.user.id}" class="col-md-12 d-flex">
+    <div class="col-md-12 d-flex">
       <h3 th:text="${accommodation.title}"></h3>&nbsp;&nbsp;&nbsp;
-      <a th:href="@{/accommodation/edit/{id}(id=${accommodation.id})}" class="btn btn-outline-primary btn-sm rounded-pill">
-        <i class="material-icons">&#xE254;</i>
-      </a>&nbsp;
       <button data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-outline-danger btn-sm rounded-pill" data-target="#myModal">
         <i class="material-icons">&#xE872;</i>
       </button>
     </div>
-    <p class="mt-3 " th:text="${accommodation.description}" ></p>
+    <p class="mt-3 " th:text="${accommodation.description}"></p>
     <p class="mt-3 " th:text="${accommodation.price_for_night}+'$/night' "></p>
     <p th:text="${accommodation.address.street} + ', ' + ${accommodation.address.city}"></p>
 
-<<<<<<< HEAD
-    <form th:if="${session.user_id == accommodation.user.id}" name="f" th:action="@{{accom_id}/image(accom_id=${accommodation.id})}" th:method="post" enctype="multipart/form-data" class="mt-2 mb-2">
-=======
-    
-    <form name="f" th:action="@{{accom_id}/image(accom_id=${accommodation.id})}" th:method="post" enctype="multipart/form-data" class="mt-2 mb-2">
->>>>>>> d5ee72b (update)
-      <div class="d-flex align-content-end flex-wrap mb-2 mt-4">
-        <label for="input-file" class="custom-file-upload">
-          Upload Image
-        </label>
-        <span class="text-black text-start mt-2 mx-1">No file chosen...</span>
-        <input id="input-file" type="file" name="file" accept="image/png, image/jpeg" required/>
-        <button type="submit" class="btn btn-primary rounded-pill">Add image</button>
-      </div>
-    </form>
-
-    <h4 th:if="${images == null}"> You didn't upload any images</h4>
+    <h4 th:if="${images == null}"> No images</h4>
 
     <div class="container w-75 ms-4">
       <div th:unless="${images==null}" th:object="${image}" class="row">

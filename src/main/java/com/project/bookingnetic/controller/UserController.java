@@ -7,29 +7,29 @@ import com.project.bookingnetic.models.*;
 //import com.project.bookingnetic.security.UserSecurity;
 import com.project.bookingnetic.service.AccommodationService;
 import com.project.bookingnetic.service.UserService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
+=======
+>>>>>>> d5ee72b (update)
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Optional;
 import java.util.stream.Stream;
+=======
+>>>>>>> d5ee72b (update)
 
 @Controller
 @RequestMapping("/user")
@@ -101,6 +101,7 @@ public class UserController {
         model.addAttribute("pairList", pairList);
         return "admin-page";
     }
+<<<<<<< HEAD
     public boolean checkEmailTaken(User user) {
         List<User> allUsers = service.get();
         List<String> emailList = allUsers.stream().map(u -> u.getEmail()).toList();
@@ -120,10 +121,55 @@ public class UserController {
         service.hashAndSaveUser(user);
         return "redirect:/user/adminPage";
     }
+=======
+
+    @GetMapping("/adminPage/user-details/{id}")
+    public String showUserDetails(Model model, @PathVariable("id") Long id){
+        User user = service.findById(id);
+        List<Accommodation> accommodations = accommodationService.findByUser(id);
+        AccommUserPair accommUserPair= new AccommUserPair(accommodations, user);
+        model.addAttribute("accommUserPair", accommUserPair);
+        return "admin-view-user";
+
+
+
+        //List<Accommodation>  allAccommodations = accommodationService.get();
+        //model.addAttribute("allUsers", allUsers);
+        //model.addAttribute("allAccommodations", allAccommodations);*/
+    }
+
+>>>>>>> d5ee72b (update)
     @GetMapping(path = "/delete/{acc_id}/{user_id}")
     public String Accommodation(@PathVariable("acc_id") Long acc_id, @PathVariable("user_id") Long user_id){
         accommodationService.deleteById(acc_id);
         return "redirect:/user/" + user_id;
+    }
+
+    @GetMapping(path = "/delete/{id}")
+    public String adminDeleteUser(@PathVariable("id") Long imgId){
+        service.deleteById(imgId);
+        return "redirect:/user/adminPage";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model){
+        model.addAttribute("user", service.findById(id));
+        return "admin-edit-user";
+    }
+
+    @PostMapping("/update/{id}")
+    public String editUpdate(@PathVariable Long id, @ModelAttribute("user") User user){
+        service.hashAndSaveUser(user);
+        user.setEnumRole(service.findById(id).getEnumRole());
+        user.setRegistrationDate(service.findById(id).getRegistrationDate());
+        service.update(user, id);
+        return "redirect:/user/adminPage/user-details/"+ id;
+    }
+
+    @GetMapping("/view/accommodation/{id}")
+    public String adminViewAccommodation(@PathVariable Long id, Model model){
+        accommodationService.adminViewAcc(id, model);
+        return "admin-accommodation";
     }
 
 }

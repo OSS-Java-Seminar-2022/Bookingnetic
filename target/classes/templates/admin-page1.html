@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+
+    <meta charset="UTF-8">
+    <title> Bookingnetic</title>
+</head>
+<body >
+<div th:replace="~{./includes/header.html :: header}"></div>
+
+<div class="justify-content-center vh-75 border border-1 rounded box-shadow">
+        <h2 th:if="${pairList.size() == 0}">No users found </h2>
+        <div th:unless="${pairList.size() == 0}">&nbsp;
+                <div th:object="${user}" class="display-flex flex-direction-row justify-content-left vh-75 border border-1 rounded box-shadow divstl">
+                    <table class="table table-hover table-borderless">
+                        <thead>
+                            <tr >
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Accommodation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item : ${pairList}">
+                                <td th:text="${item.user.firstName} +' '+ ${item.user.lastName}"></td>
+                                <td th:text="${item.user.email}"></td>
+                                <td th:text="${item.user.phone}"></td>
+<!--                                <td th:each="acc: ${item.accommodations}">-->
+<!--                                    <span th:text="${acc.title}  "></span><br>-->
+<!--                                    <span th:text ="${acc.price_for_night}  "></span><br>-->
+<!--                                    <span th:text ="${acc.address.getCity()}"></span><br>-->
+<!--                                </td>-->
+                                <td>
+                                    <a th:href="@{/user/adminPage/user-details/{id}(id=${item.user.id})}" class="btn btn-outline-primary btn-sm rounded-pill">
+                                        Preview
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+        </div>
+
+
+
+</div>
+
+
+<div th:replace="~{./includes/footer.html :: footer}"></div>
+</body>
+</html>
+
+</body>
+</html>

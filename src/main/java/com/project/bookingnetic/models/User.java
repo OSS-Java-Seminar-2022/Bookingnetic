@@ -87,7 +87,7 @@ public class User implements Serializable{
 
     public void hashPassword(){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        passwordEncoder.encode(this.password);
+        this.password = passwordEncoder.encode(this.password);
     }
 
 

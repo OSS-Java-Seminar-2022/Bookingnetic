@@ -2,8 +2,11 @@ package com.project.bookingnetic.service;
 
 import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.Image;
+import com.project.bookingnetic.models.RoleType;
+import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.repository.AccommodationRepository;
 import com.project.bookingnetic.repository.ImageRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,29 +72,45 @@ public class AccommodationService {
 
     }
 
-
     public ModelAndView renderAccommodationById(long id) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("404");
 
         Optional<Accommodation> accOpt =  repository.findById(id);
+        setMavForAcc(accOpt, mav);
+        return mav;
+    }
+
+    public void setMavForAcc(Optional<Accommodation> accOpt, ModelAndView mav){
         accOpt.ifPresent(accommodation -> {
             List<Image> images = imageRepository.findByAccommodationFk(accommodation.getId());
-            List<String> encodedImages = new ArrayList<>();
-            HashMap<Integer,String> map = new HashMap<Integer,String>();
-
-            images.forEach(image -> {
-                var img = Base64.getEncoder().encodeToString(image.getImg());
-                map.put((int)image.getId(), img);
-                encodedImages.add(img);
-            });
+            HashMap<Integer,String> imagesMap = imagesMap(images);
 
             mav.setViewName("render-accommodation");
-            mav.addObject("images",map);
+            mav.addObject("images",imagesMap);
             mav.addObject(accommodation);
         });
+    }
 
-        return mav;
+    public HashMap<Integer, String> imagesMap(List<Image> images){
+        HashMap<Integer,String> imgMap = new HashMap<Integer,String>();
+        images.forEach(image -> {
+            var img = Base64.getEncoder().encodeToString(image.getImg());
+            imgMap.put((int)image.getId(), img);
+        });
+        return imgMap;
+    }
+
+    public void adminViewAcc(long id, Model model){
+        Optional<Accommodation> accOpt =  repository.findById(id);
+
+        accOpt.ifPresent(accommodation -> {
+            List<Image> images = imageRepository.findByAccommodationFk(accommodation.getId());
+            HashMap<Integer, String> imagesMap = imagesMap(images);
+
+            model.addAttribute("images", imagesMap);
+            model.addAttribute("accommodation", accommodation);
+        });
     }
 
     public String addImageToAccommodation(MultipartFile file, long accom_id) throws IOException {

@@ -15,32 +15,38 @@
 <div th:replace="~{./includes/header.html :: header}"></div>
 
 <div class="justify-content-center vh-75 border border-1 rounded box-shadow">
-        <h2 th:if="${pairList.size() == 0}">No users found </h2>
-        <div th:unless="${pairList.size() == 0}">&nbsp;
-                <a th:href="@{/user/addNewUser}" class="btn btn-outline-primary btn-sm rounded-pill">
-                    Add new user<i class="material-icons">person_add</i>
-                </a>&nbsp;&nbsp;
-                <h5>All users and their accommodations</h5>
-                <div th:each="item : ${pairList}" class="display-flex flex-direction-row justify-content-left vh-75 border border-1 rounded box-shadow divstl">
-                    <div class="row d-inline-flex p-2 col-lg-4 d-flex align-items-stretch position-relative">
-                        <ul class="list-group">
-                            <li th:text = "'Full Name:' + ${item.user.firstName} +' '+ ${item.user.lastName}" class="list-group-item list-group-item-action list-group-item active font-weight-bold"></li>
-                            <li class="list-group-item list-group-item-action list-group-item" th:text="'Email: ' + ${item.user.email}"></li>
-                            <li class="list-group-item list-group-item-action list-group-item" th:text="'Phone: ' + ${item.user.phone}"></li>
-                        </ul>
-                    </div>
-                    <div class="col d-inline-flex p-2 col-lg-4 d-flex align-items-stretch position-relative" th:each="acc : ${item.accommodations}">
-                        <ul class="list-group d-flex flex-column">
-                            <li th:text = "'Title:' + ${acc.title}" class="list-group-item list-group-item-action list-group-item-primary">
-                            </li>
-                            <li th:text = "'Price_For_Night:' + ${acc.price_for_night}" class="list-group-item list-group-item-action list-group-item"></li>
-                            <li th:text = "'City:' + ${acc.address.getCity()}" class="list-group-item list-group-item-action list-group-item"></li>
-                        </ul>
-                    </div>
-                    </div>
-                    </div>
+    <h2 th:if="${pairList.size() == 0}">No users found </h2>
+    <div th:unless="${pairList.size() == 0}">&nbsp;
+        <div th:object="${user}" class="display-flex flex-direction-row justify-content-left vh-75 border border-1 rounded box-shadow divstl">
+            <table class="table table-hover table-borderless">
+                <thead>
+                <tr >
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Accommodation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${pairList}">
+                    <td th:text="${item.user.firstName} +' '+ ${item.user.lastName}"></td>
+                    <td th:text="${item.user.email}"></td>
+                    <td th:text="${item.user.phone}"></td>
+                    <td>
+                        <a th:href="@{/user/adminPage/user-details/{id}(id=${item.user.id})}" class="btn btn-outline-primary btn-sm rounded-pill">
+                            Preview
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
-            </div>
+        </div>
+    </div>
+
+
+
+</div>
 
 
 <div th:replace="~{./includes/footer.html :: footer}"></div>
