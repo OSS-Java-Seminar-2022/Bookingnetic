@@ -17,19 +17,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
-=======
->>>>>>> d5ee72b (update)
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Optional;
 import java.util.stream.Stream;
-=======
->>>>>>> d5ee72b (update)
 
 @Controller
 @RequestMapping("/user")
@@ -101,7 +95,7 @@ public class UserController {
         model.addAttribute("pairList", pairList);
         return "admin-page";
     }
-<<<<<<< HEAD
+
     public boolean checkEmailTaken(User user) {
         List<User> allUsers = service.get();
         List<String> emailList = allUsers.stream().map(u -> u.getEmail()).toList();
@@ -121,7 +115,7 @@ public class UserController {
         service.hashAndSaveUser(user);
         return "redirect:/user/adminPage";
     }
-=======
+
 
     @GetMapping("/adminPage/user-details/{id}")
     public String showUserDetails(Model model, @PathVariable("id") Long id){
@@ -138,7 +132,6 @@ public class UserController {
         //model.addAttribute("allAccommodations", allAccommodations);*/
     }
 
->>>>>>> d5ee72b (update)
     @GetMapping(path = "/delete/{acc_id}/{user_id}")
     public String Accommodation(@PathVariable("acc_id") Long acc_id, @PathVariable("user_id") Long user_id){
         accommodationService.deleteById(acc_id);
@@ -151,14 +144,14 @@ public class UserController {
         return "redirect:/user/adminPage";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable Long id, Model model){
+    @GetMapping("/edit-user/{id}")
+    public String editFormAdmin(@PathVariable Long id, Model model){
         model.addAttribute("user", service.findById(id));
         return "admin-edit-user";
     }
 
-    @PostMapping("/update/{id}")
-    public String editUpdate(@PathVariable Long id, @ModelAttribute("user") User user){
+    @PostMapping("/update-user/{id}")
+    public String editUpdateAdmin(@PathVariable Long id, @ModelAttribute("user") User user){
         service.hashAndSaveUser(user);
         user.setEnumRole(service.findById(id).getEnumRole());
         user.setRegistrationDate(service.findById(id).getRegistrationDate());

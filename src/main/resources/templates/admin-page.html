@@ -15,6 +15,9 @@
 <div th:replace="~{./includes/header.html :: header}"></div>
 
 <div class="justify-content-center vh-75 border border-1 rounded box-shadow">
+    <a th:href="@{/user/addNewUser}" class="btn btn-outline-primary btn-sm rounded-pill">
+        Add new user<i class="material-icons">person_add</i>
+    </a>&nbsp;&nbsp;
     <h2 th:if="${pairList.size() == 0}">No users found </h2>
     <div th:unless="${pairList.size() == 0}">&nbsp;
         <div th:object="${user}" class="display-flex flex-direction-row justify-content-left vh-75 border border-1 rounded box-shadow divstl">

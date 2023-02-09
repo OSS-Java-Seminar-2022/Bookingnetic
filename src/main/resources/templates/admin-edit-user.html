@@ -12,7 +12,7 @@
 <div class="d-flex flex-row vw-100 vh-100 mt-4 justify-content-center align-items-start">
   <div class="w-75">
     <h3 class="primary"> Edit user information: </h3>
-    <form class="d-flex form-group row w-75" th:action="@{/user/update/{user_id} (user_id=${user.id})}" th:object="${user}" th:method="post" >
+    <form class="d-flex form-group row w-75" th:action="@{/user/update-user/{user_id} (user_id=${user.id})}" th:object="${user}" th:method="post" >
       <fieldset>
         <div class="form-group row">
           <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
