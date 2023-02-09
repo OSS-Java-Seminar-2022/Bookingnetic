@@ -111,9 +111,9 @@ public class UserService implements UserDetailsService {
 
     public User update(User user, Long id) {
         if(repo.findById(id).isPresent()){
-            var update = repo.findById(id).get();
-            update.setParameters(user.getFirstName(), user.getLastName(), user.getEmail(),
-                                user.getPassword(), user.getPhone(), user.getEnumRole());
+            User update = repo.findById(id).get();
+            update.updateUser(user.getFirstName(), user.getLastName(), user.getEmail(),
+                                 user.getPhone());
             return repo.save(update);
         }
         return null;

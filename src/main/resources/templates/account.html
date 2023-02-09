@@ -11,13 +11,20 @@
 <body >
     <div th:replace="~{./includes/header.html :: header}"></div>
 
-        <div th:if="${session.firstName != null}" class="d-flex justify-content-center vh-75 border border-1 rounded box-shadow">
+        <div th:if="${session.user_id != null}" class="d-flex justify-content-center vh-75 border border-1 rounded box-shadow">
             <div class="p-3 w-25 h-75 align-items-start">
-                <h3>User information: </h3>
+                <div  class="col-md-12 d-flex">
+                    <h3>User information: </h3>
+                    <a th:href="@{/user/edit/{id}(id=${user.id})}" class="btn btn-outline-primary btn-sm rounded-pill">
+                        Edit
+                    </a>&nbsp;
+
+                </div>
+
                 <ul class="list-group">
-                    <li th:text = "'Full Name:' + ${session.firstName} +' '+ ${session.lastName}" class="list-group-item"></li>
-                    <li class="list-group-item" th:text="'Email: ' + ${session.email}"></li>
-                    <li class="list-group-item" th:text="'Phone: ' + ${session.phone}"></li>
+                    <li th:text = "'Full Name:' + ${user.firstName} +' '+ ${user.lastName}" class="list-group-item"></li>
+                    <li class="list-group-item" th:text="'Email: ' + ${user.email}"></li>
+                    <li class="list-group-item" th:text="'Phone: ' + ${user.phone}"></li>
 
                 </ul>
             </div>
@@ -45,7 +52,7 @@
             </div>
         </div>
         <div th:unless="${session.firstName != null}">
-            <h3>You dont have authorization for this site!</h3>
+            <h3>You don't have authorization for this site!</h3>
             <a  th:href="@{~/login}">Please log in...</a>
         </div>
 

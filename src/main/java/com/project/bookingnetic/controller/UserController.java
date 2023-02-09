@@ -73,13 +73,16 @@ public class UserController {
     public ModelAndView showAccount(Model model,HttpSession session, @PathVariable(name = "user_id") long id){
         return service.showAccount(id);
     }
-    @PutMapping("/put/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) throws MyException {
-        var update = service.update(user, id);
-        if(update != null){
-            return ResponseEntity.ok(user);
-        }
-        throw new MyException("User Not found");
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model){
+        model.addAttribute("user", service.findById(id));
+        return "edit-user";
+    }
+    @PostMapping("/update/{user_id}")
+    public String editUpdate(@PathVariable Long user_id, @ModelAttribute("user") User user){
+
+        service.update(user, user_id);
+        return "redirect:/user/"+ user_id;
     }
 
     @DeleteMapping(path = "/delete/{id}")
