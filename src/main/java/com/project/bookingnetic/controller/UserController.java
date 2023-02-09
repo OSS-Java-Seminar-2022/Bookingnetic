@@ -99,13 +99,22 @@ public class UserController {
         });
         model.addAttribute("pairList", pairList);
         return "admin-page";
-
-
-
-        //List<Accommodation>  allAccommodations = accommodationService.get();
-        //model.addAttribute("allUsers", allUsers);
-        //model.addAttribute("allAccommodations", allAccommodations);*/
     }
+
+    @GetMapping("/addNewUser")
+    public String adminAddUser(){
+        return "adminAddUser";
+    }
+
+    @PostMapping("/addNewUser")
+    public String adminAddUser(@ModelAttribute("user") User user){
+        User newUser = user;
+        System.out.println(user);
+        System.out.println(service.hashAndSaveUser(newUser));
+
+        return "home";
+    }
+
 
     @GetMapping(path = "/delete/{acc_id}/{user_id}")
     public String Accommodation(@PathVariable("acc_id") Long acc_id, @PathVariable("user_id") Long user_id){
