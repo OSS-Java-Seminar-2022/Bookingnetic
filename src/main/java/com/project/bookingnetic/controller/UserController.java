@@ -105,16 +105,16 @@ public class UserController {
     }
 
     @GetMapping("/addNewUser")
-    public String adminAddUser(){
+    public String adminAddUser(Model model){
+        User user = new User();
+        model.addAttribute("user", user);
         return "adminAddUser";
     }
 
     @PostMapping("/addNewUser")
     public String adminAddUser(@ModelAttribute("user") User user){
-        User newUser = user;
-        System.out.println(user);
-        System.out.println(service.hashAndSaveUser(newUser));
-
+        // save device to database
+        service.hashAndSaveUser(user);
         return "home";
     }
 
