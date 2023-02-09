@@ -69,8 +69,6 @@ public class UserController {
         return  service.addAccommodationToUser(acc,id);
     }
 
-
-
     @GetMapping("/{user_id}")
     public ModelAndView showAccount(Model model,HttpSession session, @PathVariable(name = "user_id") long id){
         return service.showAccount(id);
@@ -89,8 +87,6 @@ public class UserController {
         return service.deleteById(id);
     }
 
-
-
     @GetMapping("/adminPage")
     public String showAdminPage(Model model){
         List<User> allUsers = service.get();
@@ -102,20 +98,17 @@ public class UserController {
         model.addAttribute("pairList", pairList);
         return "admin-page";
     }
-
     public boolean checkEmailTaken(User user) {
         List<User> allUsers = service.get();
         List<String> emailList = allUsers.stream().map(u -> u.getEmail()).toList();
         return emailList.contains(user.getEmail());
     }
-
     @GetMapping("/addNewUser")
     public String adminAddUser(Model model){
         User user = new User();
         model.addAttribute("user", user);
         return "adminAddUser";
     }
-
     @PostMapping("/addNewUser")
     public String adminAddUser(@ModelAttribute("user") User user){
         if(checkEmailTaken(user)){
@@ -124,8 +117,6 @@ public class UserController {
         service.hashAndSaveUser(user);
         return "redirect:/user/adminPage";
     }
-
-
     @GetMapping(path = "/delete/{acc_id}/{user_id}")
     public String Accommodation(@PathVariable("acc_id") Long acc_id, @PathVariable("user_id") Long user_id){
         accommodationService.deleteById(acc_id);
