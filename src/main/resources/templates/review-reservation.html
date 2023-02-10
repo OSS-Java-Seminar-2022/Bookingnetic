@@ -12,28 +12,28 @@
   <div th:replace="~{./includes/header.html :: header}"></div>
 
     <div class="d-flex mt-5 flex-column justify-content-start align-items-center vh-100 vw-100" th:unless="${session.user_id == null}">
+     <div>
+       <form th:action="@{/reservation/create}" th:object="${createReservation}" th:method="post">
+         <h3 class="primary">Are you sure you want to submit your reservation? </h3>
 
-      <form th:action="@{/reservation/create}" th:object="${createReservation}" th:method="post">
-        Are you sure you want to submit your reservation?<br>
-        <label class="mt-3" for="title">Title</label>
-        <input type="text" name="title" id="title" th:value="${session.selectedAccommodation.title}">
-        <br>
-        <label class="mt-3" for="dateFrom">Check in:</label>
-        <input type="date" name="dateFrom"  id="dateFrom" th:value="${session.search.dateFrom}">
-        <br>
-        <label class="mt-3" for="dateTo">Check out:</label>
-        <input type="date" name="dateTo" id="dateTo" th:value="${session.search.dateTo}">
-        <br>
-        <label class="mt-3" for="totalPrice">Total Price </label>
-        <input name="totalPrice" id="totalPrice" th:value="${session.total_days}*${session.selectedAccommodation.price_for_night}"><span>$</span>
-        <br>
-        <button type="submit" class="btn btn-primary">Confirm</button>
-      </form>
-      <form class="align-self-left" th:action="@{/reservation/cancel}" th:method="post">
-        <button type="submit" class="btn btn-warning">Cancel</button>
-      </form>
-
-
+         <label class="mt-5" for="title">Title</label>
+         <input type="text" name="title" id="title" th:value="${session.selectedAccommodation.title}">
+         <br>
+         <label class="mt-3" for="dateFrom">Check in:</label>
+         <input type="date" name="dateFrom"  id="dateFrom" th:value="${session.search.dateFrom}">
+         <br>
+         <label class="mt-3" for="dateTo">Check out:</label>
+         <input type="date" name="dateTo" id="dateTo" th:value="${session.search.dateTo}">
+         <br>
+         <label class="mt-3" for="totalPrice">Total Price </label>
+         <input name="totalPrice" id="totalPrice" th:value="${session.total_days}*${session.selectedAccommodation.price_for_night}"><span>$</span>
+         <br>
+         <button type="submit" class="btn btn-primary mt-3">Confirm</button>
+       </form>
+       <form class="align-self-left mt-3" th:action="@{/}" th:method="get">
+         <button type="submit" class="btn btn-warning">Cancel</button>
+       </form>
+     </div>
     </div>
   <h2 th:if="${session.user_id==null}"> Log in please</h2>
 
