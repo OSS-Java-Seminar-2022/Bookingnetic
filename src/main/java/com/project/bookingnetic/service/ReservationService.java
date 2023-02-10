@@ -60,11 +60,31 @@ public class ReservationService {
     }
 
     public String deleteById(Long id) {
-        try {
+
+
+        Optional<Reservation> reservationToDelete = repository.findById(id);
+
+
+        try{
             repository.deleteById(id);
+            reservationToDelete.ifPresent(reservation -> {
+               String user = reservation.getUser().getFullName();
+               String accommodation = reservation.getAccommodation().getTitle();
+               String total = reservation.getPrice().toString();
+               final String body = user + " canceled your reservation "
+                       + accommodation + " for " + total
+                       + "$\n\n Check in date: " + reservation.getCheckIn()
+                       +"\n\n Check out date: " + reservation.getCheckOut();
+               emailService.sendEmail(
+                       reservation.getAccommodation().getUser().getEmail(),
+                       reservation.getAccommodation().getUser().getFullName(),
+                       "New Cancelation!",
+                       body);
+                    });
+
             return "redirect:/";
         } catch (Exception e){
-            return "404";
+            return "500";
         }
     }
 
