@@ -152,12 +152,18 @@ public class UserController {
 
     @PostMapping("/update-user/{id}")
     public String editUpdateAdmin(@PathVariable Long id, @ModelAttribute("user") User user){
-        service.hashAndSaveUser(user);
-        user.setEnumRole(service.findById(id).getEnumRole());
-        user.setRegistrationDate(service.findById(id).getRegistrationDate());
-        service.update(user, id);
+        if(user.getEmail().equals( service.findById(id).getEmail()) || !checkEmailTaken(user)){
+            service.hashAndSaveUser(user);
+            user.setEnumRole(service.findById(id).getEnumRole());
+            user.setRegistrationDate(service.findById(id).getRegistrationDate());
+            service.update(user, id);
+        }
+        else if(checkEmailTaken(user)){
+            return "bad-credentials";
+        }
         return "redirect:/user/adminPage/user-details/"+ id;
     }
+    
 
     @GetMapping("/view/accommodation/{id}")
     public String adminViewAccommodation(@PathVariable Long id, Model model){

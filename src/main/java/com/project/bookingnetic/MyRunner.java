@@ -53,7 +53,7 @@
 //                    acc.getPrice_for_night(), address,usr);
 //            accommodationService.save(accommodation);
 //        });
-
+//
 //        appConfig.deserializeImage("jsonFiles/images.json");
 //        appConfig.getImages().forEach(img -> {
 //            img.setAccommodation(getAccommodation(img.getAccommodation().getId()));
