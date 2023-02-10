@@ -77,7 +77,10 @@ public class User implements Serializable{
         return this.email;
     }
 
+    public String getFullName(){
+        return this.firstName + " " + this.lastName;
 
+    }
     /*  finding all roles that user has */
     public List<String> getRoleList(){
         if(this.enumRole.toString().length() > 0)

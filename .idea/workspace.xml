@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1d89377a-7187-41fb-b603-53d4887668e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/review-reservation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/review-reservation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/review-reservation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/review-reservation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/bookingnetic/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/render-reservation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/render-reservation.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "532f39cd16dd5b9adfa17cc7e9d99e98",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -85,7 +87,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676014219889</updated>
-      <workItem from="1676014222702" duration="351000" />
+      <workItem from="1676014222702" duration="525000" />
+      <workItem from="1676015288483" duration="4484000" />
     </task>
     <servers />
   </component>

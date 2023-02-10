@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.constraints.Email;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -28,6 +30,8 @@ public class ReservationService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private AccommodationRepository accommodationRepository;
@@ -172,6 +176,18 @@ public class ReservationService {
 
         try{
             repository.save(reservation);
+            String user = reservation.getUser().getFullName();
+            String accommodation = reservation.getAccommodation().getTitle();
+            String total = reservation.getPrice().toString();
+            final String body = user + " reserved you accommodation "
+                    + accommodation + " for " + total
+                    + "$\n\n Check in date: " + reservation.getCheckIn()
+                    +"\n\n Check out date: " + reservation.getCheckOut();
+            emailService.sendEmail(
+                        reservation.getAccommodation().getUser().getEmail(),
+                        reservation.getAccommodation().getUser().getFullName(),
+                        "You have a new reservation!",
+                        body);
             return "redirect:/reservation/"+reservation.getId();
         }
         catch(Exception e){

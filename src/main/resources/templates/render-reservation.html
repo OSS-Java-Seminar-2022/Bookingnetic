@@ -11,12 +11,12 @@
 <body>
   <div th:replace="~{./includes/header.html :: header}"></div>
 
-    <div class="d-flex align-items-center justify-content-center flex-column vw-100 vh-100">
+    <div th:if="${session.user_id == reservation.user.id}" class="d-flex align-items-center justify-content-start flex-column vw-100 vh-100">
       <div class="w-50">
         <ul class="list-group list-group-flush" th:if="${session.user_id == reservation.user.id}">
           <li class="list-group-item" th:text="${reservation.user.firstName} + ' ' + ${reservation.user.lastName}"></li>
           <li class="list-group-item" th:text="'Accommodation: '+ ${reservation.accommodation.title}"></li>
-          <li class="list-group-item" th:text="'Dates: ' + ${reservation.checkIn} + ' - ' + ${reservation.checkOut}"></li>
+          <li class="list-group-item" th:text="'Dates: ' + ${reservation.checkIn} + ' to ' + ${reservation.checkOut}"></li>
           <li class="list-group-item" th:text="'Total Price: ' + ${reservation.price} "></li>
         </ul>
         <button data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-outline-danger btn-sm rounded-pill" data-target="#myModal">
@@ -27,7 +27,7 @@
 
 
     <div th:unless="${session.user_id == reservation.user.id}">
-      You don't have the permission to do that, please log in to see your reservations!
+      <h2>You don't have the permission to do that, please log in to see your reservations!</h2>
     </div>
 
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
