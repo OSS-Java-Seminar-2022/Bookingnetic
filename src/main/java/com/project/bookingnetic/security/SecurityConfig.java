@@ -41,7 +41,10 @@ public class SecurityConfig {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/user/account").authenticated()
+                .requestMatchers("/user/register").anonymous()
+                .requestMatchers("/address", "/accommodation", "/image", "reservation",  "/user/adminPage", "/user/adminPage/**", "/user/addNewUser", "/user/delete/**",
+                        "/user/edit-user/**", "/user/update-user/**","/user/view/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers( "/user/account").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

@@ -11,7 +11,7 @@
 <body >
     <div th:replace="~{./includes/header.html :: header}"></div>
 
-        <div th:if="${session.user_id != null}" class="d-flex justify-content-center vh-75 border border-1 rounded box-shadow">
+        <div th:if="${session.user_id == user.id}" class="d-flex justify-content-center vh-75 border border-1 rounded box-shadow">
             <div class="p-3 w-25 h-75 align-items-start">
                 <div  class="col-md-12 d-flex">
                     <h3>User information: </h3>
