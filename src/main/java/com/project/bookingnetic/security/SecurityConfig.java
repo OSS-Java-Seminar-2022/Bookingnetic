@@ -24,7 +24,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import java.io.IOException;
 
 @Configuration
-@EnableWebSecurity //spring boot know that this is where we keep our security
+@EnableWebSecurity
 public class SecurityConfig {
 
     private UserService userService;
@@ -34,8 +34,6 @@ public class SecurityConfig {
     }
 
 
-    /*Note that the order of the antMatchers() elements is significant; the more specific rules need to come first,
-     followed by the more general ones. */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
@@ -69,9 +67,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    /* moramo imat DaoAuthenticationProvider kako bi moga dobiveni username i password priko requesta provjerit
-    koristi password encoder da validira password, ako autentikacija prođe možemo vadit principal
-     */
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

@@ -2,11 +2,8 @@ package com.project.bookingnetic.service;
 
 import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.Image;
-import com.project.bookingnetic.models.RoleType;
-import com.project.bookingnetic.models.User;
 import com.project.bookingnetic.repository.AccommodationRepository;
 import com.project.bookingnetic.repository.ImageRepository;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

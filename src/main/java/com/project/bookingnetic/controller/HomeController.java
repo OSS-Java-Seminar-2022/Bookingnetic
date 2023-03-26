@@ -30,25 +30,22 @@ public class HomeController {
         } else {
             email = principal.toString();
         }
-        System.out.println("---------PRINCIPAL-----------" + principal);
-        System.out.println("------------EMAIL------" + email);
 
         Optional<User> user = userService.findByEmail(email);
 
         user.ifPresent(data -> {
             final long user_id = data.getId();
             final String firstName = data.getFirstName();
-            final String lastName = data.getLastName();
-            final String mail = data.getEmail();
-            final String phoneNumber = data.getPhone();
+//            final String lastName = data.getLastName();
+//            final String mail = data.getEmail();
+//            final String phoneNumber = data.getPhone();
 
             session.setAttribute("user_id",user_id);
             session.setAttribute("firstName",firstName);
-            session.setAttribute("lastName",lastName);
-            session.setAttribute("email",mail);
-            session.setAttribute("phone",phoneNumber);
+//            session.setAttribute("lastName",lastName);
+//            session.setAttribute("email",mail);
+//            session.setAttribute("phone",phoneNumber);
         });
-        System.out.println("--------SESSION-----------" + session);
         return "home";
     }
 

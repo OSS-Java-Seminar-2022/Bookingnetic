@@ -6,14 +6,10 @@ import com.project.bookingnetic.repository.ImageRepository;
 import com.project.bookingnetic.repository.ReservationRepository;
 import com.project.bookingnetic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.constraints.Email;
-import java.math.BigDecimal;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -96,47 +92,7 @@ public class ReservationService {
         return Optional.ofNullable(imageRepository.findFirstByAccommodation_Id(accommodation.getId()));
     }
 
-    /*public ModelAndView findAvailable(Search search, List<Accommodation> accommodationList){
-        ModelAndView mav = new ModelAndView();
-        LocalDate userCheckIn = search.getDateFrom();
-        LocalDate userCheckOut = search.getDateTo();
-        Boolean accommodationAvailable = true;
-        List<Accommodation> finalList = new ArrayList<>();
 
-
-        for(int i = 0; i < accommodationList.size();++i) {
-            var a = accommodationList.get(i);
-            List<Reservation> reservations = findReservationsByAccommodationId(a.getId());
-
-            for(int j = 0; j < reservations.size();++j) {
-                var r = reservations.get(j);
-                LocalDate checkIn = r.getCheckIn();
-                LocalDate checkOut = r.getCheckOut();
-
-                if (userCheckIn.equals(checkIn) ||
-                        userCheckIn.equals(checkOut) ||
-                        userCheckOut.equals(checkIn) ||
-                        userCheckOut.equals(checkOut) ||
-                        userCheckIn.isBefore(checkIn) && userCheckOut.isAfter(checkOut) ||
-                        userCheckIn.isBefore(checkIn) && userCheckOut.isAfter(checkIn) ||
-                        userCheckIn.isBefore(checkOut) && userCheckOut.isAfter(checkOut) ||
-                        userCheckIn.isAfter(checkIn) && userCheckOut.isBefore(checkOut)) {
-                    accommodationAvailable = false;
-                }
-
-            }
-            if (accommodationAvailable) {
-                finalList.add(a);
-
-            }
-            else {
-                accommodationAvailable = true;
-            }
-        }
-        mav.addObject("accommodations",finalList);
-        mav.setViewName("list-found-accommodations");
-        return mav;
-    }*/
 
     public ModelAndView findAvailable(Search search, List<Accommodation> accommodationList){
         ModelAndView mav = new ModelAndView();

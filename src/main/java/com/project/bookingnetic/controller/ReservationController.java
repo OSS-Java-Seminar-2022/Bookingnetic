@@ -1,6 +1,6 @@
 package com.project.bookingnetic.controller;
 
-import ch.qos.logback.core.model.Model;
+
 import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.CreateReservation;
 import com.project.bookingnetic.models.Reservation;
@@ -47,7 +47,7 @@ public class ReservationController {
         long user = Long.valueOf(userId.toString());
 
 
-        return  service.createReservation(user,accom,createReservation);
+        return service.createReservation(user,accom,createReservation);
 
     }
     @GetMapping("/{id}")

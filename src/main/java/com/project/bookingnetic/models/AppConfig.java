@@ -76,7 +76,6 @@ public class AppConfig {
     }
 
     public AppConfig deserializeAccomm(String file){
-        //mapper.registerModule(new JavaTimeModule());
         try {
             InputStream accommFile = new FileInputStream(file);
             this.accommodation = mapper.readValue(accommFile, new TypeReference<List<Accommodation>>() {

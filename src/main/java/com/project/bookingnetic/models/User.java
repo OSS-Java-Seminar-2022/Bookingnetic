@@ -71,8 +71,6 @@ public class User implements Serializable{
         this.enumRole = enumRole;
     }
 
-
-    /* setting username for authentication to use email, by default it is username, but we want email */
     public String getUsername() {
         return this.email;
     }
@@ -81,7 +79,7 @@ public class User implements Serializable{
         return this.firstName + " " + this.lastName;
 
     }
-    /*  finding all roles that user has */
+
     public List<String> getRoleList(){
         if(this.enumRole.toString().length() > 0)
             return Arrays.asList(this.enumRole.toString().split(","));

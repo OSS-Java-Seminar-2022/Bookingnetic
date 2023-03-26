@@ -9,33 +9,40 @@
 </head>
 <body>
 <div th:replace="~{./includes/header.html :: header}"></div>
-<div  th:if="${session.user_id == user.id}"  class="d-flex flex-row vw-100 vh-100 mt-4 justify-content-center align-items-start">
+<div th:if="${session.user_id==user.id}" class="d-flex flex-row vw-100 vh-100 mt-4 justify-content-center align-items-start">
+
   <div class="w-75">
-    <h3 class="primary"> Update your accommodation information: </h3>
-    <form class="d-flex form-group row w-75" th:action="@{/user/update/{user_id} (user_id=${session.user_id})}" th:object="${user}" th:method="POST" >
+    <h3 class="primary"> Edit user information: </h3>
+    <form class="d-flex form-group row w-75" th:action="@{/user/update-user/{user_id} (user_id=${user.id})}" th:object="${user}" th:method="post" >
       <fieldset>
         <div class="form-group row">
-          <label for="firstName" class="col-sm-2 col-form-label">First name: </label>
+          <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="firstName" name="firstName" th:value="${user.firstName}">
+            <input type="text" class="form-control" id="firstName" name="firstName" th:value="${user.firstName}" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="lastName" class="col-sm-2 col-form-label">Last name: </label>
+          <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control"  id="lastName" name="lastName" th:value="${user.lastName}">
+            <input type="text" class="form-control"  id="lastName" name="lastName" th:value="${user.lastName}" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="email" class="col-sm-2 col-form-label">E-mail: </label>
+          <label for="email" class="col-sm-2 col-form-label">Email:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="email" name="email" th:value="${user.email}">
+            <input type="text" class="form-control" id="email" name="email" th:value="${user.email}" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="phone" class="col-sm-2 col-form-label">Country:</label>
+          <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="phone" name="phone" th:value="${user.phone}">
+            <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="phone" name="phone" th:value="${user.phone}" required>
           </div>
         </div>
 
@@ -47,6 +54,10 @@
 
   </div>
 
+</div>
+<div th:unless="${session.user_id != null}">
+  <h3>You don't have authorization for this site!</h3>
+  <a  th:href="@{~/login}">Please log in...</a>
 </div>
 <div th:replace="~{./includes/footer.html :: footer}"></div>
 </body>

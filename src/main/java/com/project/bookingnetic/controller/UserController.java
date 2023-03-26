@@ -2,13 +2,10 @@ package com.project.bookingnetic.controller;
 
 
 
-import com.project.bookingnetic.exception.MyException;
 import com.project.bookingnetic.models.*;
-//import com.project.bookingnetic.security.UserSecurity;
 import com.project.bookingnetic.service.AccommodationService;
 import com.project.bookingnetic.service.UserService;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+
 
 @Controller
 @RequestMapping("/user")
@@ -66,17 +59,6 @@ public class UserController {
     @GetMapping("/{user_id}")
     public ModelAndView showAccount(Model model,HttpSession session, @PathVariable(name = "user_id") long id){
         return service.showAccount(id);
-    }
-    @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable Long id, Model model){
-        model.addAttribute("user", service.findById(id));
-        return "edit-user";
-    }
-    @PostMapping("/update/{user_id}")
-    public String editUpdate(@PathVariable Long user_id, @ModelAttribute("user") User user){
-
-        service.update(user, user_id);
-        return "redirect:/user/"+ user_id;
     }
 
     @DeleteMapping(path = "/delete/{id}")
@@ -124,12 +106,6 @@ public class UserController {
         AccommUserPair accommUserPair= new AccommUserPair(accommodations, user);
         model.addAttribute("accommUserPair", accommUserPair);
         return "admin-view-user";
-
-
-
-        //List<Accommodation>  allAccommodations = accommodationService.get();
-        //model.addAttribute("allUsers", allUsers);
-        //model.addAttribute("allAccommodations", allAccommodations);*/
     }
 
     @GetMapping(path = "/delete/{acc_id}/{user_id}")
@@ -147,23 +123,23 @@ public class UserController {
     @GetMapping("/edit-user/{id}")
     public String editFormAdmin(@PathVariable Long id, Model model){
         model.addAttribute("user", service.findById(id));
-        return "admin-edit-user";
+        return "edit-user";
     }
 
     @PostMapping("/update-user/{id}")
     public String editUpdateAdmin(@PathVariable Long id, @ModelAttribute("user") User user){
         if(user.getEmail().equals( service.findById(id).getEmail()) || !checkEmailTaken(user)){
-            service.hashAndSaveUser(user);
             user.setEnumRole(service.findById(id).getEnumRole());
             user.setRegistrationDate(service.findById(id).getRegistrationDate());
+            service.hashAndSaveUser(user);
             service.update(user, id);
         }
         else if(checkEmailTaken(user)){
             return "bad-credentials";
         }
-        return "redirect:/user/adminPage/user-details/"+ id;
+        return "redirect:/";
     }
-    
+
 
     @GetMapping("/view/accommodation/{id}")
     public String adminViewAccommodation(@PathVariable Long id, Model model){

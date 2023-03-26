@@ -68,8 +68,6 @@ public class ImageController {
 
     @GetMapping("/img")
     public String getHomePage(Model model) {
-        //var img = Base64.getEncoder().encodeToString(service.showProductImage(id).getImg());
-        //model.addAttribute("img", img);
         return "show_image";
     }
 

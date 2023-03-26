@@ -1,6 +1,5 @@
 package com.project.bookingnetic.service;
 
-import ch.qos.logback.core.model.Model;
 import com.project.bookingnetic.models.Accommodation;
 import com.project.bookingnetic.models.Reservation;
 import com.project.bookingnetic.models.RoleType;
@@ -10,7 +9,6 @@ import com.project.bookingnetic.repository.ReservationRepository;
 import com.project.bookingnetic.repository.UserRepository;
 import com.project.bookingnetic.security.UserSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +18,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

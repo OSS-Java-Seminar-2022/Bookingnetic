@@ -15,12 +15,10 @@ public class EmailService {
 
     public void sendEmail(String to, String user, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
-
         String content = "Hello " + user + ", \n\n"+ body + "\n\nkind regards,\nBookingnetic team";
         message.setTo(to);
         message.setSubject(subject);
         message.setText(content);
-
         mailSender.send(message);
     }
 

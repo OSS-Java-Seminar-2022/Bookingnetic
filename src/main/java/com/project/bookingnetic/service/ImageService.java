@@ -60,7 +60,6 @@ public class ImageService {
         fileEntity.setImg(file.getBytes());
         Accommodation accommodation = accommodationRepository.findById(valueOf(2) ).get();
         fileEntity.setAccommodation(accommodation);
-        // System.out.println(fileEntity);
         repository.save(fileEntity);
     }
 
